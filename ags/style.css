@@ -1,0 +1,25 @@
+* {
+    font-family: '0xProto';
+}
+
+.window {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    /*border-radius: 20px;*/
+    border: 3px solid black;
+}
+
+.window > * {
+    font-size: small;
+    padding: 5px 15px;
+}
+
+.opener-window {
+    padding: 0px 30px;
+    min-width: 100px;
+    border-radius: 0px 0px 40px 40px;
+}
+
+.calendar {
+    padding: 15px 20px;
+}
