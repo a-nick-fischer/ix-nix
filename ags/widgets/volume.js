@@ -1,4 +1,4 @@
-import { makeWindow, withEventHandler } from "../utils.js"
+import { makeWindow, withEventHandler } from "../utils/ags_helpers.js"
 
 const audio = await Service.import("audio")
 

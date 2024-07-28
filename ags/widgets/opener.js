@@ -1,5 +1,5 @@
 import { SmallVolumeWidget } from "./volume.js"
-import { withEventHandler, makeWindow } from "../utils.js"
+import { withEventHandler, makeWindow } from "../utils/ags_helpers.js"
 import { SmallBatteryWidget } from "./battery.js"
 import { toggleCalendar } from "./calendar.js"
 
