@@ -2,13 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, outputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      nick = import ./home.nix;
+    };
+  };
 
   boot = {
     initrd.systemd.enable = true;
@@ -60,6 +67,8 @@
 
   environment.sessionVariables = {
     FLAKE = "/home/nick/.config/nixos";
+    DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
+    BROWSER = "${pkgs.librewolf}/bin/librewolf";
   };
 
   networking.hostName = "ix"; # Define your hostname.
@@ -67,6 +76,30 @@
 
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
+
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    polarity = "light";
+    image = config.lib.stylix.pixel "base0A";
+
+    # TODO rose-pine-icon-theme
+
+    #https://rosepinetheme.com/themes/
+    #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-moon.yaml
+    #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-dawn.yaml
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+
+    cursor.package = pkgs.rose-pine-cursor;
+    cursor.name = "BreezeX-RosePine-Linux";
+
+    fonts = {
+      monospace = {
+        package = pkgs._0xproto;
+        name = "0xProto";
+      };
+    };
+  };
 
 
   # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
@@ -101,8 +134,8 @@
 
   zramSwap = {
     enable = true;
-    # TODO Enable writeBackdevice once we have a swap partition writeBackdevice = "";
     memoryPercent = 30;
+    writebackDevice = "/dev/nvme0n1p3";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -140,11 +173,6 @@
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
   ];
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-hyprland
-  ];
-
   security.polkit.enable = true;
 
   environment.etc."machine-id".source = "/persist/etc/machine-id";
@@ -175,55 +203,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    # Std-Software
-    librewolf
-    onlyoffice-bin
-    obsidian
-    ags
-    nh
-    devbox
-    overskride
-    zed-editor
-    kitty
-    vscode
-    buttercup-desktop
-    hyprpaper
-    pavucontrol
-    helvum
-    hyprpicker
-    hyprlock
-
-    # Notifications
-    mako
-    libnotify
-
-    # Temp
-    rofi-wayland
-
-    git
-    github-desktop
-
-    # Make AGS happy
-    gtk3
-    gnome.adwaita-icon-theme
-
-    
-    zfs
-  ];
-
-  # Make AGS happy
-  nixpkgs.overlays = [
-    (final: prev:
-    {
-      ags = prev.ags.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 ];
-      });
-    })
-  ];
-
   # Needed for e.g. AGS
   services.upower.enable = true;
 
@@ -232,32 +211,7 @@
     chmod -R 700 {/projects,/blobs,/etc/nixos}
   '';
 
-  # TODO Set browser
-
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    polarity = "light";
-    image = config.lib.stylix.pixel "base0A";
-
-    # TODO rose-pine-icon-theme
-
-    #https://rosepinetheme.com/themes/
-    #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-moon.yaml
-    #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-dawn.yaml
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
-
-    cursor.package = pkgs.rose-pine-cursor;
-    cursor.name = "BreezeX-RoséPine";
-
-    fonts = {
-      monospace = {
-        package = pkgs._0xproto;
-        name = "0xProto";
-      };
-    };
-  };
-
+  nixpkgs.config.allowUnfree = true;
   
 
   # Auto-login
