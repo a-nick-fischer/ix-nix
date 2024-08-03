@@ -5,7 +5,6 @@
 .window {
     background-color: @theme_bg_color;
     color: @theme_fg_color;
-    /*border-radius: 20px;*/
     border: 3px solid black;
 }
 
@@ -23,3 +22,6 @@
 .calendar {
     padding: 15px 20px;
 }
+
+
+

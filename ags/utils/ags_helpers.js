@@ -1,5 +1,14 @@
 export const GLOBAL_TRANSITION_DURATION = 1000;
 
+export function group(children, overrides = {}){
+    overrides = { spacing: 10, ...overrides } 
+
+    return Widget.Box({
+        children,
+        ...overrides
+    })
+}
+
 export function getWindowName(name, extras = {}){
     return `${name}-${extras["monitor"] || 0}`
 }

@@ -17,5 +17,5 @@ export function saveSecrets(key, value){
 
     current[lastKey] = value
 
-    Utils.writeFileSync(JSON.stringify(secrets, () => {}, 4), SECRETS_FILE)   
+    Utils.writeFileSync(JSON.stringify(secrets, null, 4), SECRETS_FILE)  
 }
