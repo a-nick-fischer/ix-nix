@@ -197,8 +197,6 @@
       enable32Bit = true;
     };
 
-    opengl.enable = true;
-
     nvidia = {
       modesetting.enable = true;
       open = false;
