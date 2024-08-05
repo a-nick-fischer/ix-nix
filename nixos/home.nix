@@ -2,9 +2,9 @@
 
 { 
   imports = [
- #   inputs.stylix.homeManagerModules.stylix
+    inputs.hyprland.homeManagerModules.default
   ];
-
+  
   programs.home-manager.enable = true;
 
   home.username = "nick";
@@ -19,6 +19,7 @@
     portal = {
       enable = true;
       extraPortals = [
+	      #pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
       ];
     };
@@ -41,6 +42,30 @@
   # Make AGS happy
   nixpkgs.overlays = [
     (final: prev:
+    let 
+      # Based on https://www.reddit.com/r/NixOS/comments/1b56jdx/simple_nix_function_for_wrapping_executables_with/
+      nvidiaOffloadWrap = { executable, desktop ? null }: prev.runCommand "nvidia-offload"
+      {
+        preferLocalBuild = true;
+        allowSubstitutes = false;
+        meta.priority = -1; # take precedence over non-firejailed versions
+      }
+      (
+        ''
+          command_path="$out/bin/$(basename ${executable})-lol"
+          mkdir -p $out/bin
+          mkdir -p $out/share/applications
+          cat <<'_EOF' >"$command_path"
+          #! ${prev.runtimeShell} -e
+          exec /run/current-system/sw/bin/nvidia-offload ${toString executable} "\$@"
+          _EOF
+          chmod 0755 "$command_path"
+        '' + prev.lib.optionalString (desktop != null) ''
+          substitute ${desktop} $out/share/applications/$(basename ${desktop}) \
+            --replace ${executable} "$command_path"
+        ''
+      );
+    in
     {
       ags = prev.ags.overrideAttrs (old: {
         buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 ];
@@ -49,8 +74,33 @@
       flameshot = prev.flameshot.override (old: {
         enableWlrSupport = true;
       });
+      
+      kitty = nvidiaOffloadWrap {
+        executable = "${prev.kitty}/bin/kitty";
+        desktop = "${prev.kitty}/share/applications/kitty.desktop"; # TODO There's another one..
+      };
     })
   ];
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+
+    systemd = {
+      enable = true;
+      enableXdgAutostart = true;
+    };
+
+    settings = {};
+
+    plugins = [
+    #  inputs.hyprgrass.packages.${pkgs.system}.default
+    #  inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
+  };
+
+  # TODO Offload obsidian to GPU?
+  # Do it via nvidia settings file...
 
   home.packages = with pkgs; [
     # Std-Software

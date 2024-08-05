@@ -10,11 +10,28 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = "backup";
     users = {
       nick = import ./home.nix;
     };
+  };
+
+  programs.hyprland = {
+     enable = true;
+     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+    options = "--delete-older-than 30d"; 
   };
 
   boot = {
@@ -23,7 +40,11 @@
     plymouth.enable = true;
 
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 7;
+      };
+
       efi.canTouchEfiVariables = true;
     };
 
@@ -101,6 +122,31 @@
     };
   };
 
+  # Power Management
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+
+  services.tlp.enable = false;
+
+  services.auto-cpufreq = {
+    enable = false;
+
+    settings = {
+      battery = {
+        governor = "powersave";
+        energy_performance_preference = "balance-power";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        energy_performance_preference = "performance";
+        turbo = "always";
+      };
+    };
+  };
+
+  services.fstrim.enable = true;
+
 
   # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
    boot.initrd.systemd.services.rollback = {
@@ -143,22 +189,40 @@
     keyMap = "de";
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    opengl.enable = true;
+
     nvidia = {
       modesetting.enable = true;
       open = false;
-      powerManagement.enable = true;
-      powerManagement.finegrained = false;
+      
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
+
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+  
+        # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA 
+        nvidiaBusId = "PCI:1:0:0"; 
+    
+        # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA 
+        intelBusId = "PCI:0:2:0";
+      };
     };
   };
 
@@ -168,8 +232,11 @@
     "quiet"
     "splash"
     "nohibernate" # May be needed because of zfs bla bla
+
+    # Simple interface names
     "net.ifnames=0"
     "biosdevname=0"
+
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
   ];
 
@@ -192,12 +259,18 @@
     powerOnBoot = true;
   };
 
+  # TODO: Network manager applet nm-applet?
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  security.rtkit.enable = true;
   services.pipewire = {
      enable = true;
      pulse.enable = true;
+     alsa.enable = true;
+     alsa.support32Bit = true;
+     jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

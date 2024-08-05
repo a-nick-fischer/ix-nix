@@ -22,9 +22,20 @@
       url = "github:danth/stylix";
     };
 
-  };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
+    };
 
-  # TODO https://github.com/vimjoyer/nixos-gaming-video
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+  };
 
   outputs = {
     self,
