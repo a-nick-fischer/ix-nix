@@ -82,10 +82,6 @@
         executable = "${prev.kitty}/bin/kitty";
         desktop = "${prev.kitty}/share/applications/kitty.desktop"; # TODO There's another one..
       };
-
-      toggleKeyboard = prev.runCommand "output.txt" {} ''
-        
-      '';
     })
   ];
 
@@ -107,7 +103,10 @@
       "$menu" = "rofi -show drun -show-icons";
 
       # Autostart
-      exec-once = [ "systemctl start --user polkit-gnome-authentication-agent-1" ];
+      exec-once = [ 
+        "systemctl start --user polkit-gnome-authentication-agent-1"
+        "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
+      ];
 
       # Environment
       env = [
@@ -283,7 +282,8 @@
 
             hyprgrass-bind = [
               ", swipe:3:u, exec, $menu"
-              ", swipe:4:u, exec, wvkbd-mobintl -L 300 --fn 0xProto --alpha 128"
+              ", swipe:4:u, exec, kill -s SIGUSR2 $(pidof wvkbd-mobintl)"
+              ", swipe:4:d, exec, kill -s SIGUSR1 $(pidof wvkbd-mobintl)"
             ];
         };
 
@@ -320,10 +320,10 @@
     vscode
     buttercup-desktop
     hyprpaper
+    hyprlock
     pavucontrol
     helvum
     hyprpicker
-    hyprlock
     brightnessctl
 
     # Notifications
@@ -334,6 +334,9 @@
 
     # Temp
     rofi-wayland
+
+    vesktop
+    spotify
 
     git
     github-desktop
@@ -359,7 +362,7 @@
   services.flameshot = {
     enable = true;
     settings = {
-      General = {
+      General = { # TODO Disable messages
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;
       };

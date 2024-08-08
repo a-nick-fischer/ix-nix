@@ -50,14 +50,13 @@
     nixosConfigurations.ix = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs outputs; };
       modules = [
-        inputs.disko.nixosModules.default
-        (import ./disko.nix { device = "/dev/nvme0n1"; })
-
-        ./configuration.nix
-              
         inputs.impermanence.nixosModules.impermanence
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
+        inputs.disko.nixosModules.default
+        (import ./modules/disko.nix { device = "/dev/nvme0n1"; })
+
+        ./modules/configuration.nix
       ];
     };
   };
