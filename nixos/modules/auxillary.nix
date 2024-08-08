@@ -11,9 +11,9 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services = {
-    rtkit.enable = true;
+  security.rtkit.enable = true;
 
+  services = {
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -24,7 +24,5 @@
 
     # Touchpad
     libinput.enable = true;
-  }
-
-  
+  }; 
 }

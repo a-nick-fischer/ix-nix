@@ -1,10 +1,9 @@
 {
+  pkgs,
   ...
 }: {
-  security = {
-    polkit.enable = true;
-    dbus.implementation = "broker";
-  };
+  security.polkit.enable = true;
+  services.dbus.implementation = "broker";
 
   system.activationScripts.setPermissions = ''
     chown -R nick: {/projects,/blobs,/etc/nixos}

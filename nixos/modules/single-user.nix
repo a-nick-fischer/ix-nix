@@ -1,11 +1,15 @@
 {
+  inputs,
+  outputs,
+  pkgs,
+  config,
   ...
 }: {
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     backupFileExtension = "backup";
     users = {
-      nick = import ./home.nix;
+      nick = import ../home-modules/home.nix;
     };
   };
 
