@@ -27,6 +27,7 @@
     FLAKE = "/home/nick/.config/nixos";
     DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
     BROWSER = "${pkgs.librewolf}/bin/librewolf";
+    EDITOR = "${pkgs.vscode}/bin/code";
   };
 
   programs.hyprland = {

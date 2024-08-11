@@ -8,6 +8,7 @@
   system.activationScripts.setPermissions = ''
     chown -R nick: {/projects,/blobs,/etc/nixos}
     chmod -R 700 {/projects,/blobs,/etc/nixos}
+    rm -rf /home/nick/Downloads
   '';
 
   systemd = {
@@ -21,6 +22,30 @@
           RestartSec = 1;
           TimeoutStopSec = 10;
         };
+    };
+
+    services.macchanger = {
+      description = "Randomize MAC address of wlan0";
+      wants = [ "network-pre.target" ];
+      wantedBy = [ "multi-user.target" ];
+      before = [ "network-pre.target" ];
+      bindsTo = [ "sys-subsystem-net-devices-wlan0.device" ];
+      after = [ "sys-subsystem-net-devices-wlan0.device" ];
+      script = ''
+        ${pkgs.macchanger}/bin/macchanger wlan0 --another
+        '';
+      serviceConfig.Type = "oneshot";
+    };
+
+    # Skip login only on TTY1 so lockscreen cannot be circumvented
+    # https://github.com/NixOS/nixpkgs/issues/81552
+    # https://discourse.nixos.org/t/autologin-for-single-tty/49427
+    services."getty@tty1" = {
+      overrideStrategy = "asDropin";
+      serviceConfig.ExecStart = [
+        ""
+        "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${pkgs.shadow}/bin/login --autologin nick --noclear %I $TERM"
+      ];
     };
 
     # TODO Switch to partition

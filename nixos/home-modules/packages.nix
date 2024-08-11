@@ -5,43 +5,23 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    # Std-Software
+    # Programs
     librewolf
     onlyoffice-bin
     obsidian
-    ags
-    nh
-    devbox
-    overskride
-    ticktick
-    kitty
+    pavucontrol
     vscode
     buttercup-desktop
-    hyprpaper
-    hyprlock
-    pavucontrol
+    overskride
+    ticktick
     helvum
-    hyprpicker
-    brightnessctl
-
-    # Notifications
-    mako
-    libnotify
-
-    xdg-utils
-
-    # Temp
-    rofi-wayland
-
     vesktop
     spotify
-
-    git
     github-desktop
-
-    # Make AGS happy
-    gtk3
-    adwaita-icon-theme
+    kitty
+    gthumb
+    nautilus
+    wdisplays
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail
@@ -49,13 +29,43 @@
     # https://nixos.wiki/wiki/Firejail#Torify_application_traffic
     tor-browser-bundle-bin
 
-    # Maybe use grimblast... if I find a good image editor
+    # Tools
+    ags
+    nh
+    devbox
+    hyprpaper
+    brightnessctl
+    xdg-utils
+    git
     flameshot
+    wvkbd
+    fzf
+    jq
+    poppler
+    macchanger
+
+    # For Flameshot
     wl-clipboard
     grim
 
-    wvkbd
+    # FOnts
+    nerdfonts
+
+    # Make AGS happy
+    gtk3
+    adwaita-icon-theme
+
+    # Nix language server
+    # https://github.com/oxalica/nil
+    nil
+
+    # Temp
+    rofi-wayland
+    mako
+    libnotify
   ];
+
+  # TODO https://gist.github.com/endofunky/f9c97c467a37d4e53adaa329835d661e
 
   services.flameshot = {
     enable = true;
@@ -80,6 +90,23 @@
       "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
       "network.trr.mode" = 3;
     };
+  };
+
+  programs.yazi = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
+
+  programs.nushell = {
+    enable = true;
+    extraConfig = ''
+    $env.config.show_banner = false
+    '';
   };
 
   stylix = {

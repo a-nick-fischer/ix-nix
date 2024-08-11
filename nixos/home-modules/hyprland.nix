@@ -167,6 +167,9 @@
 
           # Plugins
           "$mainMod, Tab, hyprexpo:expo, toggle"
+
+          # Lock
+          "$mainMod, L, exec, hyprlock"
       ];
 
       bindm = [
@@ -200,8 +203,8 @@
 
             hyprgrass-bind = [
               ", swipe:3:u, exec, $menu"
-              ", swipe:4:u, exec, kill -s SIGUSR2 $(pidof wvkbd-mobintl)"
-              ", swipe:4:d, exec, kill -s SIGUSR1 $(pidof wvkbd-mobintl)"
+              ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
+              ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
             ];
         };
 
