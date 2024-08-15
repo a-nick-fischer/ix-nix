@@ -1,3 +1,7 @@
+/*
+ * General styles
+ */
+
 * {
     font-family: '0xProto';
 }
@@ -5,7 +9,8 @@
 .window {
     background-color: @theme_bg_color;
     color: @theme_fg_color;
-    border: 3px solid black;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .window > * {
@@ -16,12 +21,73 @@
 .opener-window {
     padding: 0px 30px;
     min-width: 100px;
+    border: 3px solid black;
     border-radius: 0px 0px 40px 40px;
 }
 
 .calendar {
-    padding: 15px 20px;
+    margin: 10px;
+    padding: 15px 15px;
+    border-radius: 10px;
 }
 
+/*
+ * Notification styles
+ */
+ window.notification-popups box.notifications {
+    padding: .5em;
+}
 
+.icon {
+    min-width: 32px;
+    min-height: 32px;
+    margin-right: 1em;
+}
 
+.icon image {
+    font-size: 32px;
+    /* to center the icon */
+    margin: 5px;
+    color: @theme_fg_color;
+}
+
+.icon box {
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 7px;
+}
+
+.notification {
+    min-width: 350px;
+    border-radius: 11px;
+    padding: 1em;
+    margin: .5em;
+    border: 1px solid @wm_borders_edge;
+    background-color: @theme_bg_color;
+}
+
+.notification.critical {
+    border: 1px solid lightcoral;
+}
+
+.title {
+    color: @theme_fg_color;
+    font-size: 1.4em;
+}
+
+.body {
+    color: @theme_unfocused_fg_color;
+}
+
+.actions .action-button {
+    margin: 0 .4em;
+    margin-top: .8em;
+}
+
+.actions .action-button:first-child {
+    margin-left: 0;
+}
+
+.actions .action-button:last-child {
+    margin-right: 0;
+}

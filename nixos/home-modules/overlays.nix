@@ -30,7 +30,7 @@
     in
     {
       ags = prev.ags.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 ];
+        buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 pkgs.libnotify ];
       });
 
       flameshot = prev.flameshot.override (old: {

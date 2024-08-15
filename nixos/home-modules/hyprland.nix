@@ -24,6 +24,7 @@
       exec-once = [ 
         "systemctl start --user polkit-gnome-authentication-agent-1"
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
+        "ags"
       ];
 
       # Environment
@@ -70,7 +71,6 @@
               vibrancy = 0.1696;
           };
       };
-
 
       animations = {
           enabled = true;

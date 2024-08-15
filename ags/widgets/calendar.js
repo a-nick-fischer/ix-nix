@@ -1,11 +1,6 @@
-import { getWindowName, makePopupWindow } from "../utils/ags_helpers.js"
+import { makePopupWindow } from "../utils/ags_helpers.js"
 
-const WINDOW_NAME = "calendar"
-
-export function toggleCalendar(){
-    const rawName = getWindowName(WINDOW_NAME)
-    App.toggleWindow(rawName)
-}
+export const CALENDAR_WINDOW_NAME = "calendar"
 
 function CustomCalendar(){
     return Widget.Calendar({
@@ -27,8 +22,9 @@ function CustomCalendar(){
 
 export function CustomCalendarPopup(){
     return makePopupWindow({
-        name: WINDOW_NAME,
-        anchor: [],
+        name: CALENDAR_WINDOW_NAME,
+        anchor: ["bottom"],
+        transition: "slide_up",
         child: CustomCalendar()
     })
 }

@@ -1,23 +1,33 @@
 export const GLOBAL_TRANSITION_DURATION = 1000;
 
-export function group(children, overrides = {}){
+export function togglePopupGroup(popups){
+    popups.forEach(name => App.toggleWindow(name));
+}
+
+export function column(children, overrides = {}, outerOverrides = {}){
+    return row(children, { ...overrides, vertical: true }, outerOverrides)
+}
+
+export function row(children, overrides = {}, outerOverrides = {}){
     overrides = { spacing: 10, ...overrides } 
 
-    return Widget.Box({
-        children,
-        ...overrides
+    return Widget.CenterBox({
+        center_widget: Widget.Box({
+            children,
+            ...overrides
+        }),
+        ...outerOverrides
     })
 }
 
-export function getWindowName(name, extras = {}){
-    return `${name}-${extras["monitor"] || 0}`
-}
-
-export function makeWindow({name, anchor, child, extras = {}}){
+export function makeWindow({
+    name, anchor, child, margins = [ 0, 0, 0, 0 ], extras = {}
+}){
     return Widget.Window({
-        name: getWindowName(name, extras),
+        name,
         class_names: ["window", `${name}-window`],
-        anchor: anchor,
+        anchor,
+        margins,
         exclusivity: "ignore", // Ignore exclusivity of other windows
         canFocus: true,
         child,
@@ -25,13 +35,17 @@ export function makeWindow({name, anchor, child, extras = {}}){
     })
 }
 
-export function makePopupWindow({name, anchor, child, extras = {}}){
+export function makePopupWindow({
+    name, anchor, child, margins = [ 30, 30, 30, 30 ], transition = "slide_down", extras = {}
+}){
     return makeWindow({
         name,
         anchor,
+        margins,
         child: PopupRevealer({
             name,
-            child
+            child,
+            transition
         }),
 
         extras: {
@@ -51,18 +65,16 @@ export function withEventHandler({ child, ...handlers }){
 }
 
 // Partially stolen from https://github.com/Aylur/dotfiles/blob/a7cfbdc80d79e063894e7b4f7dbeae241894eabd/ags/widget/PopupWindow.ts#L28
-function PopupRevealer({name, child, transition = "slide_down"}) {
+function PopupRevealer({name, child, transition}) {
     return Widget.Box(
         { css: "padding: 1px;" },
         Widget.Revealer({
             revealChild: false,
-            transition: "slide_down",
+            transition,
             child,
             transitionDuration: GLOBAL_TRANSITION_DURATION,
             setup: self => self.hook(App, (_, wname, visible) => {
-                const windowName = getWindowName(name)
-
-                if (wname === windowName)
+                if (wname === name)
                     self.reveal_child = visible
             }),
         }),

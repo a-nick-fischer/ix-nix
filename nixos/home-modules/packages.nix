@@ -43,6 +43,7 @@
     jq
     poppler
     macchanger
+    mission-center
 
     # For Flameshot
     wl-clipboard
@@ -61,8 +62,6 @@
 
     # Temp
     rofi-wayland
-    mako
-    libnotify
   ];
 
   # TODO https://gist.github.com/endofunky/f9c97c467a37d4e53adaa329835d661e
@@ -106,6 +105,9 @@
     enable = true;
     extraConfig = ''
     $env.config.show_banner = false
+    $env.config.table.mode = "light"
+    $env.PROMPT_COMMAND = { $"(ansi red)(pwd)(ansi reset)" }
+    $env.PROMPT_COMMAND_RIGHT = { $"(ansi red)(bash -c 'date +%d:%m:%H:%M:%S')(ansi reset)" }
     '';
   };
 
