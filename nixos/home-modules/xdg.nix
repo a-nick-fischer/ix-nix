@@ -2,8 +2,6 @@
   pkgs,
   ...
 }: {
-  # TODO Mime type registration is fucked...
-  # See github desktop
   xdg = {
     enable = true;
 
@@ -14,7 +12,7 @@
 	      #pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
       ];
-
+  
       config.common.default = "*";
     };
 

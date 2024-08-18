@@ -5,6 +5,11 @@
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
+  # Auto-mounting
+  services.udisks2.enable = true;
+  services.devmon.enable = true;
+  services.gvfs.enable = true; 
+
   system.activationScripts.setPermissions = ''
     chown -R nick: {/projects,/blobs,/etc/nixos}
     chmod -R 700 {/projects,/blobs,/etc/nixos}

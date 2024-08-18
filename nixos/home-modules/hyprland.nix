@@ -25,6 +25,7 @@
         "systemctl start --user polkit-gnome-authentication-agent-1"
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
         "ags"
+        "Kando"
       ];
 
       # Environment
@@ -44,7 +45,9 @@
           gaps_in = 5;
           gaps_out = 20;
 
-          border_size = 2;
+          border_size = 3;
+          "col.active_border" = "#000000";
+          "col.inactive_border" = "#000000";
 
           resize_on_border = false;
 
@@ -160,6 +163,7 @@
 
           # Sound
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle "
 
           # Clipboard
           ", Print, exec, flameshot gui --raw | wl-copy"
@@ -205,20 +209,55 @@
               ", swipe:3:u, exec, $menu"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
+              ", longpress:3, exec, Kando --menu main"
             ];
         };
 
+        hyprfocus = {
+          enabled = "yes";
+          animate_floating = "no";
+          animate_workspacechange = "no";
+          focus_animation = "shrink";
+
+          shrink = {
+            shrink_percentage = 0.95;
+            in_bezier = "realsmooth";
+            in_speed = 1;
+            out_bezier = "realsmooth";
+            out_speed = 2;
+          };
+        };
+
         #hyprexpo = {
-        #
+        # TODO
         #};
       };
 
       # Window Rules
-      windowrulev2 = ["suppressevent maximize, class:.*"];
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
 
+        # Flameshot
+        "float,class:flameshot"
+        "monitor 0,class:flameshot"
+        "move 0 0,class:flameshot"
+        "noanim,class:flameshot"
+        "noborder,class:flameshot"
+        "rounding 0,class:flameshot"
+      ];
+
+      windowrule = [
+        "noblur, kando"
+        "size 100% 100%, kando"
+        "noborder, kando"
+        "noanim, kando"
+        "float, kando"
+        "pin, kando"
+      ];
     };
 
     plugins = [
+      inputs.hyprfocus.packages.${pkgs.system}.default
       inputs.hyprgrass.packages.${pkgs.system}.default
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];

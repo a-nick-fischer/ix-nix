@@ -45,6 +45,10 @@
       hyprlock = nvidiaOffloadWrap {
         executable = "${prev.hyprlock}/bin/hyprlock";
       };
+
+      #krita = nvidiaOffloadWrap {
+      #  executable = "${prev.krita}/bin/krita";
+      #};
     })
   ];
 }

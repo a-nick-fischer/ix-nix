@@ -9,7 +9,6 @@
         hide_cursor = true;
         grace = 0;
         disable_loading_bar = true;
-        pam_module = "/etc/pam.d/su";
       };
 
       background = [

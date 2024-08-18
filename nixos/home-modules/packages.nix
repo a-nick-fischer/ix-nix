@@ -1,7 +1,10 @@
 {
   pkgs,
   ...
-}: {
+}: let 
+  kando = pkgs.callPackage ./custom/kando.nix { };
+in
+{
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
@@ -22,6 +25,11 @@
     gthumb
     nautilus
     wdisplays
+    kooha
+    krita
+    mission-center
+    vlc
+    kando
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail
@@ -36,6 +44,7 @@
     hyprpaper
     brightnessctl
     xdg-utils
+    #xdg-user-dirs
     git
     flameshot
     wvkbd
@@ -43,13 +52,12 @@
     jq
     poppler
     macchanger
-    mission-center
 
     # For Flameshot
     wl-clipboard
     grim
 
-    # FOnts
+    # Fonts
     nerdfonts
 
     # Make AGS happy
@@ -64,12 +72,14 @@
     rofi-wayland
   ];
 
-  # TODO https://gist.github.com/endofunky/f9c97c467a37d4e53adaa329835d661e
-
   services.flameshot = {
     enable = true;
     settings = {
-      General = { # TODO Disable messages
+      General = {
+        checkForUpdates = false;
+        copyURLAfterUpload = false;
+        showDesktopNotification = false;
+        showHelp = false;
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;
       };
@@ -111,8 +121,44 @@
     '';
   };
 
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+
+      preload = [
+        (toString ../assets/main.png)
+      ];
+
+      wallpaper = [
+        ", ${toString ../assets/main.png}"
+      ];
+    };
+  };
+
   stylix = {
     enable = true;
     autoEnable = true;
+
+    # For fancier borders...
+    targets = {
+      hyprland.enable = false;
+      hyprpaper.enable = false;
+    };
   };
+
+  xdg.configFile = {
+      "wluma/config.toml" = {
+        text = ''
+          [als.none]
+          
+          [[output.backlight]]
+          name = "eDP-1"
+          path = "/sys/class/backlight/intel_backlight"
+          capturer = "wlroots"
+          '';
+      };
+    };
 }

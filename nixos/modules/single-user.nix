@@ -28,11 +28,16 @@
     DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
     BROWSER = "${pkgs.librewolf}/bin/librewolf";
     EDITOR = "${pkgs.vscode}/bin/code";
+    XDG_CONFIG_HOME = "/home/nick/.config";
   };
 
+  security.pam.services.hyprlock = {};
+
   programs.hyprland = {
-     enable = true;
-     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    enable = true;
+
+    portalPackage = inputs.hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
   stylix = {
