@@ -10,12 +10,8 @@ const date = Variable("", {
     poll: [1000, 'date "+%d:%m:%H:%M:%S"'],
 })
 
-function ClockLabel(panelPopup){
+function ClockLabel(){
     return withEventHandler({
-        onPrimaryClick: () => {
-            panelPopup.visible = !panelPopup.visible
-        },
-
         child: Widget.Label({
             class_name: "clock",
             label: date.bind(),
@@ -23,14 +19,14 @@ function ClockLabel(panelPopup){
     })
 }
 
-function Bar(panelPopup){
+export function Opener() {
     return row([
         row([
             SmallMicrophoneWidget(),
             SmallVolumeWidget(),
         ]),
         
-        ClockLabel(panelPopup),
+        ClockLabel(),
 
         row([
             SmallBatteryWidget(),
@@ -39,31 +35,6 @@ function Bar(panelPopup){
     ], 
         { spacing: 30 }
     )
-}
-
-function ControlPanel(){
-    return row([
-        Widget.Button({
-            image: Widget.Icon("x-office-calendar-symbolic"),
-            onClicked: () => togglePopupGroup([CALENDAR_WINDOW_NAME])
-        }),
-    ])
-}
-
-export function Opener() {
-    const panelPopup = column([
-        ControlPanel(),
-
-        Widget.Separator({
-            vertical: true,
-        }),
-    ])
-
-    return column([
-        panelPopup,
-
-        Bar(panelPopup),
-    ])
 }
 
 export function OpenerWindow(){

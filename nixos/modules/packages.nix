@@ -1,8 +1,6 @@
 {
   ...
 }: {
-
-  # TODO Vulnix?
   nix = {
     settings = {
       substituters = ["https://hyprland.cachix.org"];
@@ -16,7 +14,7 @@
     };
 
     settings = {
-      # TODO allow-dirty = false;
+      allow-dirty = false;
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };

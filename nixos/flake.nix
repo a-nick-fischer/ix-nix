@@ -18,6 +18,10 @@
       url = "github:nix-community/impermanence";
     };
 
+    persist-retro = {
+      url = "github:Geometer1729/persist-retro";
+    };
+
     stylix = {
       url = "github:danth/stylix";
     };
@@ -56,6 +60,7 @@
       specialArgs = { inherit inputs outputs; };
       modules = [
         inputs.impermanence.nixosModules.impermanence
+        inputs.persist-retro.nixosModules.persist-retro
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
         inputs.disko.nixosModules.default

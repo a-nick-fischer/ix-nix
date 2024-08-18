@@ -202,14 +202,18 @@
 
             gestures = {
                 workspace_swipe = true;
-                workspace_swipe_cancel_ratio = 0.05;
+                workspace_swipe_cancel_ratio = 0.5;
             };
 
             hyprgrass-bind = [
               ", swipe:3:u, exec, $menu"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
-              ", longpress:3, exec, Kando --menu main"
+              ", longpress:2, exec, Kando --menu main"
+            ];
+
+            hyprgrass-bindm = [
+              ", longpress:3, movewindow"
             ];
         };
 
@@ -220,17 +224,13 @@
           focus_animation = "shrink";
 
           shrink = {
-            shrink_percentage = 0.95;
+            shrink_percentage = 0.97;
             in_bezier = "realsmooth";
             in_speed = 1;
             out_bezier = "realsmooth";
             out_speed = 2;
           };
         };
-
-        #hyprexpo = {
-        # TODO
-        #};
       };
 
       # Window Rules

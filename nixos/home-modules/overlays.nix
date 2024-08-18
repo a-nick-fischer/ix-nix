@@ -39,7 +39,7 @@
       
       kitty = nvidiaOffloadWrap {
         executable = "${prev.kitty}/bin/kitty";
-        desktop = "${prev.kitty}/share/applications/kitty.desktop"; # TODO There's another one..
+        desktop = "${prev.kitty}/share/applications/kitty.desktop";
       };
 
       hyprlock = nvidiaOffloadWrap {

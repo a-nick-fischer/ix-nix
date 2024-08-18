@@ -17,51 +17,178 @@
             "iconTheme": "material-symbols-rounded",
             "children": [
               {
-                "type": "command",
-                "data": {
-                  "command": "code",
-                  "delayed": false
-                },
-                "name": "VSCode",
-                "icon": "code_blocks",
-                "iconTheme": "material-symbols-rounded"
+                "type": "submenu",
+                "data": {},
+                "name": "System",
+                "icon": "nixos",
+                "iconTheme": "simple-icons",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "xdg-open ~"
+                    },
+                    "name": "File Browser",
+                    "icon": "folder_shared",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "wdisplays",
+                      "delayed": false
+                    },
+                    "name": "Monitors",
+                    "icon": "screenshot_monitor",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "gtk-launch io.missioncenter.MissionCenter.desktop  ",
+                      "delayed": true
+                    },
+                    "name": "Mission Center",
+                    "icon": "monitor_heart",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "helvum",
+                      "delayed": false
+                    },
+                    "name": "Helvum",
+                    "icon": "cable",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "pavucontrol",
+                      "delayed": false
+                    },
+                    "name": "Pulseaudio",
+                    "icon": "sound_detection_loud_sound",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "overskride",
+                      "delayed": false
+                    },
+                    "name": "Overskride",
+                    "icon": "bluetooth",
+                    "iconTheme": "material-symbols-rounded"
+                  }
+                ]
               },
               {
-                "type": "command",
-                "data": {
-                  "command": "krita"
-                },
-                "name": "Krita",
-                "icon": "krita",
-                "iconTheme": "simple-icons"
+                "type": "submenu",
+                "data": {},
+                "name": "Misc",
+                "icon": "star",
+                "iconTheme": "material-symbols-rounded",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "krita"
+                    },
+                    "name": "Krita",
+                    "icon": "krita",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "spotify",
+                      "delayed": false
+                    },
+                    "name": "Spotify",
+                    "icon": "spotify",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "vesktop",
+                      "delayed": false
+                    },
+                    "name": "Discord",
+                    "icon": "discord",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "ticktick",
+                      "delayed": false
+                    },
+                    "name": "TickTick",
+                    "icon": "ticktick",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "buttercup-desktop",
+                      "delayed": false
+                    },
+                    "name": "Buttercup",
+                    "icon": "passkey",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "onlyoffice-desktopeditors",
+                      "delayed": false
+                    },
+                    "name": "OnlyOffice",
+                    "icon": "onlyoffice",
+                    "iconTheme": "simple-icons"
+                  }
+                ]
               },
               {
-                "type": "command",
-                "data": {
-                  "command": "obsidian",
-                  "delayed": false
-                },
-                "name": "Obsidian",
-                "icon": "obsidian",
-                "iconTheme": "simple-icons"
-              },
-              {
-                "type": "command",
-                "data": {
-                  "command": "xdg-open ~"
-                },
-                "name": "File Browser",
-                "icon": "folder_shared",
-                "iconTheme": "material-symbols-rounded"
-              },
-              {
-                "type": "command",
-                "data": {
-                  "command": "kitty"
-                },
-                "name": "Terminal",
-                "icon": "terminal",
-                "iconTheme": "material-symbols-rounded"
+                "type": "submenu",
+                "data": {},
+                "name": "Work",
+                "icon": "work",
+                "iconTheme": "material-symbols-rounded",
+                "children": [
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "kitty"
+                    },
+                    "name": "Terminal",
+                    "icon": "terminal",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "obsidian",
+                      "delayed": false
+                    },
+                    "name": "Obsidian",
+                    "icon": "obsidian",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "code",
+                      "delayed": false
+                    },
+                    "name": "VSCode",
+                    "icon": "code_blocks",
+                    "iconTheme": "material-symbols-rounded"
+                  }
+                ]
               }
             ]
           },

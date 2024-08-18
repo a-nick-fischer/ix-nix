@@ -46,8 +46,6 @@
     polarity = "light";
     image = config.lib.stylix.pixel "base0A";
 
-    # TODO rose-pine-icon-theme
-
     #https://rosepinetheme.com/themes/
     #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-moon.yaml
     #https://github.com/tinted-theming/schemes/blob/spec-0.11/base16/rose-pine-dawn.yaml

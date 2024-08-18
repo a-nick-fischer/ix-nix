@@ -6,8 +6,7 @@
     powerOnBoot = true;
   };
 
-  # TODO: Network manager applet nm-applet?
-
+  # TODO Printing documents?
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 

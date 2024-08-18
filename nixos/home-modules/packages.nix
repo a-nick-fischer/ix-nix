@@ -17,7 +17,7 @@ in
     buttercup-desktop
     overskride
     ticktick
-    helvum
+    #helvum
     vesktop
     spotify
     github-desktop
@@ -44,7 +44,6 @@ in
     hyprpaper
     brightnessctl
     xdg-utils
-    #xdg-user-dirs
     git
     flameshot
     wvkbd
@@ -52,6 +51,7 @@ in
     jq
     poppler
     macchanger
+    wluma
 
     # For Flameshot
     wl-clipboard
@@ -86,7 +86,13 @@ in
     };
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    settings = {
+      enable_audio_bell = false;
+      confirm_os_window_close = 0;
+    };
+  };
 
   programs.librewolf = {
     enable = true;
@@ -157,7 +163,7 @@ in
           [[output.backlight]]
           name = "eDP-1"
           path = "/sys/class/backlight/intel_backlight"
-          capturer = "wlroots"
+          capturer = "none"
           '';
       };
     };

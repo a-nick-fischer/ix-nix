@@ -10,18 +10,18 @@
   services.upower.enable = true;
 
   services.auto-cpufreq = {
-    enable = false; # TODO
+    enable = true;
 
     settings = {
       battery = {
         governor = "powersave";
-        energy_performance_preference = "balance-power";
+        energy_performance_preference = "balance-performance";
         turbo = "never";
       };
       charger = {
         governor = "performance";
         energy_performance_preference = "performance";
-        turbo = "always";
+        turbo = "auto";
       };
     };
   };
