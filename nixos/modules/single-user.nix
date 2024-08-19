@@ -13,7 +13,6 @@
     };
   };
 
-  # TODO https://github.com/Geometer1729/persist-retro
   # TODO Reverse-engineer https://github.com/vimjoyer/nixconf/tree/main
 
   users.users."nick" = {

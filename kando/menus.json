@@ -133,6 +133,16 @@
                   {
                     "type": "command",
                     "data": {
+                      "command": "signal-desktop",
+                      "delayed": false
+                    },
+                    "name": "Signal",
+                    "icon": "signal",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
                       "command": "buttercup-desktop",
                       "delayed": false
                     },
