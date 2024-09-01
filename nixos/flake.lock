@@ -360,11 +360,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1725200337,
-        "narHash": "sha256-ZOnhuxGmAqzfR6DhSgVZInA+k3GvoJCN+q108XsmTHY=",
+        "lastModified": 1725203654,
+        "narHash": "sha256-H7WBli0+RacAmJOoZ+sYmeaV0OqrzB95AlJsY+yli90=",
         "ref": "refs/heads/main",
-        "rev": "5b1375141bd77c26023fb4a8dc087272be82849a",
-        "revCount": 5174,
+        "rev": "4b5b8a763073593ac48af3bdcf04cf65b219120b",
+        "revCount": 5175,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -432,6 +432,31 @@
         "type": "github"
       }
     },
+    "hyprland-protocols_2": {
+      "inputs": {
+        "nixpkgs": [
+          "xdg-desktop-portal-hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "xdg-desktop-portal-hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721326555,
+        "narHash": "sha256-zCu4R0CSHEactW9JqYki26gy8h9f6rHmSwj4XJmlHgg=",
+        "owner": "hyprwm",
+        "repo": "hyprland-protocols",
+        "rev": "5a11232266bf1a1f5952d5b179c3f4b2facaaa84",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-protocols",
+        "type": "github"
+      }
+    },
     "hyprlang": {
       "inputs": {
         "hyprutils": [
@@ -475,6 +500,29 @@
           "hyprpaper",
           "systems"
         ]
+      },
+      "locked": {
+        "lastModified": 1725188252,
+        "narHash": "sha256-yBH8c4GDaEAtBrh+BqIlrx5vp6gG/Gu8fQQK63KAQgs=",
+        "owner": "hyprwm",
+        "repo": "hyprlang",
+        "rev": "c12ab785ce1982f82594aff03b3104c598186ddd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprlang_3": {
+      "inputs": {
+        "hyprutils": "hyprutils_3",
+        "nixpkgs": [
+          "xdg-desktop-portal-hyprland",
+          "nixpkgs"
+        ],
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1725188252,
@@ -554,6 +602,33 @@
         "owner": "hyprwm",
         "repo": "hyprutils",
         "rev": "8976e3f6a5357da953a09511d0c7f6a890fb6ec2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprutils",
+        "type": "github"
+      }
+    },
+    "hyprutils_3": {
+      "inputs": {
+        "nixpkgs": [
+          "xdg-desktop-portal-hyprland",
+          "hyprlang",
+          "nixpkgs"
+        ],
+        "systems": [
+          "xdg-desktop-portal-hyprland",
+          "hyprlang",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721324102,
+        "narHash": "sha256-WAZ0X6yJW1hFG6otkHBfyJDKRpNP5stsRqdEuHrFRpk=",
+        "owner": "hyprwm",
+        "repo": "hyprutils",
+        "rev": "962582a090bc233c4de9d9897f46794280288989",
         "type": "github"
       },
       "original": {
@@ -706,6 +781,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1725103162,
+        "narHash": "sha256-Ym04C5+qovuQDYL/rKWSR+WESseQBbNAe5DsXNx5trY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "12228ff1752d7b7624a54e9c1af4b222b3c1073b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "persist-retro": {
       "locked": {
         "lastModified": 1709936804,
@@ -733,7 +824,8 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_3",
         "persist-retro": "persist-retro",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       }
     },
     "stylix": {
@@ -811,6 +903,57 @@
         "type": "github"
       }
     },
+    "systems_4": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "xdg-desktop-portal-hyprland": {
+      "inputs": {
+        "hyprland-protocols": "hyprland-protocols_2",
+        "hyprlang": "hyprlang_3",
+        "nixpkgs": "nixpkgs_5",
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1725203932,
+        "narHash": "sha256-VLULC/OnI+6R9KEP2OIGk+uLJJsfRlaLouZ5gyFd2+Y=",
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "rev": "2425e8f541525fa7409d9f26a8ffaf92a3767251",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
     "xdph": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
@@ -828,11 +971,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724073926,
-        "narHash": "sha256-nWlUL43jOFHf+KW6Hqrx+W/r1XdXuDyb0wC/SrHsOu4=",
+        "lastModified": 1725203619,
+        "narHash": "sha256-Am4gwnu5q+6GFKQ3NnEkXeZYKIZ9rv9mRLk+DYqX9Zs=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "a08ecbbf33598924e93542f737fc6169a26b481e",
+        "rev": "8e5ca2a299e95a3bdcdb84cfbe08f31b0690ecd5",
         "type": "github"
       },
       "original": {
