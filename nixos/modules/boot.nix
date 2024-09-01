@@ -26,6 +26,7 @@
     zfs.requestEncryptionCredentials = true;
 
     # Kernel
+    # TODO https://discourse.nixos.org/t/how-to-get-compatible-hardened-kernel-for-zfs-module/32491/3
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
