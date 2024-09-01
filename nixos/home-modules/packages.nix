@@ -22,7 +22,6 @@ in
     vesktop
     spotify
     github-desktop
-    kitty
     gthumb
     nautilus
     wdisplays
@@ -33,6 +32,7 @@ in
     kando
     signal-desktop
     wireshark
+    obs-studio
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail

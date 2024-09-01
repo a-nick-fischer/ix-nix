@@ -10,6 +10,11 @@
   services.devmon.enable = true;
   services.gvfs.enable = true; 
 
+  # Nobody needs the default 4GB of logs...
+  services.journald.extraConfig = ''
+    SystemMaxUse=500M
+  '';
+
   system.activationScripts.setPermissions = ''
     chown -R nick: {/projects,/blobs,/etc/nixos}
     chmod -R 700 {/projects,/blobs,/etc/nixos}
