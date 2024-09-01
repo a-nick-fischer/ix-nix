@@ -41,6 +41,11 @@
       # Aparentelly hyprpaper hasn't got hyprland as a dependency
     };
 
+    xdg-desktop-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      # Doesn't follow hyprland neither
+    };
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
