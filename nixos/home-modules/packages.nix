@@ -31,6 +31,7 @@ in
     vlc
     kando
     signal-desktop
+    wireshark
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail

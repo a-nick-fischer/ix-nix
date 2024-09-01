@@ -1,7 +1,11 @@
 {
   "menuTheme": "none",
-  "editorTheme": "none",
+  "darkMenuTheme": "default",
+  "menuThemeColors": {},
+  "darkMenuThemeColors": {},
+  "enableDarkModeForMenuThemes": false,
   "sidebarVisible": false,
   "enableVersionCheck": true,
-  "zoomFactor": 1
+  "zoomFactor": 1,
+  "editorTheme": "none"
 }

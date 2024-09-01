@@ -198,7 +198,7 @@
 
             workspace_swipe_fingers = 3;
 
-            long_press_delay = 400;
+            long_press_delay = 200;
 
             gestures = {
                 workspace_swipe = true;
@@ -209,7 +209,7 @@
               ", swipe:3:u, exec, $menu && bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
-              ", tap:3 exec, Kando --menu main"
+              ", longpress:2 exec, Kando --menu main"
             ];
 
             hyprgrass-bindm = [
