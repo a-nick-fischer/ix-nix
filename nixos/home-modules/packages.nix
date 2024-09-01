@@ -44,7 +44,6 @@ in
     ags
     nh
     devbox
-    hyprpaper
     brightnessctl
     xdg-utils
     git
