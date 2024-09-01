@@ -5,7 +5,7 @@ let
 
   src = fetchurl {
     url = "https://github.com/kando-menu/kando/releases/download/v${version}/${pname}-${version}-x86_64.AppImage";
-    hash = "sha256-kaxl9ffnOcjfONmI+lNt+NUkaD2N4wMfo/s72T7yL/M=";
+    hash = "sha256-N47vraWlrcY5gqCOdUDmoWrfLGowDS0DRSn6arIHsKg=";
   };
 in
 appimageTools.wrapType2 {
