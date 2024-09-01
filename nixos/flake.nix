@@ -38,7 +38,7 @@
 
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      inputs.hyprland.follows = "hyprland";
+      # Aparentelly hyprpaper hasn't got hyprland as a dependency
     };
 
     hyprland-plugins = {
