@@ -39,6 +39,8 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
+  programs.wireshark.enable = true;
+
   stylix = {
     enable = true;
     autoEnable = true;

@@ -206,10 +206,10 @@
             };
 
             hyprgrass-bind = [
-              ", swipe:3:u, exec, $menu"
+              ", swipe:3:u, exec, $menu && bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
-              ", longpress:2, exec, Kando --menu main"
+              ", tap:3 exec, Kando --menu main"
             ];
 
             hyprgrass-bindm = [

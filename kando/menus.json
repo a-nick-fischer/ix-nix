@@ -399,6 +399,105 @@
                 "name": "Close",
                 "icon": "close",
                 "iconTheme": "material-symbols-rounded"
+              },
+              {
+                "type": "submenu",
+                "data": {},
+                "name": "Move",
+                "icon": "arrow_right_alt",
+                "iconTheme": "material-symbols-rounded",
+                "children": [
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit6",
+                      "delayed": true
+                    },
+                    "name": "Desktop 6",
+                    "icon": "counter_6",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit7",
+                      "delayed": true
+                    },
+                    "name": "Desktop 7",
+                    "icon": "counter_7",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit8",
+                      "delayed": true
+                    },
+                    "name": "Desktop 8",
+                    "icon": "counter_8",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit9",
+                      "delayed": true
+                    },
+                    "name": "Desktop 9",
+                    "icon": "counter_9",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit1",
+                      "delayed": true
+                    },
+                    "name": "Desktop 1",
+                    "icon": "counter_1",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit2",
+                      "delayed": true
+                    },
+                    "name": "Desktop 2",
+                    "icon": "counter_2",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit3",
+                      "delayed": true
+                    },
+                    "name": "Desktop 3",
+                    "icon": "counter_3",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit4",
+                      "delayed": true
+                    },
+                    "name": "Desktop 4",
+                    "icon": "counter_4",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "hotkey",
+                    "data": {
+                      "hotkey": "MetaLeft+ShiftLeft+Digit5",
+                      "delayed": true
+                    },
+                    "name": "Desktop 5",
+                    "icon": "counter_5",
+                    "iconTheme": "material-symbols-rounded"
+                  }
+                ]
               }
             ]
           }

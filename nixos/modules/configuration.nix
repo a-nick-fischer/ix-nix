@@ -9,6 +9,7 @@
     [
       ./auxillary.nix
       ./boot.nix
+      ./hardening.nix
       ./hardware.nix
       ./impermanance.nix
       ./networking.nix
