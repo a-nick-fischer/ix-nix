@@ -37,7 +37,9 @@
       bindsTo = [ "sys-subsystem-net-devices-wlan0.device" ];
       after = [ "sys-subsystem-net-devices-wlan0.device" ];
       script = ''
+        ip link set wlan0 down
         ${pkgs.macchanger}/bin/macchanger wlan0 --another
+        ip link set wlan0 up
         '';
       serviceConfig.Type = "oneshot";
     };
