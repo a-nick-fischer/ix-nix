@@ -95,7 +95,6 @@
           preserve_split = true;
       };
 
-
       # Keyboard
       input = {
           kb_layout = "de";
