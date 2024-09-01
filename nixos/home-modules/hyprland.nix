@@ -45,11 +45,11 @@
           gaps_in = 5;
           gaps_out = 20;
 
-          border_size = 3;
+          border_size = 5;
           "col.active_border" = "#000000";
           "col.inactive_border" = "#000000";
 
-          resize_on_border = false;
+          resize_on_border = true;
 
           allow_tearing = false;
 
@@ -63,9 +63,7 @@
           active_opacity = 1.0;
           inactive_opacity = 1.0;
 
-          drop_shadow = true;
-          shadow_range = 4;
-          shadow_render_power = 3;
+          drop_shadow = false;
 
           blur = {
               enabled = true;
