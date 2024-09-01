@@ -1,7 +1,7 @@
 { appimageTools, fetchurl }:
 let
   pname = "Kando";
-  version = "1.2.0";
+  version = "1.3.0";
 
   src = fetchurl {
     url = "https://github.com/kando-menu/kando/releases/download/v${version}/${pname}-${version}-x86_64.AppImage";
