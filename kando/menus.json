@@ -55,21 +55,31 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "helvum",
-                      "delayed": false
-                    },
-                    "name": "Helvum",
-                    "icon": "cable",
-                    "iconTheme": "material-symbols-rounded"
-                  },
-                  {
-                    "type": "command",
-                    "data": {
                       "command": "pavucontrol",
                       "delayed": false
                     },
                     "name": "Pulseaudio",
                     "icon": "sound_detection_loud_sound",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "cameractrlsgtk4",
+                      "delayed": false
+                    },
+                    "name": "Camera",
+                    "icon": "camera_video",
+                    "iconTheme": "material-symbols-rounded"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "helvum",
+                      "delayed": false
+                    },
+                    "name": "Helvum",
+                    "icon": "cable",
                     "iconTheme": "material-symbols-rounded"
                   },
                   {

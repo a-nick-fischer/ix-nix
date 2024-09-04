@@ -33,6 +33,8 @@ in
     signal-desktop
     wireshark
     obs-studio
+    helvum
+    cameractrls-gtk4
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail
@@ -53,6 +55,7 @@ in
     jq
     poppler
     macchanger
+    wireplumber # Needed... I think... just leave it
 
     # For Flameshot
     wl-clipboard

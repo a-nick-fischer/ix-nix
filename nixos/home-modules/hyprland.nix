@@ -14,7 +14,7 @@
 
     settings = {
       # Monitors
-      monitor = ",preferred,auto,1";
+      monitor = ",preferred,auto,1,bitdepth, 10";
 
       # Vars
       "$terminal" = "kitty";
@@ -203,10 +203,10 @@
             };
 
             hyprgrass-bind = [
-              ", swipe:3:u, exec, $menu && bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
+              ", swipe:3:u, exec, $menu & bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
-              ", longpress:2 exec, Kando --menu main"
+              ", longpress:2, exec, Kando --menu main"
             ];
 
             hyprgrass-bindm = [

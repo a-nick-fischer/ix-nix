@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   ...
 }: {
@@ -7,7 +8,7 @@
     initrd = {
       systemd.enable = true;
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
-      kernelModules = [ ];
+      kernelModules = [  ];
     };
 
     plymouth.enable = true;
@@ -27,8 +28,15 @@
 
     # Kernel
     # TODO https://discourse.nixos.org/t/how-to-get-compatible-hardened-kernel-for-zfs-module/32491/3
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    # v4l2loopback needed for camera
+    kernelModules = [ "kvm-intel" "v4l2loopback" ];
+    
+    extraModulePackages = with pkgs; [ linuxPackages.v4l2loopback ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1
+    '';
+
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
     kernelParams = [
