@@ -19,7 +19,7 @@
     isNormalUser = true;
     shell = pkgs.nushell;
     initialPassword = "nixos"; # TODO find a better way
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "wireshark" ];
   };
 
   environment.sessionVariables = {
@@ -31,6 +31,8 @@
   };
 
   security.pam.services.hyprlock = {};
+
+  programs.wireshark.enable = true;
 
   programs.hyprland = {
     enable = true;

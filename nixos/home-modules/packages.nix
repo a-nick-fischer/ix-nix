@@ -56,6 +56,7 @@ in
     poppler
     macchanger
     wireplumber # Needed... I think... just leave it
+    hyprshade
 
     # For Flameshot
     wl-clipboard

@@ -18,18 +18,13 @@
     padding: 5px 15px;
 }
 
-.opener-window {
+.bar-window {
     padding: 0px 30px;
     min-width: 100px;
     border: 3px solid black;
     border-radius: 0px 0px 40px 40px;
 }
 
-.calendar {
-    margin: 10px;
-    padding: 15px 15px;
-    border-radius: 10px;
-}
 
 /*
  * Notification styles
