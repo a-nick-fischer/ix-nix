@@ -5,7 +5,11 @@ export function togglePopupGroup(popups){
 }
 
 export function column(children, overrides = {}, outerOverrides = {}){
-    return row(children, { ...overrides, vertical: true }, outerOverrides)
+    return row(
+        children, 
+        { ...overrides, vertical: true, hexpand: true }, 
+        { ...outerOverrides, hexpand: true }
+    )
 }
 
 export function row(children, overrides = {}, outerOverrides = {}){
@@ -16,6 +20,7 @@ export function row(children, overrides = {}, outerOverrides = {}){
             children,
             ...overrides
         }),
+        
         ...outerOverrides
     })
 }
@@ -62,6 +67,13 @@ export function withEventHandler({ child, ...handlers }){
             ...handlers
         })
     }) 
+}
+
+export function sliderBox(slider){
+    return Widget.Box({
+        class_name: "slider-box",
+        child: slider
+    })
 }
 
 // Partially stolen from https://github.com/Aylur/dotfiles/blob/a7cfbdc80d79e063894e7b4f7dbeae241894eabd/ags/widget/PopupWindow.ts#L28

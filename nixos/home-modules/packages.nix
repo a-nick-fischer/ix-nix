@@ -141,11 +141,12 @@ in
       splash_offset = 2.0;
 
       preload = [
-        (toString ../assets/main.png)
+        "~/.config/nixos/assets/main.png"
+        "~/.config/nixos/assets/empty.png"
       ];
 
       wallpaper = [
-        ", ${toString ../assets/main.png}"
+        ", ~/.config/nixos/assets/main.png"
       ];
     };
   };
