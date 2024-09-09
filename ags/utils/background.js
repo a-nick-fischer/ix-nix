@@ -6,12 +6,11 @@ let was_any_window_focused = false
 
 function changeBackground(imagename){
     const command = `hyprctl hyprpaper wallpaper ", ~/.config/nixos/assets/${imagename}.png"`
-    print(`Changing background to ${imagename}`)
     Utils.exec(command)
 }
 
 // Only show background cat if no window is open in workspace
-export function registerBackgroundHandler(){
+export async function registerBackgroundHandler(){
     hyprland.active.connect("changed", active => {
         
         const is_any_window_focused = active.client.address !== NO_FOCUSED_WINDOW_ADDRESS

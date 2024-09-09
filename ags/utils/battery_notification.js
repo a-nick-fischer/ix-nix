@@ -7,7 +7,7 @@ let notifications = [
     {
         triggered: false,
         percent: 20,
-        summary: "Battery below 20%",
+        summary: "[BATTERY BELOW 20%]",
         iconName: "error-symbolic",
         body: "Buddy, I'm dying here"
     },
@@ -15,13 +15,13 @@ let notifications = [
     {
         triggered: false,
         percent: 50,
-        summary: "Battery below 50%",
+        summary: "[BATTERY BELOW 50%]",
         iconName: "info-symbolic",
         body: "Please get me some power chap"
     },
 ]
 
-export function registerBatteryNotifier(){
+export async function registerBatteryNotifier(){
     wasCharging = battery.charging
 
     battery.connect("changed", battery => {
