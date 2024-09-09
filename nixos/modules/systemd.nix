@@ -34,22 +34,6 @@
         };
     };
 
-    # TODO may not work?
-    services.macchanger = {
-      description = "Randomize MAC address of wlan0";
-      wants = [ "network-pre.target" ];
-      wantedBy = [ "multi-user.target" ];
-      before = [ "network-pre.target" ];
-      bindsTo = [ "sys-subsystem-net-devices-wlan0.device" ];
-      after = [ "sys-subsystem-net-devices-wlan0.device" ];
-      script = ''
-        ip link set wlan0 down
-        ${pkgs.macchanger}/bin/macchanger wlan0 --another
-        ip link set wlan0 up
-        '';
-      serviceConfig.Type = "oneshot";
-    };
-
     # Skip login only on TTY1 so lockscreen cannot be circumvented
     # https://github.com/NixOS/nixpkgs/issues/81552
     # https://discourse.nixos.org/t/autologin-for-single-tty/49427

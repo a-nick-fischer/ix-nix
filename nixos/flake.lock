@@ -736,6 +736,23 @@
         "type": "github"
       }
     },
+    "nix-mineral": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722545506,
+        "narHash": "sha256-3RnP8mfFhV+hOfkTk35zd1nYiUliaoGw0VFq9pd9ykM=",
+        "owner": "cynicsketch",
+        "repo": "nix-mineral",
+        "rev": "cfaf4cf15c7e6dc7f882c471056b57ea9ea0ee61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cynicsketch",
+        "ref": "v0.1.6-alpha",
+        "repo": "nix-mineral",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1725634671,
@@ -858,6 +875,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "hyprpaper": "hyprpaper",
         "impermanence": "impermanence",
+        "nix-mineral": "nix-mineral",
         "nixpkgs": "nixpkgs_4",
         "persist-retro": "persist-retro",
         "stylix": "stylix",

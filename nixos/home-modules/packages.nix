@@ -44,7 +44,6 @@ in
 
     # Tools
     nh
-    devbox
     brightnessctl
     xdg-utils
     git
