@@ -29,9 +29,9 @@
       );
     in
     {
-      ags = prev.ags.overrideAttrs (old: {
+      /*ags = prev.ags.overrideAttrs (old: {
         buildInputs = old.buildInputs ++ [ pkgs.libdbusmenu-gtk3 pkgs.libnotify ];
-      });
+      });*/
 
       flameshot = prev.flameshot.override (old: {
         enableWlrSupport = true;

@@ -1,8 +1,8 @@
 // Show journaloutput for systemd service changes for current boot 
 // criticals, errors and warnings
-//const journal = Variable('', {
-//    listen: "journalctl -b -f _PID=1 -p 0..4"
-//})
+const journal = Variable('', {
+    listen: "journalctl -b -f _PID=1 -p 0..4"
+})
 
 
 const OUTPUT_REGEX = /.+ systemd\[1]: (.+)/;
@@ -14,7 +14,7 @@ function parseOutput(output){
 }
 
 export async function registerServiceNotifier(){
-    /*journal.connect("changed", ({ value }) => {
+    journal.connect("changed", ({ value }) => {
         parseOutput(value).forEach(async output => {
             Utils.notify({
                 summary: "[SERVICE ERROR]",
@@ -22,5 +22,5 @@ export async function registerServiceNotifier(){
                 body: output,
             })
         })
-    })*/
+    })
 }

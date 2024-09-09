@@ -43,7 +43,6 @@ in
     tor-browser-bundle-bin
 
     # Tools
-    ags
     nh
     devbox
     brightnessctl
@@ -89,6 +88,10 @@ in
         showStartupLaunchMessage = false;
       };
     };
+  };
+
+  programs.ags = {
+    enable = true;
   };
 
   programs.kitty = {

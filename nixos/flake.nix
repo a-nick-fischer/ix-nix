@@ -54,6 +54,10 @@
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
+
+    ags = {
+      url = "github:Aylur/ags";
+    };
   };
 
   outputs = {
