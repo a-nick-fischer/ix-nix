@@ -9,6 +9,7 @@
   # Needed for e.g. AGS
   services.upower.enable = true;
 
+  # TODO_ Uhm, does this work at all?
   services.auto-cpufreq = {
     enable = true;
 

@@ -10,7 +10,7 @@
       {
         preferLocalBuild = true;
         allowSubstitutes = false;
-        meta.priority = -1; # take precedence over non-firejailed versions
+        meta.priority = -1; # take precedence over non-accelarated versions
       }
       (
         ''
@@ -45,10 +45,6 @@
       hyprlock = nvidiaOffloadWrap {
         executable = "${prev.hyprlock}/bin/hyprlock";
       };
-
-      #krita = nvidiaOffloadWrap {
-      #  executable = "${prev.krita}/bin/krita";
-      #};
     })
   ];
 }

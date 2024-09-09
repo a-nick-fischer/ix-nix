@@ -34,6 +34,7 @@
         };
     };
 
+    # TODO may not work?
     services.macchanger = {
       description = "Randomize MAC address of wlan0";
       wants = [ "network-pre.target" ];
