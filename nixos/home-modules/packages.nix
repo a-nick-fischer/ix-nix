@@ -90,9 +90,7 @@ in
     };
   };
 
-  programs.ags = {
-    enable = true;
-  };
+  programs.ags.enable = true;
 
   programs.kitty = {
     enable = true;
