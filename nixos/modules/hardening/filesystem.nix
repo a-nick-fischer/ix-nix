@@ -12,6 +12,7 @@
 
     "/tmp" = {
         options = [
+          "bind"
           "nosuid"
           "noexec"
           "nodev"
@@ -28,6 +29,7 @@
     # You do not want to install applications here anyways.
     "/root" = {
       options = [
+        "bind"
         "nosuid"
         "noexec"
         "nodev"
@@ -36,6 +38,7 @@
 
     "/var" = {
       options = [
+        "bind"
         "nosuid"
         "nodev"
       ];
@@ -51,6 +54,7 @@
 
     "/srv" = {
       options = [
+        "bind"
         "nosuid"
         "noexec"
         "nodev"
@@ -58,19 +62,20 @@
     };
 
     "/etc" = {
-      device = "/etc";
       options = [
+        "bind"
         "nosuid"
         "nodev"
       ];
     };
 
-    "/downloads" = {
-        options = [
-          "nosuid"
-          "noexec"
-          "nodev"
-        ];
-    };
+  # TODO Uncomment later
+    #"/downloads" = {
+    #    options = [
+    #      "nosuid"
+    #      "noexec"
+    #      "nodev"
+    #    ];
+    # };
   };
 }
