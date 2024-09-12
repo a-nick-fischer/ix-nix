@@ -9,6 +9,7 @@
     [
       ./auxillary.nix
       ./boot.nix
+      ./hardening.nix
       ./hardware.nix
       ./impermanance.nix
       ./misc.nix
@@ -19,7 +20,5 @@
       ./services.nix
       ./time.nix
       ./zfs.nix
-
-      ./hardening/hardening.nix
     ];
 }
