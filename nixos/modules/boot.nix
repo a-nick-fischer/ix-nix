@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -18,9 +19,15 @@
 
     plymouth.enable = true;
 
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/persist/etc/secureboot";
+    };
+
+    # Lanzaboote currently replaces the systemd-boot module.
     loader = {
       systemd-boot = {
-        enable = true;
+        enable = lib.mkForce false;
         configurationLimit = 7;
       };
 

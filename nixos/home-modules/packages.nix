@@ -55,6 +55,9 @@ in
     macchanger
     wireplumber # Needed... I think... just leave it
     hyprshade
+    
+    # Secureboot
+    sbctl
 
     # For Flameshot
     wl-clipboard

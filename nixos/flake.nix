@@ -63,6 +63,11 @@
       url = "github:cynicsketch/nix-mineral/v0.1.6-alpha";
       flake = false;
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -82,6 +87,7 @@
         inputs.persist-retro.nixosModules.persist-retro
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
+        inputs.lanzaboote.nixosModules.lanzaboote
         inputs.disko.nixosModules.default
         (import ./modules/disko.nix { device = "/dev/nvme0n1"; })
 
