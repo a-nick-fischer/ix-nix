@@ -8,6 +8,7 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
+
   home.packages = with pkgs; [
     # Programs
     librewolf
@@ -18,7 +19,6 @@ in
     buttercup-desktop
     overskride
     ticktick
-    #helvum
     vesktop
     spotify
     github-desktop
