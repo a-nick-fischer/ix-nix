@@ -14,11 +14,11 @@
   };
 
   # TODO Reverse-engineer https://github.com/vimjoyer/nixconf/tree/main
-
+  users.mutableUsers = false;
   users.users."nick" = {
     isNormalUser = true;
     shell = pkgs.nushell;
-    initialPassword = "nixos"; # TODO find a better way
+    initialHashedPassword = "$y$j9T$8fEFURYXvsFCcIcPX5/4o0$U91T.17uI95SIWlerbecLpcek1VSEcYYrTH/2LDAJw.";
     extraGroups = [ "wheel" "wireshark" ];
   };
 

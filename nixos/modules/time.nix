@@ -7,6 +7,8 @@
     enable = true;
     
     enableNTS = true;
+
+    enableRTCTrimming = false;
     
     # From https://github.com/GrapheneOS/infrastructure/blob/main/chrony.conf
     extraConfig = ''
