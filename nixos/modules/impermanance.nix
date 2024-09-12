@@ -1,7 +1,6 @@
 {
   ...
 }: {
-  environment.etc."machine-id".source = "/persist/etc/machine-id";
   environment.persistence."/persist/system" = {
     hideMounts = true;
     directories = [

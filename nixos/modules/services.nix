@@ -2,6 +2,7 @@
   pkgs,
   ...
 }: {
+  # TODO: Use Chrony
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
