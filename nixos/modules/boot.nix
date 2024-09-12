@@ -21,7 +21,7 @@
 
     lanzaboote = {
       enable = true;
-      pkiBundle = "/persist/etc/secureboot";
+      pkiBundle = "/etc/secureboot";
     };
 
     # Lanzaboote currently replaces the systemd-boot module.
