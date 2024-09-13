@@ -1,6 +1,6 @@
-import { SmallMicrophoneWidget, SmallVolumeWidget } from "./audio.js"
+import { MicrophoneWidget, VolumeWidget } from "./audio.js"
 import { withEventHandler, makeWindow, row} from "../utils/ags_helpers.js"
-import { SmallBatteryWidget } from "./battery.js"
+import { BATTERY_CONTROL_WINDOW, BatteryWidget } from "./battery.js"
 import { NetworkIndicator } from "./network.js"
 import { SLIDER_CONTROL_WINDOW } from "./slider_controls.js"
 
@@ -17,6 +17,7 @@ function ClockLabel(){
 
         onPrimaryClick: () => {
             App.toggleWindow(SLIDER_CONTROL_WINDOW)
+            App.toggleWindow(BATTERY_CONTROL_WINDOW)
         }
     })
 }
@@ -25,14 +26,14 @@ function ClockLabel(){
 export function Bar() {
     return row([
         row([
-            SmallMicrophoneWidget(),
-            SmallVolumeWidget(),
+            MicrophoneWidget(),
+            VolumeWidget(),
         ]),
         
         ClockLabel(),
 
         row([
-            SmallBatteryWidget(),
+            BatteryWidget(),
             NetworkIndicator()
         ]),
     ], 

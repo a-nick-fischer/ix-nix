@@ -69,10 +69,14 @@ export function withEventHandler({ child, ...handlers }){
     }) 
 }
 
-export function sliderBox(slider){
+export function sliderBox(icon, slider){
     return Widget.Box({
         class_name: "slider-box",
-        child: slider
+        
+        children: [
+            icon,
+            slider
+        ]
     })
 }
 

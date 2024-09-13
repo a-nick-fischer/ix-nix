@@ -24,21 +24,21 @@
     border-radius: 0px 0px 40px 40px;
 }
 
-.slider-controls-window > * {
-    min-width: 400px;
-    min-height: 250px;
+.slider-controls-inner {
+    padding: 20px 20px;
 }
 
 .slider-box {
-	padding: 10px 150px;
+	padding: 5px 10px;
 }
 
-.slider-box > * {
+.slider-box > scale {
 	min-width: 250px;
-	border-radius: 10px;
-	border: 1px solid black;
 }
 
+.battery-controls-inner {
+    padding: 20px 20px;
+}
 
 /*
  * Notification styles

@@ -17,15 +17,14 @@ function getSpeakerIconName() {
     return `audio-volume-${speakerIcons[icon]}-symbolic`
 }
 
-
-export function SmallVolumeWidget(){
+export function VolumeWidget(size = 15){
     return withEventHandler({
         onPrimaryClick: () => 
             audio.speaker.is_muted = !audio.speaker.is_muted,
 
-        child: Widget.Icon().hook(audio.speaker, (self) => {
+        child: Widget.Icon({ size }).hook(audio.speaker, (self) => {
             const vol = audio.speaker.volume * 100;
-
+    
             self.icon = getSpeakerIconName()
             self.tooltip_text = audio.speaker.is_muted? 
                 "Volume Muted" : `Volume: ${Math.floor(vol)}%`;
@@ -33,12 +32,12 @@ export function SmallVolumeWidget(){
     })
 }
 
-export function SmallMicrophoneWidget(){
+export function MicrophoneWidget(size = 15){
     return withEventHandler({
         onPrimaryClick: () => 
             audio.microphone.is_muted = !audio.microphone.is_muted,
 
-        child: Widget.Icon().hook(audio.microphone, (self) => {
+        child: Widget.Icon({ size }).hook(audio.microphone, (self) => {
             if(audio.microphone.is_muted){
                 self.icon = "microphone-disabled-symbolic"
                 self.tooltip_text = "Muted"
@@ -56,16 +55,22 @@ export function VolumeSlider() {
     const slider = Widget.Slider({
         on_change: self => audio.speaker.volume = self.value,
         value: audio.speaker.bind('volume'),
+        draw_value: false,
     });
 
-    return sliderBox(slider)
+    const icon = VolumeWidget(30)
+
+    return sliderBox(icon, slider)
 }
 
 export function MicrophoneSlider() {
     const slider = Widget.Slider({
         on_change: self => audio.microphone.volume = self.value,
         value: audio.microphone.bind('volume'),
+        draw_value: false,
     });
 
-    return sliderBox(slider)
+    const icon = MicrophoneWidget(30)
+
+    return sliderBox(icon, slider)
 }
