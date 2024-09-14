@@ -1,7 +1,7 @@
 import { column, makePopupWindow, sliderBox, withEventHandler } from '../utils/ags_helpers.js';
 import brightness from '../utils/brightness.js';
 import { VolumeSlider, MicrophoneSlider } from './audio.js';
-import { windowsToToggle } from './bar.js';
+import { makeBarPopup, windowsToToggle } from './bar.js';
 
 function BrightnessWidget(){
     let blueLightEnabled = Utils.exec("hyprshade current")
@@ -51,16 +51,6 @@ export function SliderControls(){
     ], { class_name: "slider-controls-inner" })
 }
 
-export const SLIDER_CONTROL_WINDOW = "slider-controls"
-
 export function SliderControlsPopup(){
-    windowsToToggle.push(SLIDER_CONTROL_WINDOW)
-
-    return makePopupWindow({
-        name: SLIDER_CONTROL_WINDOW,
-        transition: "crossfade",
-        margins: [50, 0, 0, 0],
-        anchor: ["top"],
-        child: SliderControls()
-    })
+    return makeBarPopup("slider-controls", SliderControls(), [590, 50])
 }

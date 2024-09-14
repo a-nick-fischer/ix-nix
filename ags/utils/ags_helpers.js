@@ -1,26 +1,28 @@
+import Gtk from "gi://Gtk?version=3.0"
+
 export const GLOBAL_TRANSITION_DURATION = 1000;
 
-export function togglePopupGroup(popups){
+export function togglePopupGroup(popups) {
     popups.forEach(name => App.toggleWindow(name));
 }
 
-export function column(children, overrides = {}, outerOverrides = {}){
+export function column(children, overrides = {}, outerOverrides = {}) {
     return row(
-        children, 
-        { ...overrides, vertical: true, hexpand: true }, 
+        children,
+        { ...overrides, vertical: true, hexpand: true },
         { ...outerOverrides, hexpand: true }
     )
 }
 
-export function row(children, overrides = {}, outerOverrides = {}){
-    overrides = { spacing: 10, ...overrides } 
+export function row(children, overrides = {}, outerOverrides = {}) {
+    overrides = { spacing: 10, ...overrides }
 
     return Widget.CenterBox({
         center_widget: Widget.Box({
             children,
             ...overrides
         }),
-        
+
         ...outerOverrides
     })
 }
@@ -41,7 +43,7 @@ export function makeWindow({
 }
 
 export function makePopupWindow({
-    name, anchor, child, margins = [ 30, 30, 30, 30 ], transition = "slide_down", extras = {}
+    name, anchor, child, margins = [ 30, 30, 30, 30 ], transition = "crossfade", extras = {}
 }){
     return makeWindow({
         name,
@@ -60,19 +62,19 @@ export function makePopupWindow({
     })
 }
 
-export function withEventHandler({ child, ...handlers }){
+export function withEventHandler({ child, ...handlers }) {
     return Widget.Box({
-        child: Widget.EventBox({ 
+        child: Widget.EventBox({
             child,
             ...handlers
         })
-    }) 
+    })
 }
 
-export function sliderBox(icon, slider){
+export function sliderBox(icon, slider) {
     return Widget.Box({
         class_name: "slider-box",
-        
+
         children: [
             icon,
             slider
@@ -81,7 +83,7 @@ export function sliderBox(icon, slider){
 }
 
 // Partially stolen from https://github.com/Aylur/dotfiles/blob/a7cfbdc80d79e063894e7b4f7dbeae241894eabd/ags/widget/PopupWindow.ts#L28
-function PopupRevealer({name, child, transition}) {
+function PopupRevealer({ name, child, transition }) {
     return Widget.Box(
         { css: "padding: 1px;" },
         Widget.Revealer({

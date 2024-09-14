@@ -1,5 +1,5 @@
 import { column, makePopupWindow, row } from "../utils/ags_helpers.js"
-import { windowsToToggle } from "./bar.js"
+import { makeBarPopup, windowsToToggle } from "./bar.js"
 
 const battery = await Service.import("battery")
 
@@ -26,7 +26,12 @@ export function BatteryControl(){
 
             Widget.Label({ 
                 setup: self => self.hook(battery, () => {
-                    self.label = `${battery.percent}% - ${battery.charging ? "charged" : "dead"} in ${Math.floor(battery.time_remaining / 60)}min`
+                    let secondPart = ""
+                    if(!battery.charged){
+                        secondPart = ` - ${battery.charging ? `charged` : `dead`} in ${Math.floor(battery.time_remaining / 60)}min`
+                    }
+
+                    self.label = `${battery.percent}${secondPart}%`
                 })
             }),
         ]),
@@ -34,16 +39,6 @@ export function BatteryControl(){
     ], { class_name: "battery-controls-inner" })
 }
 
-export const BATTERY_CONTROL_WINDOW = "battery-controls"
-
 export function BatteryControlsPopup(){
-    windowsToToggle.push(BATTERY_CONTROL_WINDOW)
-
-    return makePopupWindow({
-        name: BATTERY_CONTROL_WINDOW,
-        transition: "crossfade",
-        margins: [250, 0, 0, 0],
-        anchor: ["top"],
-        child: BatteryControl()
-    })
+    return makeBarPopup("battery-controls", BatteryControl(), [970, 50])
 }

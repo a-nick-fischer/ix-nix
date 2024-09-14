@@ -1,5 +1,5 @@
-import { row, makePopupWindow, column } from "../utils/ags_helpers.js"
-import { windowsToToggle } from "./bar.js"
+import { row, column } from "../utils/ags_helpers.js"
+import { makeBarPopup } from "./bar.js"
 
 export function PowerControls(){
     const callback = Variable(null)
@@ -56,19 +56,9 @@ export function PowerControls(){
     return column([
         buttonRow,
         menu
-    ], { class_name: "power-controls-inner" })
+    ], { class_name: "power-controls-list", css: "min-width: 258px" })
 }
 
-export const POWER_CONTROL_WINDOW = "power-controls"
-
 export function PowerControlsPopup(){
-    windowsToToggle.push(POWER_CONTROL_WINDOW)
-
-    return makePopupWindow({
-        name: POWER_CONTROL_WINDOW,
-        transition: "crossfade",
-        margins: [350, 0, 0, 0],
-        anchor: ["top"],
-        child: PowerControls()
-    })
+    return makeBarPopup("power-controls", PowerControls(), [970, 155])
 }

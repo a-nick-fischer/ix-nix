@@ -24,10 +24,6 @@
     border-radius: 0px 0px 40px 40px;
 }
 
-.slider-controls-inner {
-    padding: 20px 20px;
-}
-
 .slider-box {
 	padding: 5px 10px;
 }
@@ -36,20 +32,24 @@
 	min-width: 250px;
 }
 
-.battery-controls-inner {
-    padding: 20px 20px;
+.bar-popup-inner {
+    padding: 20px;;
 }
 
-.power-controls-inner {
-    padding: 20px 20px;
-}
-
-.power-controls-inner > button {
+.power-controls-list > button {
     border: 3px solid black;
 }
 
 .verification-button {
-    font-size: 17;
+    font-size: 17px;
+}
+
+.power-controls-popup-inner {
+    padding: 20px 20px 10px 20px;   
+}
+
+.slider-controls-popup-inner {
+    padding: 28px 20px 27px 20px;   
 }
 
 /*
