@@ -8,7 +8,7 @@ let notifications = [
         triggered: false,
         percent: 20,
         summary: "[BATTERY BELOW 20%]",
-        iconName: "error-symbolic",
+        iconName: "battery-level-10-symbolic",
         body: "Buddy, I'm dying here"
     },
 
@@ -16,7 +16,7 @@ let notifications = [
         triggered: false,
         percent: 50,
         summary: "[BATTERY BELOW 50%]",
-        iconName: "info-symbolic",
+        iconName: "battery-level-50-symbolic",
         body: "Please get me some power chap"
     },
 ]

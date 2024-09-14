@@ -26,7 +26,7 @@ export function BatteryControl(){
 
             Widget.Label({ 
                 setup: self => self.hook(battery, () => {
-                    self.label = `${battery.charging ? "Charged" : "Dead"} in ${Math.floor(battery.time_remaining / 60)}min`
+                    self.label = `${battery.percent}% - ${battery.charging ? "charged" : "dead"} in ${Math.floor(battery.time_remaining / 60)}min`
                 })
             }),
         ]),
