@@ -297,49 +297,61 @@
           },
           {
             "type": "submenu",
-            "data": {},
-            "name": "Power",
-            "icon": "settings_power",
-            "iconTheme": "material-symbols-rounded",
-            "children": [
-              {
-                "type": "hotkey",
-                "data": {
-                  "hotkey": "MetaLeft+KeyL",
-                  "delayed": true
-                },
-                "name": "Lock",
-                "icon": "lock",
-                "iconTheme": "material-symbols-rounded"
-              },
-              {
-                "type": "command",
-                "data": {
-                  "command": "shutdown -h now",
-                  "delayed": false
-                },
-                "name": "Shutdown",
-                "icon": "power_settings_new",
-                "iconTheme": "material-symbols-rounded"
-              },
-              {
-                "type": "command",
-                "data": {
-                  "command": "reboot",
-                  "delayed": false
-                },
-                "name": "Reboot",
-                "icon": "replay",
-                "iconTheme": "material-symbols-rounded"
-              }
-            ]
-          },
-          {
-            "type": "submenu",
             "name": "Clipboard",
             "icon": "assignment",
             "iconTheme": "material-symbols-rounded",
             "children": [
+              {
+                "type": "macro",
+                "data": {
+                  "macro": [
+                    {
+                      "type": "keyDown",
+                      "key": "ControlLeft",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyDown",
+                      "key": "KeyA",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyUp",
+                      "key": "KeyA",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyUp",
+                      "key": "ControlLeft",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyDown",
+                      "key": "ControlLeft",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyDown",
+                      "key": "KeyC",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyUp",
+                      "key": "KeyC",
+                      "delay": 10
+                    },
+                    {
+                      "type": "keyUp",
+                      "key": "ControlLeft",
+                      "delay": 10
+                    }
+                  ],
+                  "delayed": true
+                },
+                "name": "Copy All",
+                "icon": "document_scanner",
+                "iconTheme": "material-symbols-rounded"
+              },
               {
                 "type": "hotkey",
                 "data": {

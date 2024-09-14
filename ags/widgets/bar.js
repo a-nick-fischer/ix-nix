@@ -1,12 +1,13 @@
 import { MicrophoneWidget, VolumeWidget } from "./audio.js"
 import { withEventHandler, makeWindow, row} from "../utils/ags_helpers.js"
-import { BATTERY_CONTROL_WINDOW, BatteryWidget } from "./battery.js"
+import { BatteryWidget } from "./battery.js"
 import { NetworkIndicator } from "./network.js"
-import { SLIDER_CONTROL_WINDOW } from "./slider_controls.js"
 
 const date = Variable("", {
     poll: [1000, 'date "+%d:%m:%H:%M:%S"'],
 })
+
+export const windowsToToggle = []
 
 function ClockLabel(){
     return withEventHandler({
@@ -16,8 +17,7 @@ function ClockLabel(){
         }),
 
         onPrimaryClick: () => {
-            App.toggleWindow(SLIDER_CONTROL_WINDOW)
-            App.toggleWindow(BATTERY_CONTROL_WINDOW)
+            windowsToToggle.forEach((window) => App.toggleWindow(window))
         }
     })
 }

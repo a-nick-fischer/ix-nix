@@ -1,11 +1,10 @@
 {
-  "menuTheme": "none",
+  "menuTheme": "default",
   "darkMenuTheme": "default",
   "menuThemeColors": {},
   "darkMenuThemeColors": {},
   "enableDarkModeForMenuThemes": false,
   "sidebarVisible": false,
   "enableVersionCheck": true,
-  "zoomFactor": 1,
-  "editorTheme": "none"
+  "zoomFactor": 1
 }

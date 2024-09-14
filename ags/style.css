@@ -40,6 +40,18 @@
     padding: 20px 20px;
 }
 
+.power-controls-inner {
+    padding: 20px 20px;
+}
+
+.power-controls-inner > button {
+    border: 3px solid black;
+}
+
+.verification-button {
+    font-size: 17;
+}
+
 /*
  * Notification styles
  */
@@ -71,7 +83,7 @@
     border-radius: 11px;
     padding: 1em;
     margin: .5em;
-    border: 1px solid @wm_borders_edge;
+    border: 3px solid black;
     background-color: @theme_bg_color;
 }
 

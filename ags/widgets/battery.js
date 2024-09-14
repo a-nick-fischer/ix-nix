@@ -1,4 +1,5 @@
 import { column, makePopupWindow, row } from "../utils/ags_helpers.js"
+import { windowsToToggle } from "./bar.js"
 
 const battery = await Service.import("battery")
 
@@ -36,6 +37,8 @@ export function BatteryControl(){
 export const BATTERY_CONTROL_WINDOW = "battery-controls"
 
 export function BatteryControlsPopup(){
+    windowsToToggle.push(BATTERY_CONTROL_WINDOW)
+
     return makePopupWindow({
         name: BATTERY_CONTROL_WINDOW,
         transition: "crossfade",
