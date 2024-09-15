@@ -56,7 +56,7 @@ export function PowerControls(){
     return column([
         buttonRow,
         menu
-    ], { class_name: "power-controls-list", css: "min-width: 258px" })
+    ], { class_name: "power-controls-list", css: "min-width: 294px" })
 }
 
 export function PowerControlsPopup(){

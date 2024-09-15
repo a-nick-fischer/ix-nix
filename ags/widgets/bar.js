@@ -22,7 +22,6 @@ function ClockLabel(){
     })
 }
 
-// TODO: Do not forget about bluetooth widget
 export function Bar() {
     return row([
         row([

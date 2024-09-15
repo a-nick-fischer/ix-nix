@@ -8,14 +8,14 @@ export function BatteryWidget(size = 15) {
         icon: battery.bind('icon_name'),
         size,
         tooltip_text: battery.bind('percent').as(percent => {
-            return `Battery: ${percent}%`
+            return `Battery ${percent}%`
         })
     })
 }
 
 export function BatteryControl(){
     return row([
-        BatteryWidget(50),
+        BatteryWidget(40),
 
         column([
             Widget.Label({ 
@@ -36,7 +36,7 @@ export function BatteryControl(){
             }),
         ]),
 
-    ], { class_name: "battery-controls-inner" })
+    ], { class_name: "battery-controls-inner",  css: "min-width: 294px"  })
 }
 
 export function BatteryControlsPopup(){

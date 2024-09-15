@@ -44,7 +44,7 @@ function BluetoothWidget() {
     const icon = Widget.Icon({
         icon: bluetooth.bind("enabled")
             .as(e => e ? "bluetooth-active-symbolic" : "bluetooth-disabled-symbolic"),
-        size: 30
+        size: 40
     })
 
     return withEventHandler({
