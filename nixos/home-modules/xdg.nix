@@ -11,7 +11,7 @@
       
       extraPortals = [
 	      #pkgs.xdg-desktop-portal-gtk
-        inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.default
+        inputs.hyprland.inputs.xdph.packages.${pkgs.system}.default
       ];
   
       config.common.default = "*";

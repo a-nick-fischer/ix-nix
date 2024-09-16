@@ -41,11 +41,6 @@
       # Aparentelly hyprpaper hasn't got hyprland as a dependency
     };
 
-    xdg-desktop-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      # Doesn't follow hyprland neither
-    };
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -53,15 +48,11 @@
 
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ags = {
       url = "github:Aylur/ags";
-    };
-
-    nix-mineral = {
-      url = "github:cynicsketch/nix-mineral/v0.1.6-alpha";
-      flake = false;
     };
 
     lanzaboote = {
