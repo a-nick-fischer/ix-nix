@@ -39,11 +39,10 @@
     zfs.requestEncryptionCredentials = true;
 
     # Kernel
-    # TODO https://discourse.nixos.org/t/how-to-get-compatible-hardened-kernel-for-zfs-module/32491/3
     # v4l2loopback needed for camera
     kernelModules = [ "kvm-intel" "v4l2loopback" ];
     
-    extraModulePackages = with pkgs; [ linuxPackages.v4l2loopback ];
+    extraModulePackages = [ config.boot.zfs.package.latestCompatibleLinuxPackages.v4l2loopback ];
 
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1
