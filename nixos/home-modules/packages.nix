@@ -11,7 +11,6 @@ in
 
   home.packages = with pkgs; [
     # Programs
-    librewolf
     onlyoffice-bin
     obsidian
     pavucontrol
@@ -35,12 +34,10 @@ in
     obs-studio
     helvum
     cameractrls-gtk4
-    protonvpn-cli
-    protonvpn-gui
-
+    google-chrome
+    
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail
-    # https://nixos.wiki/wiki/Tor_Browser_in_a_Container
     # https://nixos.wiki/wiki/Firejail#Torify_application_traffic
     tor-browser-bundle-bin
 
@@ -109,7 +106,6 @@ in
     settings = {
       # Note: Plugins are handled in-app
       "browser.download.dir" = "/downloads";
-      "browser.policies.runOncePerModification.setDefaultSearchEngine" = "Startpage";
 
       # Enable DoH
       "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
@@ -164,6 +160,30 @@ in
     targets = {
       hyprland.enable = false;
       hyprpaper.enable = false;
+    };
+  };
+
+  programs.firejail = {
+    enable = true;
+    wrappedBinaries = {
+      librewolf = {
+        executable = "${pkgs.librewolf}/bin/librewolf";
+        profile = "${pkgs.firejail}/etc/firejail/librewolf.profile";
+        extraArgs = [
+          # Required for U2F USB stick
+          "--ignore=private-dev"
+          # Enforce theme
+          "--env=GTK_THEME=adw-gtk3"
+          # Enable system notifications
+          "--dbus-user.talk=org.freedesktop.Notifications"
+        ];
+      };
+
+      signal-desktop = {
+        executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
+        extraArgs = [ "--env=GTK_THEME=adw-gtk3" ];
+      };
     };
   };
 }
