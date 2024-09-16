@@ -35,6 +35,8 @@ in
     obs-studio
     helvum
     cameractrls-gtk4
+    protonvpn-cli
+    protonvpn-gui
 
     # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
     # TODO Containerize or Firejail
