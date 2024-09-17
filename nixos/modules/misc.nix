@@ -19,7 +19,7 @@
     isNormalUser = true;
     shell = pkgs.nushell;
     initialHashedPassword = "$y$j9T$8fEFURYXvsFCcIcPX5/4o0$U91T.17uI95SIWlerbecLpcek1VSEcYYrTH/2LDAJw.";
-    extraGroups = [ "wheel" "wireshark" ];
+    extraGroups = [ "wheel" "wireshark" "firejail" ];
   };
 
   environment.sessionVariables = {
@@ -31,6 +31,8 @@
   };
 
   security.pam.services.hyprlock = {};
+
+  programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
 
