@@ -44,6 +44,7 @@ export async function registerBatteryNotifier(){
                 })
 
                 notification.triggered = true
+                return
             }
         }
     })

@@ -1,5 +1,3 @@
-import Gtk from "gi://Gtk?version=3.0"
-
 export const GLOBAL_TRANSITION_DURATION = 1000;
 
 export function togglePopupGroup(popups) {

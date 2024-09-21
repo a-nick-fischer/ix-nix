@@ -31,7 +31,7 @@ export function BatteryControl(){
                         secondPart = ` - ${battery.charging ? `charged` : `dead`} in ${Math.floor(battery.time_remaining / 60)}min`
                     }
 
-                    self.label = `${battery.percent}${secondPart}%`
+                    self.label = `${battery.percent}%${secondPart}`
                 })
             }),
         ]),
