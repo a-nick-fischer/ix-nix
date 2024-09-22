@@ -54,6 +54,7 @@ in
     macchanger
     wireplumber # Needed... I think... just leave it
     hyprshade
+    clipse
     
     # Secureboot
     sbctl

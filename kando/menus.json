@@ -353,6 +353,16 @@
                 "iconTheme": "material-symbols-rounded"
               },
               {
+                "type": "command",
+                "data": {
+                  "command": "kitty --class clipse -e 'clipse'",
+                  "delayed": true
+                },
+                "name": "Manager",
+                "icon": "list_alt",
+                "iconTheme": "material-symbols-rounded"
+              },
+              {
                 "type": "hotkey",
                 "data": {
                   "hotkey": "ControlLeft+KeyV",

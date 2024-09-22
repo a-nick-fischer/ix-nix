@@ -26,6 +26,7 @@
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
         "ags"
         "Kando"
+        "clipse -listen"
       ];
 
       # Environment
@@ -234,6 +235,10 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*"
 
+        # Floating windows
+        "bordersize 3,floating:1"
+        "bordercolor rgb(000000),floating:1"
+
         # Flameshot
         "float,class:flameshot"
         "monitor 0,class:flameshot"
@@ -241,6 +246,10 @@
         "noanim,class:flameshot"
         "noborder,class:flameshot"
         "rounding 0,class:flameshot"
+
+        # Clipse
+        "float,class:(clipse)"
+        "size 622 652,class:(clipse)"
       ];
 
       windowrule = [
