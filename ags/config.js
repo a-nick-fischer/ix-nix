@@ -9,6 +9,7 @@ import { PowerControlsPopup } from "./widgets/power.js"
 import { BluetoothControlsPopup } from "./widgets/bluetooth.js"
 import { NetworkControlsPopup } from "./widgets/network.js"
 import { registerBrightnessNotifier } from "./utils/brightness_notification.js"
+import { registerInternetConnectivityNotifier } from "./utils/internet_notification.js"
 
 App.config({
     style: "./style.css",
@@ -18,6 +19,7 @@ App.config({
         registerBackgroundHandler()
         registerServiceNotifier()
         registerBrightnessNotifier()
+        registerInternetConnectivityNotifier()
     },
 
     windows: [
