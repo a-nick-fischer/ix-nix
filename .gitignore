@@ -2,5 +2,5 @@
 !.gitignore
 !kando/config.json
 !kando/menu.json
-!ags/
-!nixos/
+!ags/*
+!nixos/*
