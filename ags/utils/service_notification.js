@@ -14,12 +14,15 @@ export async function registerServiceNotifier(){
         listen: "journalctl -b -f _PID=1 -p 0..4"
     })
 
-    journal.connect("changed", ({ value }) => {
+    const handle = journal.connect("changed", ({ value }) => {
         parseOutput(value).forEach(async output => {
             Utils.notify({
                 summary: "[SERVICE ERROR]",
                 iconName: "error-symbolic",
                 body: output,
+                actions: {
+                    'Ye Shut Up': () => journal.disconnect(handle)
+                }
             })
         })
     })

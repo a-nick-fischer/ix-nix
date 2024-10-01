@@ -112,3 +112,9 @@
 .actions .action-button:last-child {
     margin-right: 0;
 }
+
+.connected-network-entry {
+	border: 3px solid black;
+	border-radius: 11px;
+	padding: 3px 20px;
+}

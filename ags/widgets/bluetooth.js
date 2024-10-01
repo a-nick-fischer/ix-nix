@@ -37,7 +37,12 @@ function BluetoothDevices() {
         .filter(d => d.name)
         .map(DeviceItem))
 
-    return column(devices)
+    return Widget.Scrollable({
+        hscroll: "never",
+        vscroll: "automatic",
+        css: 'min-width: 170px;',
+        child: column(devices)
+    })
 }
 
 function BluetoothWidget() {
@@ -58,7 +63,7 @@ function BluetoothControls() {
     return row([
         BluetoothWidget(),
         BluetoothDevices()
-    ], { css: "min-width: 250px" })
+    ], { css: "min-width: 250px; min-height: 165px;" })
 }
 
 export function BluetoothControlsPopup() {
