@@ -1,4 +1,4 @@
-import { makeWindow, sliderBox, withEventHandler } from "../utils/ags_helpers.js"
+import { makeWindow, SliderBox, withEventHandler } from "../utils/ags_helpers.js"
 
 const audio = await Service.import("audio")
 
@@ -60,7 +60,7 @@ export function VolumeSlider() {
 
     const icon = VolumeWidget(30)
 
-    return sliderBox(icon, slider)
+    return SliderBox(icon, slider)
 }
 
 export function MicrophoneSlider() {
@@ -72,5 +72,5 @@ export function MicrophoneSlider() {
 
     const icon = MicrophoneWidget(30)
 
-    return sliderBox(icon, slider)
+    return SliderBox(icon, slider)
 }

@@ -1,5 +1,3 @@
-import internet from '../services/internet.js';
-
 const CHECK_INTERVAL_MS = 10000;
 const TIMEOUT_SEC = 3;
 const CHECK_IP = '1.1.1.1';

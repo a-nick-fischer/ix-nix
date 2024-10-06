@@ -1,4 +1,4 @@
-import { column, makePopupWindow, sliderBox, withEventHandler } from '../utils/ags_helpers.js';
+import { column, makePopupWindow, SliderBox, withEventHandler } from '../utils/ags_helpers.js';
 import brightness from '../services/brightness.js';
 import { VolumeSlider, MicrophoneSlider } from './audio.js';
 import { makeBarPopup, windowsToToggle } from './bar.js';
@@ -36,7 +36,7 @@ function BrightnessSlider(){
 
     const icon = BrightnessWidget()
 
-    return sliderBox(icon, slider)
+    return SliderBox(icon, slider)
 }
 
 export function SliderControls(){
