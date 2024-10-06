@@ -57,6 +57,9 @@
           layout = "dwindle";
       };
 
+      misc = {
+        disable_hyprland_logo = true;
+      };
 
       decoration = {
           rounding = 10;
