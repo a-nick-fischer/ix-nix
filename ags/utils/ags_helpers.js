@@ -1,4 +1,5 @@
 export const GLOBAL_TRANSITION_DURATION = 1000;
+export const UPDATE_FN_POLLING_INTERVAL = 3000;
 
 export function togglePopupGroup(popups) {
     popups.forEach(name => App.toggleWindow(name));
@@ -97,10 +98,9 @@ function PopupRevealer({ name, child, transition }) {
     )
 }
 
-function AccordionEntry(openChild, { iconName, title, classNames, child }){
+function AccordionEntry(currentlyOpenChild, { iconName, title, classNames, child }){
     const details = Widget.Revealer({
         revealChild: false,
-        visible: false,
         transitionDuration: 1000,
         transition: 'slide_down',
         child: column([
@@ -109,26 +109,46 @@ function AccordionEntry(openChild, { iconName, title, classNames, child }){
         ])
     })
 
+    const setChildOpen = (child, state) => {
+        child.reveal_child = state
+    }
+
     const header = withEventHandler({
         child: Widget.CenterBox({
-            start_widget: Widget.Icon({ icon: iconName, size: 15 }),
-            center_widget: Widget.Label(title.length > 20 ? title.slice(0, 15) + "..." : title.name) 
+            start_widget: Widget.Icon({ 
+                icon: iconName, 
+                size: 15, 
+                css: "min-width: 30px" 
+            }),
+
+            center_widget: Widget.Label({ 
+                label: title.length > 20 ? title.slice(0, 15) + "..." : title, 
+                css: "min-width: 150px" 
+            }),
+
+            spacing: 15
         }),
 
         onPrimaryClick: () => {
-            if(openChild.value) { 
-                openChild.value.reveal_child = false;
-                openChild.value.visible = false;
-                openChild.value = null;
-            }
+            const isAnyOpen = currentlyOpenChild.value != null
+            const isThisOpen = details.reveal_child
             
-            const shouldReveal = !details.reveal_child
-            if(shouldReveal){
-                openChild.value = details
+            // This menu is open and was clicked - close it
+            if(isAnyOpen && isThisOpen){
+                setChildOpen(details, false)
+                currentlyOpenChild.value = null
             }
-
-            details.visible = shouldReveal
-            details.reveal_child = shouldReveal
+            // Another menu is open and this was clicked - close the other one and open this one
+            else if(isAnyOpen){
+                setChildOpen(currentlyOpenChild.value, false)
+                setChildOpen(details, true)
+                currentlyOpenChild.value = details
+            }
+            // No menu is open and this was clicked - open the menu
+            else {
+                setChildOpen(details, true)
+                currentlyOpenChild.value = details
+            }
         }
     })
 
@@ -140,45 +160,26 @@ function AccordionEntry(openChild, { iconName, title, classNames, child }){
     ], { class_names: classNames || []  })
 }
 
-// [{ iconName, title, classNames, child }, ...]
-export function AccordionList(specs){
+// () => [{ iconName, title, classNames, child }, ...]
+export function AccordionList(updateSpecFn){
     const openChild = Variable(null)
+    const proxy = Variable([])
 
-    const toEntryList = (list) => list.map(spec => AccordionEntry(openChild, spec) )
+    const generateEntries = () => updateSpecFn().map(spec => AccordionEntry(openChild, spec))
 
-    const makeScrollable = (entries) => Widget.Scrollable({
+    openChild.connect("changed", ({ value }) => {
+        if(value == null) 
+            Utils.timeout(GLOBAL_TRANSITION_DURATION, () => proxy.value = generateEntries())
+    })
+
+    Utils.interval(UPDATE_FN_POLLING_INTERVAL, () => {
+        if(openChild.value == null) proxy.value = generateEntries()
+    })
+
+    return Widget.Scrollable({
         hscroll: "never",
         vscroll: "automatic",
         css: 'min-width: 170px;',
-        child: column(entries)
+        child: column(proxy.bind())
     })
-
-    // If the given spec is a conrete list just convert it to widgets
-    if(specs instanceof Array)
-        return makeScrollable(toEntryList(specs))
-
-
-    // We cannot update entries while an entry is "open" - as this will rearrange and close all entries
-    // So we use a proxy to selectively apply updated only when no entry is open
-    const proxy = Variable([])
-
-    specs.emitter.connect("changed", () => {
-        const concreteSpecs = specs.value
-        console.log(concreteSpecs)
-
-        // If any child is open
-        if(openChild.value != null){
-            // Register a handler which applies the update once the entry is closed
-            const handlerId = openChild.connect("changed", (newOpenChild) => {
-                if(newOpenChild) return
-
-                openChild.disconnect(handlerId)
-                proxy.value = toEntryList(concreteSpecs)
-            })
-        }
-        else 
-            proxy.value = toEntryList(concreteSpecs)
-    })
-
-    return makeScrollable(proxy.bind())
 }

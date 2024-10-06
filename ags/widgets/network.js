@@ -1,10 +1,10 @@
-import { column, makePopupWindow, row, withEventHandler } from "../utils/ags_helpers.js"
+import { AccordionList, column, makePopupWindow, row, withEventHandler } from "../utils/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
 const network = await Service.import('network')
 
-function disconnectFromNetwork(ssid){
-    Utils.exec(["nmcli", "con", "down", ssid])
+function existingConnections(){
+    return Utils.exec(["nmcli", "-t", "--fields", "NAME", "con"]).split("\n")
 }
 
 function loginToNetwork(ssid){
@@ -16,82 +16,18 @@ function loginToNetwork(ssid){
             visibility: false,
             onAccept: ({ text }) => {
                 if(text == "") return
-                Utils.exec(["nmcli", "device", "wifi", "connect", ssid, "password", text])
-                App.removeWindow(window)
+
+                if(ssid in existingConnections) 
+                    Utils.exec(["nmcli", "con", "up", ssid])
+                else
+                    Utils.exec(["nmcli", "device", "wifi", "connect", ssid, "password", text])
             }
         })
     ])
-
-
-    const window = makePopupWindow({
-        name: "password-dialog",
-        anchor: [],
-        extras: { visible: true },
-        child: Widget.Box({
-            child: content,
-            css: 'padding: 10px;'
-        })
-    })
-
-    App.add_window(window)
 }
 
 function WifiMenu(){
     network.wifi.scan()
-
-    const generateWifiEntry = (aps) => {
-        const apWithBestConnection = aps.sort((a, b) => b.strength - a.strength)[0]
-
-        const details = Widget.Revealer({
-            revealChild: false,
-            transitionDuration: 1000,
-            transition: 'slide_down',
-            child: column([
-                Widget.Label(`Max Strength: ${apWithBestConnection.strength}%`),
-                Widget.Label(`${aps.length} APs available`),
-
-
-                network.wifi.ssid == aps[0].ssid?
-                    Widget.Button({
-                        label: "Disconnect",
-                        onClicked: () =>
-                            disconnectFromNetwork(aps[0].ssid)
-                    })
-                    :
-                    Widget.Button({
-                        label: "Connect",
-                        onClicked: () =>
-                            loginToNetwork(aps[0].ssid)
-                    }),
-
-                Widget.Separator()
-            ])
-        })
-
-        const header = withEventHandler({
-            child: row([ 
-                Widget.Icon({ icon: apWithBestConnection.iconName, size: 15 }),
-                Widget.Label(apWithBestConnection.ssid) 
-            ]),
-
-            onPrimaryClick: () => details.reveal_child = !details.reveal_child
-        })
-
-        return column([
-            header,
-            details
-        ], { class_name: network.wifi.ssid == apWithBestConnection.ssid? "connected-network-entry" : ""  })
-    }
-
-    const wifiList = column(
-        network.wifi.bind("access_points")
-            .as(aps => {
-                const sorted = aps.sort((a, b) => b.strength - a.strength)
-                const networks = groupBy(sorted, "ssid")
-                return Object.values(networks)
-                    .map((apsOfSsid) => generateWifiEntry(apsOfSsid))
-            }),
-    { spacing: 5 })
 
     return row([
         column([
@@ -99,12 +35,7 @@ function WifiMenu(){
             VpnIndicator(40)
         ], { spacing: 70 }),
 
-        Widget.Scrollable({
-            hscroll: "never",
-            vscroll: "automatic",
-            css: 'min-width: 170px;',
-            child: wifiList
-        })
+        WifiList()
     ])
 }
 
@@ -165,3 +96,60 @@ const groupBy = (items, key) => items.reduce(
     }), 
     {},
   );
+
+function WifiList(){
+    return AccordionList(() => {
+        const sorted = network.wifi.access_points.sort((a, b) => b.strength - a.strength)
+        const networks = groupBy(sorted, "ssid")
+        return Object.values(networks)
+            .map((apsOfSsid) => {
+                const ssid = apsOfSsid[0].ssid
+                const connected = network.wifi.ssid == ssid
+                const apWithBestConnection = apsOfSsid.sort((a, b) => b.strength - a.strength)[0]
+
+                const loginDialog = Widget.Entry({
+                    text: "",
+                    placeholder_text: "Password",
+                    visible: false,
+                    visibility: false,
+                    onAccept: ({ text }) => {
+                        if(text == "") return
+        
+                        if(ssid in existingConnections) 
+                            Utils.exec(["nmcli", "con", "up", ssid])
+                        else
+                            Utils.exec(["nmcli", "device", "wifi", "connect", ssid, "password", text])
+                    }
+                })
+
+                return {
+                    title: ssid,
+                    iconName: apWithBestConnection.iconName,
+                    classNames: connected? ["connected-entry"] : [],
+                    child: column([
+                        Widget.Label(`Max Strength: ${apWithBestConnection.strength}%`),
+                        Widget.Label(`${apsOfSsid.length} APs available`),
+
+                        loginDialog,
+        
+                        connected?
+                            Widget.Button({
+                                label: "Disconnect",
+                                onClicked: () =>
+                                    Utils.exec(["nmcli", "con", "down", ssid])
+                            })
+                            :
+                            Widget.Button({
+                                label: "Connect",
+                                onClicked: () => {
+                                    if(ssid in existingConnections)
+                                        Utils.exec(["nmcli", "con", "up", ssid])
+                                    else
+                                        loginDialog.visible = true
+                                }
+                            }),
+                    ])
+                }
+            })
+    })
+}

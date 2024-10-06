@@ -32,18 +32,6 @@ function DeviceItem(device) {
     })
 }
 
-function BluetoothDevices() {
-    const devices = bluetooth.bind("devices").as(ds => ds
-        .filter(d => d.name)
-        .map(DeviceItem))
-
-    return Widget.Scrollable({
-        hscroll: "never",
-        vscroll: "automatic",
-        css: 'min-width: 170px;',
-        child: column(devices)
-    })
-}
 
 function BluetoothWidget() {
     const icon = Widget.Icon({
@@ -71,30 +59,40 @@ export function BluetoothControlsPopup() {
 }
 
 function BluetoothList(){
-    const devices = bluetooth.bind("devices").as(ds => ds
+    const getDevices = () => bluetooth.devices
         .filter(d => d.name)
         .map(device => {
+
+            const spinner = Widget.Spinner({
+                active: device.bind("connecting"),
+                visible: device.bind("connecting"),
+            })
+
+            const connectionButton = Widget.Button({
+                label: device.bind("connected").as(connected => connected? "Disconnect" : "Connect"),
+                visible: device.bind("connecting").as(connecting => !connecting),
+                onPrimaryClick: () =>
+                    device.setConnection(!device.connected)
+            })
+
             return {
                 title: device.name,
-                iconName: device.icon_name.bind().as(name => name + "-symbolic"),
-                classNames: device.connected.bind().as(connected => connected? ["connected-entry"] : []),
+                iconName: device.bind("icon_name").as(iconName => iconName + "-symbolic"),
+                classNames: device.bind("connected").as(connected => connected ? ["connected-entry"] : []),
                 child: column([
-                    Widget.Label(`Address: ${device.address}`),
-                    Widget.Label(`Battery: ${device.battery_level}`),
+                    Widget.Label(`${device.address}`),
+
+                    Widget.Label({ 
+                        label: device.bind("battery_percentage")
+                            .as(percentage => percentage == 0? "Battery: Unknown" : `Battery: ${percentage}%`) 
+                    }),
+
+                    spinner,
                     
-                    device.connected.bind().as(connected => {
-                        connected? 
-                            Widget.Button({
-                                label: "Connect"
-                            })
-                        :
-                            Widget.Button({
-                                label: "Disconnect"
-                        })
-                    })
+                    connectionButton
                 ]),
             }
-        }))
+        })
         
-    return AccordionList(devices)
+    return AccordionList(getDevices)
 }
