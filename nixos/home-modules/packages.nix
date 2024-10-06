@@ -55,6 +55,7 @@ in
     wireplumber # Needed... I think... just leave it
     hyprshade
     clipse
+    libnotify
     
     # Secureboot
     sbctl
