@@ -1,4 +1,4 @@
-import { column, row, withEventHandler } from "../utils/ags_helpers.js"
+import { AccordionList, column, row, withEventHandler } from "../utils/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
 const bluetooth = await Service.import("bluetooth")
@@ -62,10 +62,39 @@ function BluetoothWidget() {
 function BluetoothControls() {
     return row([
         BluetoothWidget(),
-        BluetoothDevices()
+        BluetoothList()
     ], { css: "min-width: 250px; min-height: 165px;" })
 }
 
 export function BluetoothControlsPopup() {
     return makeBarPopup("bluetooth-controls", BluetoothControls(), [280, 50])
+}
+
+function BluetoothList(){
+    const devices = bluetooth.bind("devices").as(ds => ds
+        .filter(d => d.name)
+        .map(device => {
+            return {
+                title: device.name,
+                iconName: device.icon_name.bind().as(name => name + "-symbolic"),
+                classNames: device.connected.bind().as(connected => connected? ["connected-entry"] : []),
+                child: column([
+                    Widget.Label(`Address: ${device.address}`),
+                    Widget.Label(`Battery: ${device.battery_level}`),
+                    
+                    device.connected.bind().as(connected => {
+                        connected? 
+                            Widget.Button({
+                                label: "Connect"
+                            })
+                        :
+                            Widget.Button({
+                                label: "Disconnect"
+                        })
+                    })
+                ]),
+            }
+        }))
+        
+    return AccordionList(devices)
 }

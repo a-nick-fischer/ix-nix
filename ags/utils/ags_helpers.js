@@ -69,7 +69,7 @@ export function withEventHandler({ child, ...handlers }) {
     })
 }
 
-export function sliderBox(icon, slider) {
+export function SliderBox(icon, slider) {
     return Widget.Box({
         class_name: "slider-box",
 
@@ -95,4 +95,90 @@ function PopupRevealer({ name, child, transition }) {
             }),
         }),
     )
+}
+
+function AccordionEntry(openChild, { iconName, title, classNames, child }){
+    const details = Widget.Revealer({
+        revealChild: false,
+        visible: false,
+        transitionDuration: 1000,
+        transition: 'slide_down',
+        child: column([
+            child,
+            Widget.Separator()
+        ])
+    })
+
+    const header = withEventHandler({
+        child: Widget.CenterBox({
+            start_widget: Widget.Icon({ icon: iconName, size: 15 }),
+            center_widget: Widget.Label(title.length > 20 ? title.slice(0, 15) + "..." : title.name) 
+        }),
+
+        onPrimaryClick: () => {
+            if(openChild.value) { 
+                openChild.value.reveal_child = false;
+                openChild.value.visible = false;
+                openChild.value = null;
+            }
+            
+            const shouldReveal = !details.reveal_child
+            if(shouldReveal){
+                openChild.value = details
+            }
+
+            details.visible = shouldReveal
+            details.reveal_child = shouldReveal
+        }
+    })
+
+    
+
+    return column([
+        header,
+        details
+    ], { class_names: classNames || []  })
+}
+
+// [{ iconName, title, classNames, child }, ...]
+export function AccordionList(specs){
+    const openChild = Variable(null)
+
+    const toEntryList = (list) => list.map(spec => AccordionEntry(openChild, spec) )
+
+    const makeScrollable = (entries) => Widget.Scrollable({
+        hscroll: "never",
+        vscroll: "automatic",
+        css: 'min-width: 170px;',
+        child: column(entries)
+    })
+
+    // If the given spec is a conrete list just convert it to widgets
+    if(specs instanceof Array)
+        return makeScrollable(toEntryList(specs))
+
+
+    // We cannot update entries while an entry is "open" - as this will rearrange and close all entries
+    // So we use a proxy to selectively apply updated only when no entry is open
+    const proxy = Variable([])
+
+    specs.emitter.connect("changed", () => {
+        const concreteSpecs = specs.value
+        console.log(concreteSpecs)
+
+        // If any child is open
+        if(openChild.value != null){
+            // Register a handler which applies the update once the entry is closed
+            const handlerId = openChild.connect("changed", (newOpenChild) => {
+                if(newOpenChild) return
+
+                openChild.disconnect(handlerId)
+                proxy.value = toEntryList(concreteSpecs)
+            })
+        }
+        else 
+            proxy.value = toEntryList(concreteSpecs)
+    })
+
+    return makeScrollable(proxy.bind())
 }
