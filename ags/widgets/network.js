@@ -3,6 +3,10 @@ import { makeBarPopup } from "./bar.js"
 
 const network = await Service.import('network')
 
+function disconnectFromNetwork(ssid){
+    Utils.exec(["nmcli", "con", "down", ssid])
+}
+
 function loginToNetwork(ssid){
     const content = column([
         Widget.Label(`Enter password for ${ssid}`),
@@ -46,11 +50,19 @@ function WifiMenu(){
                 Widget.Label(`Max Strength: ${apWithBestConnection.strength}%`),
                 Widget.Label(`${aps.length} APs available`),
 
-                Widget.Button({
-                    label: "Connect",
-                    onClicked: () =>
-                        loginToNetwork(aps[0].ssid)
-                }),
+
+                network.wifi.ssid == aps[0].ssid?
+                    Widget.Button({
+                        label: "Disconnect",
+                        onClicked: () =>
+                            disconnectFromNetwork(aps[0].ssid)
+                    })
+                    :
+                    Widget.Button({
+                        label: "Connect",
+                        onClicked: () =>
+                            loginToNetwork(aps[0].ssid)
+                    }),
 
                 Widget.Separator()
             ])
