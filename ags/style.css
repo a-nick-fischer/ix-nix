@@ -88,12 +88,12 @@
 }
 
 .notification.critical {
-    border: 1px solid lightcoral;
+    border: 3px solid lightcoral;
 }
 
 .title {
     color: @theme_fg_color;
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 .body {
