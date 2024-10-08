@@ -45,10 +45,10 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "gtk-launch io.missioncenter.MissionCenter.desktop  ",
+                      "command": "kitty --class btop -e 'btop'",
                       "delayed": true
                     },
-                    "name": "Mission Center",
+                    "name": "Btop",
                     "icon": "monitor_heart",
                     "iconTheme": "material-symbols-rounded"
                   },

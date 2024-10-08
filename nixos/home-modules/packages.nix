@@ -26,7 +26,6 @@ in
     wdisplays
     kooha
     krita
-    mission-center
     vlc
     kando
     signal-desktop
@@ -92,6 +91,8 @@ in
       };
     };
   };
+
+  programs.btop.enable = true;
 
   programs.ags.enable = true;
 
