@@ -1,9 +1,12 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: {
+}: 
+let
+  # Watch that this thing is compatible with our ZFS version
+  selectedKernelPackages = pkgs.linuxPackages_6_10;
+in {
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     keyMap = "de";
@@ -34,21 +37,17 @@
       efi.canTouchEfiVariables = true;
     };
 
-    # ZFS
-    supportedFilesystems = [ "zfs" ];
-    zfs.requestEncryptionCredentials = true;
-
     # Kernel
     # v4l2loopback needed for camera
     kernelModules = [ "kvm-intel" "v4l2loopback" ];
     
-    extraModulePackages = [ config.boot.zfs.package.latestCompatibleLinuxPackages.v4l2loopback ];
+    extraModulePackages = [ selectedKernelPackages.v4l2loopback ];
 
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1
     '';
 
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    kernelPackages = selectedKernelPackages;
 
     kernelParams = [
       "quiet"

@@ -1,6 +1,12 @@
 {
   ...
 }: {
+    # ZFS
+  boot = {
+    supportedFilesystems = [ "zfs" ];
+    zfs.requestEncryptionCredentials = true;
+  };
+
   services = {
     fstrim.enable = true;
 
