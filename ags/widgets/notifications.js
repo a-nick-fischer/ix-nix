@@ -1,6 +1,8 @@
 // Stolen from https://github.com/Aylur/ags/blob/main/example/notification-popups/notificationPopups.js
 const notifications = await Service.import("notifications")
 
+export var dndMode = Variable(false)
+
 function NotificationIcon({ app_entry, app_icon, image }) {
     if (image) {
         return Widget.Box({
@@ -95,6 +97,8 @@ export function NotificationPopups(monitor = 0) {
     })
 
     function onNotified(_, id) {
+        if(dndMode.value) return
+
         const n = notifications.getNotification(id)
         if (n)
             list.children = [Notification(n), ...list.children]

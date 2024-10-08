@@ -1,3 +1,4 @@
+import { dndMode } from "./notifications.js"
 import { row, column } from "../utils/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
@@ -37,6 +38,15 @@ export function PowerControls(){
         }
     })
 
+    const dndButton = Widget.Button({
+        image: Widget.Icon({
+            icon: dndMode.bind().as(dnd => dnd? "notifications-disabled-symbolic" : "preferences-system-notifications-symbolic"),
+            size: 50
+        }),
+
+        onPrimaryClick: () => dndMode.value = !dndMode.value
+    })
+
     const buttonRow = row([
         
         makeButton("system-shutdown-symbolic", () => {
@@ -51,6 +61,7 @@ export function PowerControls(){
             Utils.exec("hyprlock")
         }),
 
+        dndButton
     ])
 
     return column([
