@@ -107,18 +107,33 @@ function WifiList(){
                 const connected = network.wifi.ssid == ssid
                 const apWithBestConnection = apsOfSsid.sort((a, b) => b.strength - a.strength)[0]
 
+                const dialogVisible = Variable(false)
+
                 const loginDialog = Widget.Entry({
                     text: "",
                     placeholder_text: "Password",
-                    visible: false,
+                    visible: dialogVisible.bind(),
                     visibility: false,
-                    onAccept: ({ text }) => {
-                        if(text == "") return
-        
-                        if(ssid in existingConnections) 
+                    primary_icon_name: "dialog-password-symbolic",
+                    onAccept: (self) => {
+                        Utils.exec(["nmcli", "device", "wifi", "connect", ssid, "password", self.text])
+                        dialogVisible.value = false
+                    }
+                })
+
+                const connectButton =  Widget.Button({
+                    label: connected? "Disconnect" : "Connect",
+                    visible: dialogVisible.bind().as(v => !v),
+                    onClicked: () => {
+                        if(connected){
+                            Utils.exec(["nmcli", "con", "down", ssid])
+                            return
+                        }
+
+                        if(existingConnections().includes(ssid))
                             Utils.exec(["nmcli", "con", "up", ssid])
-                        else
-                            Utils.exec(["nmcli", "device", "wifi", "connect", ssid, "password", text])
+                        else 
+                            dialogVisible.value = true
                     }
                 })
 
@@ -131,23 +146,7 @@ function WifiList(){
                         Widget.Label(`${apsOfSsid.length} APs available`),
 
                         loginDialog,
-        
-                        connected?
-                            Widget.Button({
-                                label: "Disconnect",
-                                onClicked: () =>
-                                    Utils.exec(["nmcli", "con", "down", ssid])
-                            })
-                            :
-                            Widget.Button({
-                                label: "Connect",
-                                onClicked: () => {
-                                    if(ssid in existingConnections)
-                                        Utils.exec(["nmcli", "con", "up", ssid])
-                                    else
-                                        loginDialog.visible = true
-                                }
-                            }),
+                        connectButton
                     ])
                 }
             })

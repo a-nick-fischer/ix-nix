@@ -37,6 +37,7 @@ export function makeWindow({
         exclusivity: "ignore", // Ignore exclusivity of other windows
         canFocus: true,
         child,
+        keymode: "on-demand",
         ...extras
     })
 }
@@ -180,6 +181,6 @@ export function AccordionList(updateSpecFn){
         hscroll: "never",
         vscroll: "automatic",
         css: 'min-width: 170px;',
-        child: column(proxy.bind())
+        child: column(proxy.bind()),
     })
 }
