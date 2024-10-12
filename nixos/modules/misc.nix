@@ -57,6 +57,9 @@
     cursor.package = pkgs.rose-pine-cursor;
     cursor.name = "BreezeX-RosePine-Linux";
 
+    # Surpress invalid yaml files
+    override.use-ifd = "always";
+
     fonts = {
       monospace = {
         package = pkgs._0xproto;

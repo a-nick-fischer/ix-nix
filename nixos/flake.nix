@@ -22,8 +22,14 @@
       url = "github:Geometer1729/persist-retro";
     };
 
+    base16 = {
+      url = "github:SenchoPens/base16.nix";
+    };
+
     stylix = {
       url = "github:danth/stylix";
+      inputs.base16.follows = "base16";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprgrass = {
@@ -47,13 +53,13 @@
     };
 
     hyprland = {
-      # Pin hyprland to v0.44.0
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=0c7a7e2d569eeed9d6025f3eef4ea0690d90845d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ags = {
       url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {
