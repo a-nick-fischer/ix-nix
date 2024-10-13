@@ -8,7 +8,6 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
-
   home.packages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -37,6 +36,7 @@ in
     nautilus
     vlc
     kando
+    ulauncher
     
     # Browsers
     google-chrome
@@ -50,6 +50,7 @@ in
     flameshot
     wvkbd # Virtual Keyboard
     fzf
+    fd
     jq
     poppler # PDFs
     macchanger
@@ -75,9 +76,6 @@ in
     # Nix language server
     # https://github.com/oxalica/nil
     nil
-
-    # Temp
-    rofi-wayland
   ];
 
   services.flameshot = {

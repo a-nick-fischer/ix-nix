@@ -9,6 +9,10 @@ const date = Variable("", {
 
 export const windowsToToggle = []
 
+function toggleWindows(){
+    windowsToToggle.forEach((window) => App.toggleWindow(window))
+}
+
 function ClockLabel(){
     return withEventHandler({
         child: Widget.Label({
@@ -16,9 +20,7 @@ function ClockLabel(){
             label: date.bind(),
         }),
 
-        onPrimaryClick: () => {
-            windowsToToggle.forEach((window) => App.toggleWindow(window))
-        }
+        onPrimaryClick: toggleWindows
     })
 }
 
@@ -44,7 +46,13 @@ export function BarWindow(){
     return makeWindow({
         name: "bar",
         anchor: ["top"],
-        child: Bar()
+        child: Bar(),
+
+        extras: {
+            setup: self => {
+                self.keybind("Escape", toggleWindows)
+            }
+        }
     })
 }
 
@@ -63,9 +71,16 @@ export function makeBarPopup(name, widget, offset){
         name,
         anchor,
         margins,
+
         child: Widget.Box({ 
             child: widget, 
             class_names: [`${name}-popup-inner`, "bar-popup-inner"]
-        })
+        }),
+
+        extras: {
+            setup: self => {
+                self.keybind("Escape", toggleWindows)
+            }
+        }
     })
 }

@@ -13,12 +13,13 @@
 
       # Vars
       "$terminal" = "kitty";
-      "$menu" = "rofi -show drun -show-icons";
+      "$menu" = "ulauncher";
 
       # Autostart
       exec-once = [ 
         "systemctl start --user polkit-gnome-authentication-agent-1"
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
+        "ulauncher --hide-window"
         "ags"
         "Kando"
         "clipse -listen"
@@ -120,7 +121,10 @@
           "$mainMod, V, togglefloating,"
           "$mainMod, RETURN, fullscreen"
           "$mainMod, MINUS, exec, $menu"
-          "$mainMod, P, pseudo," # dwindle
+          "$mainMod, B, exec, librewolf"
+          "$mainMod, C, exec, code"
+          "$mainMod, O, exec, obsidian"
+          "$mainMod, E, exec, nautilus"
           "$mainMod, J, togglesplit," # dwindle
 
           # Move focus with mainMod + arrow keys

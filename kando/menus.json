@@ -214,50 +214,6 @@
           },
           {
             "type": "submenu",
-            "name": "Web Links",
-            "icon": "public",
-            "iconTheme": "material-symbols-rounded",
-            "children": [
-              {
-                "type": "uri",
-                "data": {
-                  "uri": "https://home-manager-options.extranix.com/?query=&release=master"
-                },
-                "name": "Home Manager Options",
-                "icon": "home",
-                "iconTheme": "material-symbols-rounded"
-              },
-              {
-                "type": "uri",
-                "data": {
-                  "uri": "https://startpage.com"
-                },
-                "name": "Startpage",
-                "icon": "searxng",
-                "iconTheme": "simple-icons"
-              },
-              {
-                "type": "uri",
-                "data": {
-                  "uri": "https://www.google.com"
-                },
-                "name": "Google",
-                "icon": "google",
-                "iconTheme": "simple-icons"
-              },
-              {
-                "type": "uri",
-                "data": {
-                  "uri": "https://search.nixos.org/packages?"
-                },
-                "name": "Nix Packages",
-                "icon": "box",
-                "iconTheme": "material-symbols-rounded"
-              }
-            ]
-          },
-          {
-            "type": "submenu",
             "data": {},
             "name": "Tools",
             "icon": "construction",
