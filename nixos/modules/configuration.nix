@@ -12,13 +12,14 @@
       ./hardening.nix
       ./hardware.nix
       ./impermanance.nix
-      ./misc.nix
       ./networking.nix
       ./nixos.nix
       ./nvidia.nix
+      ./packages.nix
       ./power.nix
       ./services.nix
       ./time.nix
       ./zfs.nix
+      ./users.nix
     ];
 }

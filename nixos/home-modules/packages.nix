@@ -34,10 +34,6 @@ in
     helvum
     cameractrls-gtk4
     google-chrome
-    
-    # TODO enable client tor bridge https://nixos.wiki/wiki/Tor
-    # TODO Containerize or Firejail
-    # https://nixos.wiki/wiki/Firejail#Torify_application_traffic
     tor-browser-bundle-bin
 
     # Tools

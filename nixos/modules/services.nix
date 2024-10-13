@@ -2,6 +2,7 @@
   pkgs,
   ...
 }: {
+  security.pam.services.hyprlock = {};
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
