@@ -1,5 +1,5 @@
 import { MicrophoneWidget, VolumeWidget } from "./audio.js"
-import { withEventHandler, makeWindow, row, makePopupWindow } from "../utils/ags_helpers.js"
+import { withEventHandler, makeWindow, row, makePopupWindow } from "../libs/ags_helpers.js"
 import { BatteryWidget } from "./battery.js"
 import { NetworkWidget } from "./network.js"
 

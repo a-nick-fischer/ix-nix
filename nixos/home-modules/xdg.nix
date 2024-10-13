@@ -31,7 +31,6 @@ in
 
     mimeApps = {
       enable = true;
-      userDirs.enable = false;
       associations.added = associations;
       defaultApplications = associations;
     };

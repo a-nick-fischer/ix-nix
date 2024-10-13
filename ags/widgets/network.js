@@ -1,4 +1,4 @@
-import { AccordionList, column, makePopupWindow, row, withEventHandler } from "../utils/ags_helpers.js"
+import { AccordionList, column, makePopupWindow, row, withEventHandler } from "../libs/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
 const network = await Service.import('network')

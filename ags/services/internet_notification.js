@@ -1,4 +1,4 @@
-import internet from '../services/internet.js';
+import internet from '../libs/internet.js';
 
 export function registerInternetConnectivityNotifier(){
     internet.connect('internet-connectivity-changed', (status) => {

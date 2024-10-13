@@ -1,5 +1,5 @@
-import { column, makePopupWindow, SliderBox, withEventHandler } from '../utils/ags_helpers.js';
-import brightness from '../services/brightness.js';
+import { column, makePopupWindow, SliderBox, withEventHandler } from '../libs/ags_helpers.js';
+import brightness from '../libs/brightness.js';
 import { VolumeSlider, MicrophoneSlider } from './audio.js';
 import { makeBarPopup, windowsToToggle } from './bar.js';
 

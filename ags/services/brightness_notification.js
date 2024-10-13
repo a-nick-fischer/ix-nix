@@ -1,4 +1,4 @@
-import brightness from '../services/brightness.js';
+import brightness from '../libs/brightness.js';
 
 const BLUE_LIGHT_FILTER_TIME = 1900;
 

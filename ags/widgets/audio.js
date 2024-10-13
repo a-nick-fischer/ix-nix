@@ -1,4 +1,4 @@
-import { makeWindow, SliderBox, withEventHandler } from "../utils/ags_helpers.js"
+import { makeWindow, SliderBox, withEventHandler } from "../libs/ags_helpers.js"
 
 const audio = await Service.import("audio")
 

@@ -10,29 +10,35 @@ in
 
 
   home.packages = with pkgs; [
-    # Programs
+    # Day-to-Day Programs
     onlyoffice-bin
     obsidian
-    pavucontrol
     vscode
-    buttercup-desktop
-    overskride
     ticktick
     vesktop
     spotify
     github-desktop
-    gthumb
-    nautilus
-    wdisplays
+    buttercup-desktop
     kooha
     krita
-    vlc
-    kando
     signal-desktop
     wireshark
     obs-studio
+
+    # Settings
+    pavucontrol
+    overskride
+    wdisplays
     helvum
     cameractrls-gtk4
+    
+    # Basic OS functionality
+    gthumb
+    nautilus
+    vlc
+    kando
+    
+    # Browsers
     google-chrome
     tor-browser-bundle-bin
 
@@ -42,14 +48,14 @@ in
     xdg-utils
     git
     flameshot
-    wvkbd
+    wvkbd # Virtual Keyboard
     fzf
     jq
-    poppler
+    poppler # PDFs
     macchanger
     wireplumber # Needed... I think... just leave it
-    hyprshade
-    clipse
+    hyprshade # Blue light filter
+    clipse # Clipboard manager
     libnotify
     
     # Secureboot

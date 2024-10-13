@@ -1,5 +1,5 @@
 import { dndMode } from "./notifications.js"
-import { row, column } from "../utils/ags_helpers.js"
+import { row, column } from "../libs/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
 export function PowerControls(){

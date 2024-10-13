@@ -1,4 +1,4 @@
-import { AccordionList, column, row, withEventHandler } from "../utils/ags_helpers.js"
+import { AccordionList, column, row, withEventHandler } from "../libs/ags_helpers.js"
 import { makeBarPopup } from "./bar.js"
 
 const bluetooth = await Service.import("bluetooth")

@@ -1,4 +1,4 @@
-import { column, makePopupWindow, row } from "../utils/ags_helpers.js"
+import { column, makePopupWindow, row } from "../libs/ags_helpers.js"
 import { makeBarPopup, windowsToToggle } from "./bar.js"
 
 const battery = await Service.import("battery")
