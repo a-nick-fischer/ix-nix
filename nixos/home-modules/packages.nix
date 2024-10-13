@@ -128,11 +128,18 @@ in
 
   programs.nushell = {
     enable = true;
+
     extraConfig = ''
     $env.config.show_banner = false
     $env.config.table.mode = "light"
     $env.PROMPT_COMMAND = { $"(ansi red)(pwd)(ansi reset)" }
     $env.PROMPT_COMMAND_RIGHT = { $"(ansi red)(bash -c 'date +%d:%m:%H:%M:%S')(ansi reset)" }
+    '';
+
+    extraLogin = ''
+     if (tty) == "/dev/tty1" {
+       Hyprland
+     }
     '';
   };
 

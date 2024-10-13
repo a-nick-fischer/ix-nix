@@ -52,8 +52,9 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # Used for plugins, not actually deploed because reasons
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=0c7a7e2d569eeed9d6025f3eef4ea0690d90845d";
+     url = "github:hyprwm/Hyprland/v0.44.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

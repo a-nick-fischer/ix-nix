@@ -7,11 +7,6 @@
     enable = true;
     xwayland.enable = true;
 
-    systemd = {
-      enable = true;
-      enableXdgAutostart = true;
-    };
-
     settings = {
       # Monitors
       monitor = ",preferred,auto,1,bitdepth, 10";

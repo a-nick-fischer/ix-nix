@@ -6,16 +6,17 @@
   xdg = {
     enable = true;
 
-    portal = {
-      enable = true;
+  #  portal = {
+   #   enable = true;
       
-      extraPortals = [
+    #  extraPortals = [
+           
 	      #pkgs.xdg-desktop-portal-gtk
-        inputs.hyprland.inputs.xdph.packages.${pkgs.system}.default
-      ];
+#        inputs.hyprland.inputs.xdph.packages.${pkgs.system}.default
+      #];
   
-      config.common.default = "*";
-    };
+     # config.common.default = "*";
+    #};
 
     mimeApps = {
       enable = true;
