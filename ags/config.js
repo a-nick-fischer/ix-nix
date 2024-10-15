@@ -11,6 +11,7 @@ import { NetworkControlsPopup } from "./widgets/network.js"
 import { registerBrightnessNotifier } from "./services/brightness_notification.js"
 import { registerInternetConnectivityNotifier } from "./services/internet_notification.js"
 import { registerMediaNotifier } from "./services/media_notifications.js"
+import { registerMonitorNotifier } from "./services/monitor_notification.js"
 
 App.config({
     style: "./style.css",
@@ -22,6 +23,7 @@ App.config({
         registerBrightnessNotifier()
         registerInternetConnectivityNotifier()
         registerMediaNotifier()
+        registerMonitorNotifier()
     },
 
     windows: [
