@@ -19,7 +19,9 @@
       ./power.nix
       ./services.nix
       ./time.nix
-      ./zfs.nix
       ./users.nix
+      ./virtualisation.nix
+      ./zfs.nix
+      
     ];
 }
