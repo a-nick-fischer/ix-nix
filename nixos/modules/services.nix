@@ -11,6 +11,18 @@
   services.earlyoom = {
     enable = true;
     enableNotifications = true;
+
+    # Send SIGTERM when only 2% of RAM and (!!!) SWAP are free
+    # Sends SIGKILL on 1%
+    freeMemThreshold = 2;
+    freeSwapThreshold = 2;
+    
+    extraArgs = [
+      "-g"
+      "--prefer '(^|/)(java|chromium|librewolf|electron)$'"
+      "--avoid '(^|/)(ags)$'"
+      "--ignore '(^|/)(Hyprland|systemd)$'"
+    ];
   };
 
   # Proxy systemd-bus notifications to libnotify
