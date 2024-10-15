@@ -182,9 +182,10 @@
                   {
                     "type": "command",
                     "data": {
-                      "command": "kitty"
+                      "command": "kitty",
+                      "delayed": false
                     },
-                    "name": "Terminal",
+                    "name": "Kitty",
                     "icon": "terminal",
                     "iconTheme": "material-symbols-rounded"
                   },
@@ -196,6 +197,16 @@
                     },
                     "name": "Obsidian",
                     "icon": "obsidian",
+                    "iconTheme": "simple-icons"
+                  },
+                  {
+                    "type": "command",
+                    "data": {
+                      "command": "virt-manager",
+                      "delayed": true
+                    },
+                    "name": "Virtmanager",
+                    "icon": "virtualbox",
                     "iconTheme": "simple-icons"
                   },
                   {
