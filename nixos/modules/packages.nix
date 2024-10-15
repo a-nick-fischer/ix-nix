@@ -11,6 +11,8 @@
 
   programs.kdeconnect.enable = true;
 
+  programs.noisetorch.enable = true;
+
   programs.hyprland = {
     enable = true;
 
