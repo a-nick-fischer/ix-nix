@@ -6,6 +6,16 @@
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
+  # Better OOM-Daemon 'cause fuck systemd-oom
+  systemd.oomd.enable = false;
+  services.earlyoom = {
+    enable = true;
+    enableNotifications = true;
+  };
+
+  # Proxy systemd-bus notifications to libnotify
+  services.systembus-notify.enable = true;
+
   # Auto-mounting
   services.udisks2 = {
     enable = true;
