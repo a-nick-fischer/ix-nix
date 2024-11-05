@@ -1,11 +1,11 @@
 { appimageTools, fetchurl }:
 let
   pname = "Kando";
-  version = "1.3.0";
+  version = "1.4.0";
 
   src = fetchurl {
     url = "https://github.com/kando-menu/kando/releases/download/v${version}/${pname}-${version}-x86_64.AppImage";
-    hash = "sha256-N47vraWlrcY5gqCOdUDmoWrfLGowDS0DRSn6arIHsKg=";
+    hash = "sha256-YGuP3gZX0jL3zljYlFvW+DC/9+4Ulw+GJq3U0LsW5BQ=";
   };
 in
 appimageTools.wrapType2 {

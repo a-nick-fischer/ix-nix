@@ -23,6 +23,8 @@ in
     signal-desktop
     wireshark
     obs-studio
+    xournalpp
+    thunderbird
 
     # Settings
     pavucontrol
@@ -82,7 +84,6 @@ in
     enable = true;
     settings = {
       General = {
-        checkForUpdates = false;
         copyURLAfterUpload = false;
         showDesktopNotification = false;
         showHelp = false;
@@ -115,6 +116,10 @@ in
       "network.trr.mode" = 3;
     };
   };
+
+  programs.gpg.enable = true;
+  services.gpg-agent.enable = true;
+  services.gpg-agent.pinentryPackage = pkgs.pinentry-tty;
 
   programs.yazi = {
     enable = true;

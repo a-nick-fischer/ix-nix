@@ -33,12 +33,7 @@
     };
 
     hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprfocus = {
-      url = "github:pyt0xic/hyprfocus";
+      url = "github:horriblename/hyprgrass/v0.8.2";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -48,13 +43,13 @@
     };
 
     hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
+      url = "github:hyprwm/hyprland-plugins/v0.44.0";
       inputs.hyprland.follows = "hyprland";
     };
 
     # Used for plugins, not actually deploed because reasons
     hyprland = {
-     url = "github:hyprwm/Hyprland/v0.44.0";
+     url = "github:hyprwm/Hyprland/v0.44.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

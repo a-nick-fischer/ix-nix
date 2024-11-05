@@ -26,5 +26,6 @@
     BROWSER = "${pkgs.librewolf}/bin/librewolf";
     EDITOR = "${pkgs.vscode}/bin/code";
     XDG_CONFIG_HOME = "/home/nick/.config";
+    OBSIDIAN_USE_WAYLAND = "1";
   };
 }

@@ -9,7 +9,7 @@
 
     settings = {
       # Monitors
-      monitor = ",preferred,auto,1,bitdepth, 10";
+      monitor = ",preferred,auto,1";
 
       # Vars
       "$terminal" = "kitty";
@@ -42,9 +42,9 @@
           gaps_in = 5;
           gaps_out = 20;
 
-          border_size = 5;
-          "col.active_border" = "#000000";
-          "col.inactive_border" = "#000000";
+          border_size = 3;
+          "col.active_border" = "rgb(000000)";
+          "col.inactive_border" = "rgb(000000)";
 
           resize_on_border = true;
 
@@ -265,7 +265,6 @@
     };
 
     plugins = [
-      inputs.hyprfocus.packages.${pkgs.system}.default
       inputs.hyprgrass.packages.${pkgs.system}.default
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
