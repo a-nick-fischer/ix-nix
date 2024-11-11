@@ -6,12 +6,10 @@
 
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
        url = "github:nix-community/home-manager";
-       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence = {
@@ -29,11 +27,10 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.base16.follows = "base16";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprgrass = {
-      url = "github:horriblename/hyprgrass/v0.8.2";
+      url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -43,24 +40,21 @@
     };
 
     hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins/v0.44.0";
+      url = "github:hyprwm/hyprland-plugins/v0.45.0";
       inputs.hyprland.follows = "hyprland";
     };
 
     # Used for plugins, not actually deploed because reasons
     hyprland = {
-     url = "github:hyprwm/Hyprland/v0.44.1";
-      inputs.nixpkgs.follows = "nixpkgs";
+     url = "github:hyprwm/Hyprland/v0.45.0";
     };
 
     ags = {
       url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

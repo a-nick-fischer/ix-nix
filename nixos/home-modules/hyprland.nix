@@ -63,14 +63,8 @@
           active_opacity = 1.0;
           inactive_opacity = 1.0;
 
-          drop_shadow = false;
-
-          blur = {
-              enabled = true;
-              size = 3;
-              passes = 1;
-              vibrancy = 0.1696;
-          };
+          blur.enabled = false;
+          shadow.enabled = false;
       };
 
       animations = {
