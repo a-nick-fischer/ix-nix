@@ -31,23 +31,8 @@
       inputs.base16.follows = "base16";
     };
 
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      # Aparentelly hyprpaper hasn't got hyprland as a dependency
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins/v0.46.0";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprland = {
-     url = "github:hyprwm/Hyprland/v0.46.2";
     };
 
     ags = {

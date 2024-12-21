@@ -258,9 +258,9 @@
       ];
     };
 
-    plugins = [
-      inputs.hyprgrass.packages.${pkgs.system}.default
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    plugins = with pkgs; [
+      hyprlandPlugins.hyprgrass
+      hyprlandPlugins.hyprexpo
     ];
   };
 }
