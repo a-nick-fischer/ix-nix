@@ -60,6 +60,11 @@ in
     hyprshade # Blue light filter
     clipse # Clipboard manager
     libnotify
+    tldr
+
+    # Temp
+    libsForQt5.dolphin
+    xfce.thunar
     
     # Secureboot
     sbctl
@@ -69,7 +74,8 @@ in
     grim
 
     # Fonts
-    nerdfonts
+    nerd-fonts.iosevka
+    nerd-fonts.go-mono
 
     # Make AGS happy
     gtk3
@@ -183,6 +189,7 @@ in
     targets = {
       hyprland.enable = false;
       hyprpaper.enable = false;
+      hyprlock.enable = false;
     };
   };
 }

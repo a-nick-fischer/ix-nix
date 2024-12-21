@@ -76,6 +76,8 @@
         executable = "${prev.tor-browser}/bin/tor-browser";
         desktop = "${prev.tor-browser}/share/applications/torbrowser.desktop";
       };
+
+
     })
   ];
 }

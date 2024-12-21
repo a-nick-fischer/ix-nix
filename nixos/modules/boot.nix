@@ -5,8 +5,7 @@
 }: 
 let
   # Watch that this thing is compatible with our ZFS version
-  # TODO: Wait till we can update to the next LTS (6.12?)
-  selectedKernelPackages = pkgs.linuxPackages_6_6;
+  selectedKernelPackages = pkgs.linuxPackages_6_12;
 in {
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -32,7 +31,7 @@ in {
     loader = {
       systemd-boot = {
         enable = lib.mkForce false;
-        configurationLimit = 7;
+        configurationLimit = 10;
       };
 
       efi.canTouchEfiVariables = true;

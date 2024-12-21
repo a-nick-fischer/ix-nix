@@ -2,7 +2,9 @@
   description = "Nixos config flake";
      
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -40,17 +42,16 @@
     };
 
     hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins/v0.45.0";
+      url = "github:hyprwm/hyprland-plugins/v0.46.0";
       inputs.hyprland.follows = "hyprland";
     };
 
-    # Used for plugins, not actually deploed because reasons
     hyprland = {
-     url = "github:hyprwm/Hyprland/v0.45.0";
+     url = "github:hyprwm/Hyprland/v0.46.2";
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/v1.8.2";
     };
 
     lanzaboote = {
