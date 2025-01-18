@@ -2,10 +2,7 @@
   pkgs,
   inputs,
   ...
-}: let 
-  kando = pkgs.callPackage ./custom/kando.nix { };
-in
-{
+}: {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [

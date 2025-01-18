@@ -2,7 +2,7 @@
 
 { 
   imports = [
-    inputs.hyprland.homeManagerModules.default
+    #inputs.hyprland.homeManagerModules.default
     inputs.ags.homeManagerModules.default
     ./overlays.nix
     ./xdg.nix
