@@ -9,7 +9,6 @@
     hostId = "fff69420";
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
-    #nftables.enable = true;
 
     firewall = {
       allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport

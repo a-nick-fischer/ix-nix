@@ -32,7 +32,7 @@
     
     # Basic OS functionality
     gthumb
-    nautilus
+    nemo
     vlc
     kando
     ulauncher
@@ -58,10 +58,6 @@
     clipse # Clipboard manager
     libnotify
     tldr
-
-    # Temp
-    libsForQt5.dolphin
-    xfce.thunar
     
     # Secureboot
     sbctl
@@ -81,6 +77,11 @@
     # Nix language server
     # https://github.com/oxalica/nil
     nil
+
+    # IDEs
+    android-studio-full
+    jetbrains.goland
+    go
   ];
 
   services.flameshot = {
@@ -120,10 +121,6 @@
     };
   };
 
-  programs.gpg.enable = true;
-  services.gpg-agent.enable = true;
-  services.gpg-agent.pinentryPackage = pkgs.pinentry-tty;
-
   programs.yazi = {
     enable = true;
     enableNushellIntegration = true;
@@ -145,8 +142,8 @@
     '';
 
     extraLogin = ''
-     if (tty) == "/dev/tty1" {
-       Hyprland
+     if (tty) == "/dev/tty1" and (uwsm check may-start | complete).exit_code == 0 {
+       exec systemd-cat -t uwsm_start uwsm start default
      }
     '';
   };

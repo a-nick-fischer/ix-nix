@@ -19,9 +19,9 @@
     
     extraArgs = [
       "-g"
-      "--prefer '(^|/)(java|chromium|librewolf|electron)$'"
-      "--avoid '(^|/)(ags)$'"
-      "--ignore '(^|/)(Hyprland|systemd)$'"
+      "--prefer" "(^|/)(java|chromium|librewolf|electron)$"
+      "--avoid" "(^|/)(ags)$"
+      "--ignore" "(^|/)(Hyprland|systemd)$"
     ];
   };
 

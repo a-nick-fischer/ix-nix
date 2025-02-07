@@ -1,6 +1,5 @@
 { 
   pkgs,
-  inputs,
   config,
   ... 
 }:
@@ -15,9 +14,6 @@
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
-
-    #portalPackage = inputs.hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
-    #package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
   stylix = {

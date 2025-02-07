@@ -1,10 +1,15 @@
 {
+  "locale": "auto",
   "menuTheme": "default",
   "darkMenuTheme": "default",
   "menuThemeColors": {},
   "darkMenuThemeColors": {},
   "enableDarkModeForMenuThemes": false,
+  "soundTheme": "none",
+  "soundVolume": 0.5,
   "sidebarVisible": false,
+  "ignoreWriteProtectedConfigFiles": false,
+  "trayIconFlavor": "color",
   "enableVersionCheck": true,
   "zoomFactor": 1,
   "menuOptions": {

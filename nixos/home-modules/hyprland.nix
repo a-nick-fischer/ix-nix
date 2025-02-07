@@ -1,12 +1,11 @@
 {
-  inputs,
   pkgs,
   ...
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    wayland.windowManager.hyprland.systemd.enable = false;
+    systemd.enable = false;
 
     settings = {
       # Monitors
@@ -22,7 +21,7 @@
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
         "ulauncher --hide-window"
         "ags"
-        "Kando"
+        "kando"
         "clipse -listen"
       ];
 
@@ -119,7 +118,7 @@
           "$mainMod, B, exec, librewolf"
           "$mainMod, C, exec, code"
           "$mainMod, O, exec, obsidian"
-          "$mainMod, E, exec, nautilus"
+          "$mainMod, E, exec, nemo"
           "$mainMod, J, togglesplit," # dwindle
 
           # Move focus with mainMod + arrow keys
@@ -204,7 +203,7 @@
               ", swipe:3:u, exec, $menu & bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:u, exec, bash -c 'kill -s SIGUSR2 $(pidof wvkbd-mobintl)'"
               ", swipe:4:d, exec, bash -c 'kill -s SIGUSR1 $(pidof wvkbd-mobintl)'"
-              ", longpress:2, exec, Kando --menu main"
+              ", longpress:2, exec, kando --menu main"
             ];
 
             hyprgrass-bindm = [
