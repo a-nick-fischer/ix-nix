@@ -5,6 +5,8 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.android_sdk.accept_license = true;
+
   home.packages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -45,7 +47,6 @@
     nh
     brightnessctl
     xdg-utils
-    git
     flameshot
     wvkbd # Virtual Keyboard
     fzf
@@ -79,9 +80,10 @@
     nil
 
     # IDEs
-    android-studio-full
     jetbrains.goland
-    go
+    jetbrains.idea-community
+    bruno
+    bruno-cli
   ];
 
   services.flameshot = {
@@ -106,6 +108,20 @@
     settings = {
       enable_audio_bell = false;
       confirm_os_window_close = 0;
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    userName= "Nick Fischer";
+    userEmail = "me@nifi.blog";
+
+    extraConfig = {
+      # Sign all commits using ssh key
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
 
