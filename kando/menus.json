@@ -173,6 +173,16 @@
                 ]
               },
               {
+                "type": "command",
+                "data": {
+                  "command": "librewolf",
+                  "delayed": false
+                },
+                "name": "Run Command",
+                "icon": "librewolf",
+                "iconTheme": "simple-icons"
+              },
+              {
                 "type": "submenu",
                 "data": {},
                 "name": "Work",
@@ -210,14 +220,53 @@
                     "iconTheme": "simple-icons"
                   },
                   {
-                    "type": "command",
-                    "data": {
-                      "command": "code",
-                      "delayed": false
-                    },
-                    "name": "VSCode",
-                    "icon": "code_blocks",
-                    "iconTheme": "material-symbols-rounded"
+                    "type": "submenu",
+                    "data": {},
+                    "name": "IDEs",
+                    "icon": "apps",
+                    "iconTheme": "material-symbols-rounded",
+                    "children": [
+                      {
+                        "type": "command",
+                        "data": {
+                          "command": "code",
+                          "delayed": false
+                        },
+                        "name": "VSCode",
+                        "icon": "code_blocks",
+                        "iconTheme": "material-symbols-rounded"
+                      },
+                      {
+                        "type": "command",
+                        "data": {
+                          "command": "goland",
+                          "delayed": false
+                        },
+                        "name": "GoLand",
+                        "icon": "goland",
+                        "iconTheme": "simple-icons"
+                      },
+                      {
+                        "type": "command",
+                        "data": {
+                          "command": "android-studio",
+                          "delayed": false
+                        },
+                        "name": "Android Studio",
+                        "icon": "androidstudio",
+                        "iconTheme": "simple-icons"
+                      },
+                      {
+                        "type": "command",
+                        "data": {
+                          "command": "idea-ultimate",
+                          "delayed": false
+                        },
+                        "name": "InteliJ",
+                        "icon": "intellijidea",
+                        "iconTheme": "simple-icons"
+                      }
+                    ]
                   }
                 ]
               }
