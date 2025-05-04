@@ -68,10 +68,6 @@
         desktop = "${prev.kitty}/share/applications/kitty.desktop";
       };
 
-      hyprlock = nvidiaOffloadWrap {
-        executable = "${prev.hyprlock}/bin/hyprlock";
-      };
-
       tor-browser = firejailWrap {
         executable = "${prev.tor-browser}/bin/tor-browser";
         desktop = "${prev.tor-browser}/share/applications/torbrowser.desktop";

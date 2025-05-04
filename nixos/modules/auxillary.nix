@@ -2,7 +2,7 @@
   ...
 }: {
   hardware.bluetooth = {
-    enable = true;
+    enable = false; # Disable to test new dongle
     powerOnBoot = false;
   };
 

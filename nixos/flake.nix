@@ -31,10 +31,6 @@
       inputs.base16.follows = "base16";
     };
 
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-    };
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
     };

@@ -3,10 +3,8 @@
 { 
   imports = [
     ./overlays.nix
-    ./xdg.nix
+    # TODO ./xdg.nix
     ./packages.nix
-    ./hyprland.nix
-    ./hyprlock.nix
   ];
   
   programs.home-manager.enable = true;

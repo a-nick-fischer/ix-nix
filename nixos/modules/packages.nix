@@ -8,12 +8,6 @@
 
   programs.wireshark.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-
   stylix = {
     enable = true;
     autoEnable = true;

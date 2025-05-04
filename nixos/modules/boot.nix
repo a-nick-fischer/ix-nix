@@ -5,7 +5,7 @@
 }: 
 let
   # Watch that this thing is compatible with our ZFS version
-  selectedKernelPackages = pkgs.linuxPackages_6_12;
+  selectedKernelPackages = pkgs.linuxPackages_6_13;
 in {
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -24,15 +24,14 @@ in {
 
     lanzaboote = {
       enable = true;
+      enrollKeys = true;
       pkiBundle = "/etc/secureboot";
+      configurationLimit = 10;
     };
 
     # Lanzaboote currently replaces the systemd-boot module.
     loader = {
-      systemd-boot = {
-        enable = lib.mkForce false;
-        configurationLimit = 10;
-      };
+      systemd-boot.enable = lib.mkForce false;
 
       efi.canTouchEfiVariables = true;
     };

@@ -6,6 +6,31 @@
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
+  # Needed for Gnome
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
+
+  # Needed for Gnome
+	services.xserver = {
+    # Required for DE to launch.
+    enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+
+    # Enable Desktop Environment.
+    desktopManager.gnome.enable = true;
+    
+    # Configure keymap in X11.
+    #layout = user.services.xserver.layout;
+    #xkbVariant = user.services.xserver.xkbVariant;
+
+    # Exclude default X11 packages I don't want.
+    excludePackages = with pkgs; [ xterm ];
+  };
+
   # Better OOM-Daemon 'cause fuck systemd-oom
   systemd.oomd.enable = false;
   services.earlyoom = {
@@ -20,8 +45,7 @@
     extraArgs = [
       "-g"
       "--prefer" "(^|/)(java|chromium|librewolf|electron)$"
-      "--avoid" "(^|/)(ags)$"
-      "--ignore" "(^|/)(Hyprland|systemd)$"
+      "--ignore" "(^|/)(systemd)$" # TODO Add gnome stuff here
     ];
   };
 
@@ -64,13 +88,14 @@
     # Skip login only on TTY1 so lockscreen cannot be circumvented
     # https://github.com/NixOS/nixpkgs/issues/81552
     # https://discourse.nixos.org/t/autologin-for-single-tty/49427
-    services."getty@tty1" = {
+    # TODO Remove and replace with autologin
+    /*services."getty@tty1" = {
       overrideStrategy = "asDropin";
       serviceConfig.ExecStart = [
         ""
         "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${pkgs.shadow}/bin/login --autologin nick --noclear %I $TERM"
       ];
-    };
+    };*/
 
     # TODO Switch to partition
     tmpfiles.rules = [
