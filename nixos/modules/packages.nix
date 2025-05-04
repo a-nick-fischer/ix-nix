@@ -8,8 +8,6 @@
 
   programs.wireshark.enable = true;
 
-  programs.kdeconnect.enable = true;
-
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -29,6 +27,7 @@
 
     cursor.package = pkgs.rose-pine-cursor;
     cursor.name = "BreezeX-RosePine-Linux";
+    cursor.size = 24;
 
     # Surpress invalid yaml files
     override.use-ifd = "always";

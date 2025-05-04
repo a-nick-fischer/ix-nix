@@ -20,7 +20,6 @@
         "systemctl start --user polkit-gnome-authentication-agent-1"
         "wvkbd-mobintl -L 300 --fn 0xProto --alpha 128 --hidden"
         "ulauncher --hide-window"
-        "ags"
         "kando"
         "clipse -listen"
       ];
@@ -116,9 +115,8 @@
           "$mainMod, RETURN, fullscreen"
           "$mainMod, MINUS, exec, $menu"
           "$mainMod, B, exec, librewolf"
-          "$mainMod, C, exec, code"
-          "$mainMod, O, exec, obsidian"
           "$mainMod, E, exec, nemo"
+          "$mainMod, T, exec, swaync-client -t -sw"
           "$mainMod, J, togglesplit," # dwindle
 
           # Move focus with mainMod + arrow keys
@@ -226,9 +224,8 @@
           };
         };
       };
-
-      # Window Rules
-      windowrulev2 = [
+      
+      windowrule = [
         "suppressevent maximize, class:.*"
 
         # Floating windows
@@ -246,15 +243,14 @@
         # Clipse
         "float,class:(clipse)"
         "size 622 652,class:(clipse)"
-      ];
 
-      windowrule = [
-        "noblur, kando"
-        "size 100% 100%, kando"
-        "noborder, kando"
-        "noanim, kando"
-        "float, kando"
-        "pin, kando"
+        # Special handling for Kando
+        "noblur,class:kando"
+        "size 100% 100%,class:kando"
+        "noborder,class:kando"
+        "noanim,class:kando"
+        "float,class:kando"
+        "pin,class:kando"
       ];
     };
 

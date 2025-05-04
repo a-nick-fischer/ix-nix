@@ -12,12 +12,9 @@
     onlyoffice-bin
     obsidian
     vscode
-    ticktick
     vesktop
-    spotify
-    github-desktop
+    spotube
     buttercup-desktop
-    kooha
     krita
     signal-desktop
     wireshark
@@ -55,7 +52,7 @@
     poppler # PDFs
     macchanger
     wireplumber # Needed... I think... just leave it
-    hyprshade # Blue light filter
+    hyprsunset
     clipse # Clipboard manager
     libnotify
     tldr
@@ -80,10 +77,8 @@
     nil
 
     # IDEs
-    jetbrains.goland
-    jetbrains.idea-community
-    bruno
-    bruno-cli
+    jetbrains.rust-rover
+    jetbrains.idea-ultimate
   ];
 
   services.flameshot = {
@@ -100,8 +95,6 @@
   };
 
   programs.btop.enable = true;
-
-  programs.ags.enable = true;
 
   programs.kitty = {
     enable = true;
@@ -125,6 +118,8 @@
     };
   };
 
+  # Install plugins:
+  # uBlock Origin, Raindrop, NoScript, Firefox Relay, Startpage, LocalCDN
   programs.librewolf = {
     enable = true;
     settings = {
@@ -164,6 +159,10 @@
     '';
   };
 
+  services.swaync = {
+    enable = true;
+  };
+
   services.hyprpaper = {
     enable = true;
     package = inputs.hyprpaper.packages.${pkgs.system}.default;
@@ -180,6 +179,64 @@
       wallpaper = [
         ", ~/.config/nixos/assets/main.png"
       ];
+    };
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    settings.main = {
+      layer = "top";
+
+      modules-left = [
+        "hyprland/workspaces" 
+      ];
+
+      modules-center = [
+        "clock"
+      ];
+
+      modules-right = [
+        "battery"
+        "network"
+        "bluetooth"
+        "pulseaudio"
+      ];
+
+      "hyprland/workspaces" = {
+        "active-only" = true;
+        "disable-scroll" = true;
+        "sort-by-number" = true;
+        "on-click" = "activate";
+        "persistent-workspaces" = {
+          "*" = 3;
+        };
+      };
+
+      "hyprland/window" = {
+        "format" = "{title}";
+        "max-length" = 50;
+      };
+
+      battery = {
+        format = "{capacity}% {icon}";
+
+        states = {
+          "good" = 95;
+          "warning" = 30;
+          "critical" = 15;
+        };
+      };
+
+      tray = {
+        format = "<span foreground='#ebdbb2'>{icon}</span>";
+     	  icon-size = 14;
+     	  spacing = 5;
+     };
+
+      clock = {
+          format-alt = "{:%a, %d. %b  %H:%M}";
+      };
     };
   };
 

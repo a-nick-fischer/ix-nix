@@ -35,10 +35,6 @@
       url = "github:hyprwm/hyprpaper";
     };
 
-    ags = {
-      url = "github:Aylur/ags/v1.8.2";
-    };
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
     };
