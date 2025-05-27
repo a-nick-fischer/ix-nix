@@ -61,7 +61,6 @@
         options = {
           ashift = "12";
           autotrim = "on";
-          "metaslab_lba_weighting_enabled" = "0";
         };
         datasets = {
           root = {
