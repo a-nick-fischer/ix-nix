@@ -13,6 +13,8 @@
     flake = "/home/nick/.config/nixos";
   };
 
+  programs.dconf.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
