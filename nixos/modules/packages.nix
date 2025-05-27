@@ -13,7 +13,7 @@
     flake = "/home/nick/.config/nixos";
   };
 
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
     obsidian
