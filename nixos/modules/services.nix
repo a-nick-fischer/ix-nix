@@ -9,17 +9,15 @@
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   # Needed for Gnome
-	services.xserver = {
+   services.xserver = {
     # Required for DE to launch.
     enable = true;
-    displayManager = {
-      gdm = {
+    displayManager.gdm = {
         enable = true;
         wayland = true;
       };
     };
 
-    # Enable Desktop Environment.
     desktopManager.gnome.enable = true;
     
     # Configure keymap in X11.
@@ -27,8 +25,13 @@
     #xkbVariant = user.services.xserver.xkbVariant;
 
     # Exclude default X11 packages I don't want.
-    excludePackages = with pkgs; [ xterm ];
+    #excludePackages = with pkgs; [ xterm ];
   };
+
+  # TODO Move to programs
+  programs.dconf.enable = true;
+  # TODO Disable core apps?
+  # services.gnome.core-apps.enable = false;
 
   # Better OOM-Daemon 'cause fuck systemd-oom
   systemd.oomd.enable = false;
