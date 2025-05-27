@@ -49,7 +49,6 @@
         inputs.persist-retro.nixosModules.persist-retro
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
-        inputs.lanzaboote.nixosModules.lanzaboote
         inputs.disko.nixosModules.default
         (import ./modules/disko.nix { })
 
