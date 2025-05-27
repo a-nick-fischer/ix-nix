@@ -15,12 +15,16 @@ in {
   boot = {
     # Boot
     initrd = {
-      systemd.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 7;
+      };
+
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
       kernelModules = [  ];
     };
 
-    plymouth.enable = true;
+    # TODO plymouth.enable = true;
 
     #lanzaboote = {
     #  enable = true;
@@ -48,8 +52,9 @@ in {
     kernelPackages = selectedKernelPackages;
 
     kernelParams = [
-      "quiet"
-      "splash"
+      # TODO
+      # "quiet"
+      # "splash"
       "nohibernate" # May be needed because of zfs bla bla
 
       # Simple interface names
