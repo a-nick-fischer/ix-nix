@@ -22,13 +22,6 @@ in {
 
     # TODO plymouth.enable = true;
 
-    #lanzaboote = {
-    #  enable = true;
-    #  pkiBundle = "/etc/secureboot";
-    #  configurationLimit = 10;
-    #};
-
-    # Lanzaboote currently replaces the systemd-boot module.
     loader = {
       systemd-boot = {
         enable = true;
@@ -51,9 +44,8 @@ in {
     kernelPackages = selectedKernelPackages;
 
     kernelParams = [
-      # TODO
-      # "quiet"
-      # "splash"
+      "quiet"
+      "splash"
       "nohibernate" # May be needed because of zfs bla bla
 
       # Simple interface names
