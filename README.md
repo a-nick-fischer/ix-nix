@@ -37,5 +37,5 @@ sudo cp -r ix-nix/* /mnt/home/nick/.config/
 
 6. Run the installer (installation directory defaults to `/mnt`)
 ```bash
-sudo nixos-install --flake "$(HOME)/ix-nix/nixos#ix"
+sudo nixos-install --flake "${HOME}/ix-nix/nixos#ix"
 ```
