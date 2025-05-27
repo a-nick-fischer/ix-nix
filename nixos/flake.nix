@@ -10,10 +10,6 @@
       url = "github:nix-community/disko";
     };
 
-    home-manager = {
-       url = "github:nix-community/home-manager";
-    };
-
     impermanence = {
       url = "github:nix-community/impermanence";
     };
@@ -25,8 +21,7 @@
 
   outputs = {
     self,
-    nixpkgs, 
-    home-manager, 
+    nixpkgs,
     ...
   } @ inputs:
   let 
@@ -37,7 +32,6 @@
       modules = [
         inputs.impermanence.nixosModules.impermanence
         inputs.persist-retro.nixosModules.persist-retro
-        inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.default
         (import ./modules/disko.nix { })
 
