@@ -21,11 +21,11 @@
     desktopManager.gnome.enable = true;
     
     # Configure keymap in X11.
-    #layout = user.services.xserver.layout;
-    #xkbVariant = user.services.xserver.xkbVariant;
+    # layout = user.services.xserver.layout;
+    # xkbVariant = user.services.xserver.xkbVariant;
 
     # Exclude default X11 packages I don't want.
-    #excludePackages = with pkgs; [ xterm ];
+    # excludePackages = with pkgs; [ xterm ];
   };
 
   # TODO Move to programs
