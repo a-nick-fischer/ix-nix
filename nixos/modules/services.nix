@@ -18,7 +18,7 @@
 
     desktopManager.gnome.enable = true;
     
-    layout = "de";
+    xkb.layout = "de";
 
     # Exclude default X11 packages I don't want.
     # excludePackages = with pkgs; [ xterm ];
