@@ -2,9 +2,9 @@
 
 { 
   imports = [
-    ./overlays.nix
+    #./overlays.nix
     # TODO ./xdg.nix
-    ./packages.nix
+    #./packages.nix
   ];
   
   programs.home-manager.enable = true;
