@@ -2,14 +2,14 @@
   pkgs,
   ...
 }: {
-  security.polkit.enable = true;
-  services.dbus.implementation = "broker";
+  #security.polkit.enable = true;
+  #services.dbus.implementation = "broker";
 
   # Needed for Gnome
-  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
+  #services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   # Needed for Gnome
-   services.xserver = {
+  services.xserver = {
     # Required for DE to launch.
     enable = true;
     displayManager.gdm = {
@@ -34,34 +34,34 @@
   # services.gnome.core-apps.enable = false;
 
   # Better OOM-Daemon 'cause fuck systemd-oom
-  systemd.oomd.enable = false;
-  services.earlyoom = {
-    enable = true;
-    enableNotifications = true;
+  #systemd.oomd.enable = false;
+  #services.earlyoom = {
+  #  enable = true;
+  #  enableNotifications = true;
 
     # Send SIGTERM when only 2% of RAM and (!!!) SWAP are free
     # Sends SIGKILL on 1%
-    freeMemThreshold = 2;
-    freeSwapThreshold = 2;
+  #  freeMemThreshold = 2;
+  #  freeSwapThreshold = 2;
     
-    extraArgs = [
-      "-g"
-      "--prefer" "(^|/)(java|chromium|librewolf|electron)$"
-      "--ignore" "(^|/)(systemd)$" # TODO Add gnome stuff here
-    ];
-  };
+  #  extraArgs = [
+  #    "-g"
+  #    "--prefer" "(^|/)(java|chromium|librewolf|electron)$"
+  #   "--ignore" "(^|/)(systemd)$" # TODO Add gnome stuff here
+  #  ];
+  #};
 
   # Proxy systemd-bus notifications to libnotify
-  services.systembus-notify.enable = true;
+  #services.systembus-notify.enable = true;
 
   # Auto-mounting
-  services.udisks2 = {
-    enable = true;
-    mountOnMedia = true;
-  };
+  #services.udisks2 = {
+  #  enable = true;
+  #  mountOnMedia = true;
+ # };
 
-  services.devmon.enable = true;
-  services.gvfs.enable = true; 
+  #services.devmon.enable = true;
+  #services.gvfs.enable = true; 
 
   # Nobody needs the default 4GB of logs...
   services.journald.extraConfig = ''
