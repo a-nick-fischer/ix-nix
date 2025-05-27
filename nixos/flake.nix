@@ -21,22 +21,12 @@
     persist-retro = {
       url = "github:Geometer1729/persist-retro";
     };
-
-    base16 = {
-      url = "github:SenchoPens/base16.nix";
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.base16.follows = "base16";
-    };
   };
 
   outputs = {
     self,
     nixpkgs, 
     home-manager, 
-    stylix, 
     ...
   } @ inputs:
   let 
@@ -48,7 +38,6 @@
         inputs.impermanence.nixosModules.impermanence
         inputs.persist-retro.nixosModules.persist-retro
         inputs.home-manager.nixosModules.home-manager
-        inputs.stylix.nixosModules.stylix
         inputs.disko.nixosModules.default
         (import ./modules/disko.nix { })
 
