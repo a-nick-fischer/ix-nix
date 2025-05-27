@@ -4,7 +4,7 @@
   environment.persistence."/persist/system" = {
     hideMounts = true;
     directories = [
-      "/etc/secureboot"  # TODO: Remove if not using lanzaboote
+      # Re-add once we have lanzaboote again "/etc/secureboot"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
