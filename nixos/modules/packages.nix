@@ -26,12 +26,14 @@
     xournalpp
     thunderbird
     kando
+    kitty
 
     # Settings
     pavucontrol
     wdisplays
     
     # Browsers
+    librewolf 
     google-chrome
     tor-browser-bundle-bin
 
@@ -42,6 +44,9 @@
     macchanger
     wireplumber # Needed... I think... just leave it
     tldr
+    nushell
+    git
+    btop
 
     # IDEs
     vscodium-fhs
