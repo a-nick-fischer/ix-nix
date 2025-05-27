@@ -4,14 +4,6 @@
   pkgs,
   ...
 }: {
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    backupFileExtension = "backup";
-    users = {
-      nick = import ../home-modules/home.nix;
-    };
-  };
-
   users.mutableUsers = false;
   users.users."nick" = {
     isNormalUser = true;
