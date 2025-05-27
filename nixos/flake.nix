@@ -51,7 +51,7 @@
         inputs.stylix.nixosModules.stylix
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.disko.nixosModules.default
-        (import ./modules/disko.nix { device = "/dev/nvme0n1"; })
+        (import ./modules/disko.nix { })
 
         ./modules/configuration.nix
       ];
