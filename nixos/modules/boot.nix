@@ -15,11 +15,7 @@ in {
   boot = {
     # Boot
     initrd = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 7;
-      };
-
+      systemd.enable = true;
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
       kernelModules = [  ];
     };
@@ -34,7 +30,10 @@ in {
 
     # Lanzaboote currently replaces the systemd-boot module.
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 7;
+      };
 
       efi.canTouchEfiVariables = true;
     };
