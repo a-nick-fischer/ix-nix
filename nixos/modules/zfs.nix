@@ -5,6 +5,9 @@
   boot = {
     supportedFilesystems = [ "zfs" ];
     zfs.requestEncryptionCredentials = true;
+    # TODO extraModprobeConfig = ''
+    #  options zfs metaslab_lba_weighting_enabled=0
+    #'';
   };
 
   services = {
