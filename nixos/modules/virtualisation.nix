@@ -7,9 +7,6 @@
 
     containers.enable = true;
 
-    # TODO: we cannot use the filesystem with ZFS, mount with
-    # acltype=posixacl
-    # See https://nixos.wiki/wiki/Podman
     podman = {
       enable = true;
 
