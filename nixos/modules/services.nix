@@ -12,9 +12,9 @@
   services.xserver = {
     # Required for DE to launch.
     enable = true;
-    displayManager.gdm = {
+    displayManager.sddm = {
         enable = true;
-        wayland = true;
+        wayland.enable = true;
     };
 
     desktopManager.gnome.enable = true;
