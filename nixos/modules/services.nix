@@ -11,10 +11,6 @@
   services.xserver = {
     # Required for DE to launch.
     enable = true;
-    displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-    };
 
     desktopManager.gnome.enable = true;
     
@@ -24,8 +20,11 @@
     # excludePackages = with pkgs; [ xterm ];
   };
 
-  # TODO Move to programs
-  programs.dconf.enable = true;
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+  };
+
   # TODO Disable core apps?
   # services.gnome.core-apps.enable = false;
 
