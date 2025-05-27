@@ -22,15 +22,15 @@ in {
 
     plymouth.enable = true;
 
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-      configurationLimit = 10;
-    };
+    #lanzaboote = {
+    #  enable = true;
+    #  pkiBundle = "/etc/secureboot";
+    #  configurationLimit = 10;
+    #};
 
     # Lanzaboote currently replaces the systemd-boot module.
     loader = {
-      systemd-boot.enable = lib.mkForce false;
+      systemd-boot.enable = true;
 
       efi.canTouchEfiVariables = true;
     };
