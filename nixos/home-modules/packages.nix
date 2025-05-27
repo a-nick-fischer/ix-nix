@@ -28,9 +28,9 @@
     cameractrls-gtk4
     
     # Basic OS functionality
-    gthumb
-    nemo
-    vlc
+    # gthumb
+    # nemo
+    # vlc
     kando
     
     # Browsers
@@ -49,12 +49,10 @@
     poppler # PDFs
     macchanger
     wireplumber # Needed... I think... just leave it
-    clipse # Clipboard manager
-    libnotify
     tldr
     
     # Secureboot
-    sbctl
+    # TODO Re-add for secure boot sbctl
 
     # For Flameshot
     wl-clipboard
@@ -146,15 +144,14 @@
   };
 
   # For virt-manager
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
-
-  stylix = {
+  dconf = {
     enable = true;
-    autoEnable = true;
+
+    settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
   };
 }
