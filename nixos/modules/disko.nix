@@ -1,11 +1,10 @@
 {
-  device ? throw "Set this to your disk device, e.g. /dev/nvme0n1",
   ...
 }:
 {
   disko.devices = {
     disk.main = {
-      device = device;
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
