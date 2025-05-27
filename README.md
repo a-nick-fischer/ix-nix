@@ -2,7 +2,7 @@
 
 1. Make sure to download the graphical NixOS-installer and boot into the LTS kernel - this is needed for ZFS support
 
-2. Close the installer, connect to the wireless via the UI. If the UI is unavailable for some reason, do:
+2. Close the installer, change keyboard layout, connect to the wireless via the UI. If the UI is unavailable for some reason, do:
 ```bash
 sudo systemctl start wpa_supplicant
 sudo wpa_cli
