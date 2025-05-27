@@ -30,10 +30,6 @@
       url = "github:danth/stylix";
       inputs.base16.follows = "base16";
     };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-    };
   };
 
   outputs = {
