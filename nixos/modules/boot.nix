@@ -20,7 +20,7 @@ in {
       kernelModules = [  ];
     };
 
-    # TODO plymouth.enable = true;
+    plymouth.enable = true;
 
     loader = {
       systemd-boot = {
