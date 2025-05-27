@@ -66,43 +66,6 @@
     SystemMaxUse=500M
   '';
 
-  system.activationScripts.setPermissions = ''
-    chown -R nick: {/projects,/blobs,/etc/nixos}
-    chmod -R 700 {/projects,/blobs,/etc/nixos}
-    rm -rf /home/nick/Downloads
-  '';
-
-  systemd = {
-    # Started manually by hyprland
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
-
-    # Skip login only on TTY1 so lockscreen cannot be circumvented
-    # https://github.com/NixOS/nixpkgs/issues/81552
-    # https://discourse.nixos.org/t/autologin-for-single-tty/49427
-    # TODO Remove and replace with autologin
-    /*services."getty@tty1" = {
-      overrideStrategy = "asDropin";
-      serviceConfig.ExecStart = [
-        ""
-        "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${pkgs.shadow}/bin/login --autologin nick --noclear %I $TERM"
-      ];
-    };*/
-
-    # TODO Switch to partition
-    tmpfiles.rules = [
-      "d /downloads 0755 nick"
-    ];
-  };
-
   # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
   boot.initrd.systemd.services.rollback = {
     description = "roolback rootfs on boot";
