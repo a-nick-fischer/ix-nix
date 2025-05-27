@@ -7,21 +7,20 @@
 {
   imports =
     [
-      #TODO ./auxillary.nix
+      ./auxillary.nix
       ./boot.nix
-      # TODO ./hardening.nix
+      ./hardening.nix
       ./hardware.nix
       ./impermanance.nix
       ./networking.nix
       ./nixos.nix
       ./nvidia.nix
-      # TODO ./packages.nix
-      # TODO ./power.nix
+      ./packages.nix
+      ./power.nix
       ./services.nix
       ./time.nix
       ./users.nix
-      # TODO ./virtualisation.nix
+      ./virtualisation.nix
       ./zfs.nix
-      
     ];
 }
