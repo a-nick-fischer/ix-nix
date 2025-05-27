@@ -5,7 +5,7 @@
 {
   disko.devices = {
     disk.main = {
-      inherit device;
+      device = device;
       type = "disk";
       content = {
         type = "gpt";
