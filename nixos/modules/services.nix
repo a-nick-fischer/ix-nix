@@ -17,16 +17,22 @@
     xkb.layout = "de";
 
     # Exclude default X11 packages I don't want.
-    # excludePackages = with pkgs; [ xterm ];
+    excludePackages = with pkgs; [ 
+      xterm 
+      geary
+      gnome-tour
+      gnome-music
+      gnome-console
+      gnome-contacts
+      gnome-system-monitor
+      epiphany
+    ];
   };
 
   services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
   };
-
-  # TODO Disable core apps?
-  # services.gnome.core-apps.enable = false;
 
   # Better OOM-Daemon 'cause fuck systemd-oom
   systemd.oomd.enable = false;

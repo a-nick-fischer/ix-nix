@@ -15,6 +15,8 @@
 
   programs.dconf.enable = true;
 
+  programs.virt-manager.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -25,14 +27,22 @@
     krita
     signal-desktop
     obs-studio
-    xournalpp
+    rnote
     thunderbird
     kando
     kitty
+    boxbuddy
+    pwvucontrol
 
-    # Settings
-    pavucontrol
-    wdisplays
+    # Gnome things
+    gnome-secrets
+    gnome-boxes
+    warp
+    impression
+    diebahn
+    resources
+    dconf-editor
+    eyedropper
     
     # Browsers
     librewolf 
@@ -49,6 +59,7 @@
     nushell
     git
     btop
+    docker-compose
 
     # IDEs
     vscodium-fhs
