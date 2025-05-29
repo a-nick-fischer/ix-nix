@@ -17,21 +17,22 @@
     xkb.layout = "de";
 
     # Exclude default X11 packages I don't want.
-    excludePackages = with pkgs; [ 
-      xterm 
-      geary
-      gnome-tour
-      gnome-music
-      gnome-console
-      gnome-contacts
-      gnome-system-monitor
-      epiphany
-    ];
+    excludePackages = with pkgs; [ xterm ];
   };
 
-  services.displayManager.sddm = {
+  services.displayManager = {
+    sddm = {
       enable = true;
       wayland.enable = true;
+      settings = {
+        Autologin = {
+          User = "nick";
+          Session = "gnome-wayland.desktop";
+        };
+      };
+    };
+
+    defaultSession = "gnome-wayland";
   };
 
   # Better OOM-Daemon 'cause fuck systemd-oom
