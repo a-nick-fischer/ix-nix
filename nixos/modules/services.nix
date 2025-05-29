@@ -27,12 +27,11 @@
       settings = {
         Autologin = {
           User = "nick";
-          Session = "gnome-wayland.desktop";
         };
       };
     };
 
-    defaultSession = "gnome-wayland";
+    defaultSession = "gnome";
   };
 
   # Better OOM-Daemon 'cause fuck systemd-oom
