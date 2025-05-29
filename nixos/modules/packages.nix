@@ -17,6 +17,11 @@
 
   programs.virt-manager.enable = true;
 
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -32,6 +37,7 @@
     kando
     kitty
     boxbuddy
+    apostrophe
     pwvucontrol
 
     # Gnome things
@@ -64,8 +70,7 @@
 
     # IDEs
     vscodium-fhs
-    jetbrains.rust-rover
-    jetbrains.idea-ultimate
+    jetbrains-toolbox
   ];
 
   services.xserver.excludePackages = with pkgs; [ 
