@@ -19,7 +19,7 @@
 
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
+    package = pkgs.valent;
   };
 
   environment.systemPackages = with pkgs; [
@@ -37,8 +37,8 @@
     kando
     kitty
     boxbuddy
-    apostrophe
     pwvucontrol
+    wifi-qr
 
     # Gnome things
     gnome-secrets
@@ -49,6 +49,9 @@
     resources
     dconf-editor
     eyedropper
+    apostrophe
+    gnome-decoder
+    zenity # Needed for wifi-qr
     
     # Browsers
     librewolf 
@@ -69,7 +72,7 @@
     docker-compose
 
     # IDEs
-    vscodium-fhs
+    vscode-fhs
     jetbrains-toolbox
   ];
 
