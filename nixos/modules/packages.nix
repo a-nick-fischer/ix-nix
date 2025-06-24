@@ -22,6 +22,14 @@
     package = pkgs.valent;
   };
 
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      droidcam-obs
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -31,7 +39,6 @@
     buttercup-desktop
     krita
     signal-desktop
-    obs-studio
     rnote
     thunderbird
     kando
@@ -39,6 +46,7 @@
     boxbuddy
     pwvucontrol
     wifi-qr
+    helvum
 
     # Gnome things
     gnome-secrets
@@ -59,11 +67,9 @@
     tor-browser-bundle-bin
 
     # Tools
-    wvkbd # Virtual Keyboard
     fzf
     jq
     macchanger
-    wireplumber # Needed... I think... just leave it
     tldr
     nushell
     git

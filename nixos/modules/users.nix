@@ -9,7 +9,7 @@
     isNormalUser = true;
     # shell = pkgs.nushell;
     initialHashedPassword = "$y$j9T$8fEFURYXvsFCcIcPX5/4o0$U91T.17uI95SIWlerbecLpcek1VSEcYYrTH/2LDAJw.";
-    extraGroups = [ "wheel" "wireshark" "firejail" "libvirtd" ];
+    extraGroups = [ "wheel" "wireshark" "firejail" "libvirtd" "video" "audio" ];
   };
 
   environment.sessionVariables = {

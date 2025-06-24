@@ -32,14 +32,7 @@ in {
     };
 
     # Kernel
-    # v4l2loopback needed for camera
-    kernelModules = [ "kvm-intel" "v4l2loopback" ];
-    
-    extraModulePackages = [ selectedKernelPackages.v4l2loopback ];
-
-    extraModprobeConfig = ''
-      options v4l2loopback exclusive_caps=1
-    '';
+    kernelModules = [ "kvm-intel" ];
 
     kernelPackages = selectedKernelPackages;
 
