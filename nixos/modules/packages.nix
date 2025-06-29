@@ -47,6 +47,7 @@
     pwvucontrol
     wifi-qr
     helvum
+    maestral-gui
 
     # Gnome things
     gnome-secrets
@@ -76,6 +77,7 @@
     btop
     distrobox
     docker-compose
+    maestral
 
     # IDEs
     vscode-fhs
