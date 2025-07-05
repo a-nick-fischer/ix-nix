@@ -35,7 +35,6 @@
     onlyoffice-bin
     obsidian
     vesktop
-    spotube
     buttercup-desktop
     krita
     signal-desktop
@@ -59,7 +58,6 @@
     dconf-editor
     eyedropper
     apostrophe
-    gnome-decoder
     zenity # Needed for wifi-qr
     
     # Browsers

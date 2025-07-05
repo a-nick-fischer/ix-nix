@@ -15,6 +15,7 @@
       ./networking.nix
       ./nixos.nix
       ./nvidia.nix
+      ./overlays.nix
       ./packages.nix
       ./power.nix
       ./services.nix
