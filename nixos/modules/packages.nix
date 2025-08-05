@@ -47,6 +47,7 @@
     wifi-qr
     helvum
     maestral-gui
+    realvnc-vnc-viewer
 
     # Gnome things
     gnome-secrets
