@@ -15,8 +15,6 @@
 
   programs.dconf.enable = true;
 
-  programs.virt-manager.enable = true;
-
   programs.kdeconnect = {
     enable = true;
     package = pkgs.valent;
@@ -35,7 +33,6 @@
     onlyoffice-bin
     obsidian
     vesktop
-    buttercup-desktop
     krita
     signal-desktop
     rnote
@@ -44,7 +41,6 @@
     kitty
     boxbuddy
     pwvucontrol
-    wifi-qr
     helvum
     maestral-gui
     realvnc-vnc-viewer
@@ -59,7 +55,7 @@
     dconf-editor
     eyedropper
     apostrophe
-    zenity # Needed for wifi-qr
+    foliate
     
     # Browsers
     librewolf 
@@ -71,7 +67,6 @@
     jq
     macchanger
     tldr
-    nushell
     git
     btop
     distrobox
@@ -81,6 +76,9 @@
     # IDEs
     vscode-fhs
     jetbrains-toolbox
+
+    # UI
+    gnomeExtensions.pop-shell
   ];
 
   services.xserver.excludePackages = with pkgs; [ 
@@ -101,10 +99,16 @@
   ];
 
   xdg.mime.defaultApplications = {
-     "text/html" = "librewolf.desktop";
+    "text/html" = "librewolf.desktop";
     "x-scheme-handler/http" = "librewolf.desktop";
     "x-scheme-handler/https" = "librewolf.desktop";
     "x-scheme-handler/about" = "librewolf.desktop";
     "x-scheme-handler/unknown" = "librewolf.desktop";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
   };
 }
