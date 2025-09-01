@@ -79,6 +79,10 @@
 
     # UI
     gnomeExtensions.pop-shell
+
+    # 3D Printing & CNC
+    super-slicer
+    blender
   ];
 
   services.xserver.excludePackages = with pkgs; [ 
