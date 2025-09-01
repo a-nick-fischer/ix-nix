@@ -10,7 +10,7 @@
       "/var/lib/systemd/coredump"
       "/var/db/sudo/lectured"
       "/etc/NetworkManager/system-connections"
-      "/var/lib/sddm/state.conf
+      "/var/lib/sddm/state.conf"
     ];
   };
 }
