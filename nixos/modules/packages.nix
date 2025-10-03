@@ -83,6 +83,9 @@
     # 3D Printing & CNC
     super-slicer
     blender
+
+    # Games
+    gfn-electron
   ];
 
   services.xserver.excludePackages = with pkgs; [ 
