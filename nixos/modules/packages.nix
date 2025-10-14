@@ -28,6 +28,20 @@
     ];
   };
 
+  programs.gamemode.enable = true; 
+
+  programs.steam = {
+    enable = true; # install steam
+    remotePlay.openFirewall = true;
+    protontricks.enable = true;
+    gamescopeSession.enable = true;
+  };
+
+  # Needed for geforce now
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-35.7.5"
+  ];
+
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-bin
@@ -37,7 +51,6 @@
     signal-desktop
     rnote
     thunderbird
-    kando
     kitty
     boxbuddy
     pwvucontrol
@@ -86,6 +99,8 @@
 
     # Games
     gfn-electron
+    cartridges
+    protonup-qt
   ];
 
   services.xserver.excludePackages = with pkgs; [ 
