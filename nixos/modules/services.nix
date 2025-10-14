@@ -27,7 +27,16 @@ in {
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
-  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
+  services.udev =  {
+    enable = true;
+    packages = with pkgs; [ gnome-settings-daemon ];
+
+    # Remap the "mute" key on my keyboard to actually mute the mic
+    extraHwdb = ''
+    evdev:name:AK820 MAX5.0 Keyboard:*
+    KEYBOARD_KEY_c00e2=microphonemute
+    '';
+  };
 
   services.fwupd.enable = true;
 
