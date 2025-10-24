@@ -55,7 +55,6 @@
     boxbuddy
     pwvucontrol
     helvum
-    realvnc-vnc-viewer
 
     # Gnome things
     gnome-secrets
@@ -82,7 +81,6 @@
     git
     btop
     distrobox
-    docker-compose
 
     # IDEs
     vscode-fhs
