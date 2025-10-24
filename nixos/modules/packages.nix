@@ -84,7 +84,6 @@
     btop
     distrobox
     docker-compose
-    maestral
 
     # IDEs
     vscode-fhs
