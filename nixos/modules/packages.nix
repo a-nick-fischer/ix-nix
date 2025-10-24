@@ -55,7 +55,6 @@
     boxbuddy
     pwvucontrol
     helvum
-    maestral-gui
     realvnc-vnc-viewer
 
     # Gnome things
