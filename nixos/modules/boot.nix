@@ -5,7 +5,7 @@
 }: 
 let
   # Watch that this thing is compatible with our ZFS version
-  selectedKernelPackages = pkgs.linuxPackages_6_16;
+  selectedKernelPackages = pkgs.linuxPackages_6_17;
 in {
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -47,5 +47,7 @@ in {
 
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
     ];
+
+    tmp.cleanOnBoot = true;
   };
 }
