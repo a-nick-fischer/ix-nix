@@ -37,14 +37,9 @@
     gamescopeSession.enable = true;
   };
 
-  # Needed for geforce now
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-35.7.5"
-  ];
-
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     obsidian
     vesktop
     krita
@@ -59,19 +54,15 @@
     # Gnome things
     gnome-secrets
     gnome-boxes
-    warp
     impression
-    diebahn
     resources
-    dconf-editor
     eyedropper
     apostrophe
-    foliate
     
     # Browsers
     librewolf 
     google-chrome
-    tor-browser-bundle-bin
+    tor-browser
 
     # Tools
     fzf
@@ -94,8 +85,6 @@
     blender
 
     # Games
-    gfn-electron
-    cartridges
     protonup-qt
   ];
 
