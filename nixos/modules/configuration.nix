@@ -21,6 +21,7 @@
       ./services.nix
       ./time.nix
       ./users.nix
+      ./utils.nix
       ./virtualisation.nix
       ./zfs.nix
     ];
