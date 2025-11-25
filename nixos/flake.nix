@@ -17,6 +17,11 @@
     persist-retro = {
       url = "github:Geometer1729/persist-retro";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -33,6 +38,7 @@
         inputs.impermanence.nixosModules.impermanence
         inputs.persist-retro.nixosModules.persist-retro
         inputs.disko.nixosModules.default
+        inputs.nix-index-database.nixosModules.nix-index
         (import ./modules/disko.nix { })
 
         ./modules/configuration.nix
