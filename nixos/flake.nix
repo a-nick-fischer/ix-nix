@@ -1,6 +1,6 @@
 {
   description = "Nixos config flake";
-     
+
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
@@ -28,18 +28,17 @@
     self,
     nixpkgs,
     ...
-  } @ inputs:
-  let 
+  } @ inputs: let
     inherit (self) outputs;
   in {
     nixosConfigurations.ix = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs outputs; };
+      specialArgs = {inherit inputs outputs;};
       modules = [
         inputs.impermanence.nixosModules.impermanence
         inputs.persist-retro.nixosModules.persist-retro
         inputs.disko.nixosModules.default
         inputs.nix-index-database.nixosModules.nix-index
-        (import ./modules/disko.nix { })
+        (import ./modules/disko.nix {})
 
         ./modules/configuration.nix
       ];

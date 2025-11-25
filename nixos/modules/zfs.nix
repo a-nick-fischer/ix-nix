@@ -1,9 +1,7 @@
-{
-  ...
-}: {
-    # ZFS
+{...}: {
+  # ZFS
   boot = {
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = ["zfs"];
     zfs.requestEncryptionCredentials = true;
     # TODO extraModprobeConfig = ''
     #  options zfs metaslab_lba_weighting_enabled=0
@@ -19,9 +17,9 @@
       enable = true;
 
       # Use UTC time for snapshots, quote from options:
-      # If it’s not too inconvenient for snapshots to have timestamps in UTC, 
+      # If it’s not too inconvenient for snapshots to have timestamps in UTC,
       # it is suggested that you append --utc to the list of default options (see example).
-      # Otherwise, snapshot names can cause name conflicts or apparent time reversals due to 
+      # Otherwise, snapshot names can cause name conflicts or apparent time reversals due to
       # daylight savings, timezone or other date/time changes.
       flags = "--utc";
 

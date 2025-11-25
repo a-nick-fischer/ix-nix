@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}: 
-let
+{pkgs, ...}: let
   trashDownloadsScript = pkgs.writeShellScript "trash-downloads.sh" ''
     #!${pkgs.bash}/bin/bash
     set -euo pipefail
@@ -27,14 +23,14 @@ in {
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
-  services.udev =  {
+  services.udev = {
     enable = true;
-    packages = with pkgs; [ gnome-settings-daemon ];
+    packages = with pkgs; [gnome-settings-daemon];
 
     # Remap the "mute" key on my keyboard to actually mute the mic
     extraHwdb = ''
-    evdev:name:AK820 MAX5.0 Keyboard:*
-    KEYBOARD_KEY_c00e2=microphonemute
+      evdev:name:AK820 MAX5.0 Keyboard:*
+      KEYBOARD_KEY_c00e2=microphonemute
     '';
   };
 
@@ -44,11 +40,11 @@ in {
   services.xserver = {
     # Required for DE to launch.
     enable = true;
-    
+
     xkb.layout = "de";
 
     # Exclude default X11 packages I don't want.
-    excludePackages = with pkgs; [ xterm ];
+    excludePackages = with pkgs; [xterm];
   };
 
   services.desktopManager.gnome.enable = true;
@@ -77,11 +73,13 @@ in {
     # Sends SIGKILL on 1%
     freeMemThreshold = 2;
     freeSwapThreshold = 2;
-    
+
     extraArgs = [
       "-g"
-      "--prefer" "(^|/)(java|chromium|librewolf|electron)$"
-     "--ignore" "(^|/)(systemd)$" # TODO Add gnome stuff here
+      "--prefer"
+      "(^|/)(java|chromium|librewolf|electron)$"
+      "--ignore"
+      "(^|/)(systemd)$" # TODO Add gnome stuff here
     ];
   };
 
@@ -97,8 +95,8 @@ in {
   systemd.user.services.trash-downloads-on-login = {
     enable = true;
     description = "Trash everything in /home/nick/Downloads on login";
-    wantedBy = [ "default.target" ];
-    
+    wantedBy = ["default.target"];
+
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${trashDownloadsScript}";
@@ -108,15 +106,15 @@ in {
   # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
   boot.initrd.systemd.services.rollback = {
     description = "roolback rootfs on boot";
-    wantedBy = [ "initrd.target" ];
+    wantedBy = ["initrd.target"];
 
     # This service is called zfs-import-<poolname>.service
     # Look up your poolname in disko.nix next time before debugging for 3 hours...
-    after = [ "zfs-import-zroot.service" ];
+    after = ["zfs-import-zroot.service"];
 
-    before = [ "sysroot.mount"];
+    before = ["sysroot.mount"];
 
-    path = with pkgs; [ zfs ];
+    path = with pkgs; [zfs];
 
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";

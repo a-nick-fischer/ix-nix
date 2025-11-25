@@ -1,9 +1,7 @@
 {
   pkgs,
-  lib,
   ...
-}: 
-let
+}: let
   # Watch that this thing is compatible with our ZFS version
   selectedKernelPackages = pkgs.linuxPackages_6_17;
 in {
@@ -16,8 +14,8 @@ in {
     # Boot
     initrd = {
       systemd.enable = true;
-      availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
-      kernelModules = [  ];
+      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
+      kernelModules = [];
     };
 
     plymouth.enable = true;
@@ -32,7 +30,7 @@ in {
     };
 
     # Kernel
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = ["kvm-intel"];
 
     kernelPackages = selectedKernelPackages;
 
@@ -45,7 +43,7 @@ in {
       "net.ifnames=0"
       "biosdevname=0"
 
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
 
     tmp.cleanOnBoot = true;

@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
@@ -20,5 +18,5 @@
 
     # Touchpad
     libinput.enable = true;
-  }; 
+  };
 }

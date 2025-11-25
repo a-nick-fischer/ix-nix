@@ -1,9 +1,4 @@
-{ 
-  pkgs,
-  config,
-  ... 
-}:
-{
+{pkgs, ...}: {
   programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
@@ -32,7 +27,7 @@
     ];
   };
 
-  programs.gamemode.enable = true; 
+  programs.gamemode.enable = true;
 
   programs.steam = {
     enable = true; # install steam
@@ -63,7 +58,7 @@
     resources
     eyedropper
     apostrophe
-    
+
     # Browsers
     librewolf
     google-chrome
@@ -94,21 +89,21 @@
     protonup-qt
   ];
 
-  services.xserver.excludePackages = with pkgs; [ 
-    xterm 
+  services.xserver.excludePackages = with pkgs; [
+    xterm
   ];
 
   environment.gnome.excludePackages = with pkgs; [
-      geary
-      gnome-tour
-      gnome-music
-      gnome-console
-      gnome-terminal
-      gnome-contacts
-      gnome-system-monitor
-      totem
-      gedit
-      epiphany
+    geary
+    gnome-tour
+    gnome-music
+    gnome-console
+    gnome-terminal
+    gnome-contacts
+    gnome-system-monitor
+    totem
+    gedit
+    epiphany
   ];
 
   xdg.mime.defaultApplications = {
@@ -121,7 +116,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     xdgOpenUsePortal = true;
   };
 }

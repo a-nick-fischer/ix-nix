@@ -1,8 +1,4 @@
-{
- lib,
- ... 
-}: 
-{
+{lib, ...}: {
   ##################################################
   # General
   ##################################################
@@ -21,7 +17,7 @@
     # boatloader, this does not provide anything. You may also want to
     # consider disabling similar functions in your choice of bootloader.
     loader.systemd-boot.editor = false;
-  };  
+  };
 
   environment.etc = {
     # Empty /etc/securetty to prevent root login on tty.
@@ -39,7 +35,7 @@
   };
 
   # Limit access to nix to users with the "wheel" group. ("sudoers")
-  nix.settings.allowed-users = lib.mkForce [ "@wheel" ];
+  nix.settings.allowed-users = lib.mkForce ["@wheel"];
 
   ##################################################
   # NETWORKING
@@ -89,14 +85,13 @@
     "net.ipv6.conf.all.max_addresses" = "1";
   };
 
-
   # Configure DoH
   ##################################################
   # See https://nixos.wiki/wiki/Encrypted_DNS
   services.resolved.enable = false;
 
   networking = {
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = ["127.0.0.1" "::1"];
     networkmanager.dns = "none";
   };
 

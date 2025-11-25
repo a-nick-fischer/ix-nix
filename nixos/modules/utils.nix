@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-  # Provides a 'game' script that runs executables with gamemode and nvidia-offload
+{pkgs, ...}: {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "game" ''
       #!/usr/bin/env bash

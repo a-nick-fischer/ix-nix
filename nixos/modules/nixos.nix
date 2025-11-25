@@ -1,19 +1,17 @@
-{
-  ...
-}: {
+{...}: {
   nix = {
     optimise.automatic = true;
 
     gc = {
       automatic = true;
       dates = "monthly";
-      options = "--delete-older-than 30d"; 
+      options = "--delete-older-than 30d";
     };
 
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    
+      experimental-features = ["nix-command" "flakes"];
+
       trusted-substituters = [
         "https://nix-community.cachix.org"
         "https://cache.garnix.io"
