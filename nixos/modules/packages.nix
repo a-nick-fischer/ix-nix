@@ -8,6 +8,10 @@
 
   programs.wireshark.enable = true;
 
+  programs.pay-respect.enable = true;
+
+  programs.nix-index-database.comma.enable = true;
+
   programs.nh = {
     enable = true;
     flake = "/home/nick/.config/nixos";
@@ -50,6 +54,7 @@
     boxbuddy
     pwvucontrol
     helvum
+    keepassxc
 
     # Gnome things
     gnome-secrets
@@ -60,7 +65,7 @@
     apostrophe
     
     # Browsers
-    librewolf 
+    librewolf
     google-chrome
     tor-browser
 
@@ -70,8 +75,9 @@
     macchanger
     tldr
     git
-    btop
     distrobox
+    nixd
+    alejandra
 
     # IDEs
     vscode-fhs
