@@ -8,7 +8,7 @@
 
   programs.wireshark.enable = true;
 
-  programs.pay-respect.enable = true;
+  programs.pay-respects.enable = true;
 
   programs.nix-index-database.comma.enable = true;
 
