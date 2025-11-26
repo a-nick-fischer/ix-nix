@@ -10,4 +10,6 @@
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
+
+  hardware.sensor.iio.enable = true;
 }
