@@ -13,4 +13,5 @@
 
   hardware.sensor.iio.enable = true;
   hardware.logitech.wireless.enable = true;
+  hardware.uinput.enable = true;
 }

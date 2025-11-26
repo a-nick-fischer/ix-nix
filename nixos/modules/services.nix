@@ -23,15 +23,36 @@ in {
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
-  services.udev = {
+  services.kanata = {
     enable = true;
-    packages = with pkgs; [gnome-settings-daemon];
 
-    # Remap the "mute" key on my keyboard to actually mute the mic
-    extraHwdb = ''
-      evdev:name:AK820 MAX5.0 Keyboard:*
-      KEYBOARD_KEY_c00e2=microphonemute
-    '';
+     keyboards = {
+      "logi".config = ''
+        (defcustomkeys
+          ü    186
+          ö    192
+          ß    219
+          ä    222
+          mute 113
+        )
+        
+        (defsrc
+                                                                           mute
+          grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+          tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+          caps a    s    d    f    g    h    j    k    l    ;    '    ret
+          lsft z    x    c    v    b    n    m    ,    .    /    rsft
+          lctl lmet lalt           spc            ralt rmet rctl
+        )
+
+        (deflayermap (base-layer) 
+          u ü
+          o ö
+          a ä
+          s ß
+        )
+      '';
+     }; 
   };
 
   services.fwupd.enable = true;
