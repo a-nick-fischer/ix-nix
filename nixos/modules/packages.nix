@@ -46,7 +46,6 @@
     rnote
     thunderbird
     kitty
-    boxbuddy
     pwvucontrol
     helvum
     keepassxc
@@ -58,6 +57,7 @@
     resources
     eyedropper
     apostrophe
+    refine
 
     # Browsers
     librewolf
@@ -70,7 +70,6 @@
     macchanger
     tldr
     git
-    distrobox
     nixd
     alejandra
 
