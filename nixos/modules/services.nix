@@ -50,17 +50,12 @@ in {
   services.desktopManager.gnome.enable = true;
 
   services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      settings = {
-        Autologin = {
-          User = "nick";
-        };
-      };
-    };
+    gdm.enable = true;
 
-    defaultSession = "gnome";
+    autoLogin = {
+      enable = true;
+      user = "nick";
+    };
   };
 
   # Better OOM-Daemon 'cause fuck systemd-oom
