@@ -49,6 +49,7 @@
     pwvucontrol
     helvum
     keepassxc
+    solaar
 
     # Gnome things
     gnome-secrets

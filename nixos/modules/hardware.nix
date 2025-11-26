@@ -12,4 +12,5 @@
   hardware.enableRedistributableFirmware = true;
 
   hardware.sensor.iio.enable = true;
+  hardware.logitech.wireless.enable = true;
 }
