@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, inputs, ... }:
+let
+  librewolf-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.librewolf;
+in
+{
   programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
@@ -61,7 +65,7 @@
     refine
 
     # Browsers
-    librewolf
+    librewolf-bin
     google-chrome
     tor-browser
 
