@@ -1,8 +1,4 @@
-{ pkgs, inputs, ... }:
-let
-  librewolf-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.librewolf;
-in
-{
+{pkgs, ...}: {
   programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
