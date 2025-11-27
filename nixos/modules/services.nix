@@ -28,7 +28,7 @@ in {
 
      keyboards = {
       "logi".config = ''
-        (defcustomkeys
+        (deflocalkeys-linux
           ü    186
           ö    192
           ß    219
