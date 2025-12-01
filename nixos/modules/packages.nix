@@ -52,7 +52,6 @@
     solaar
 
     # Gnome things
-    gnome-secrets
     gnome-boxes
     impression
     resources

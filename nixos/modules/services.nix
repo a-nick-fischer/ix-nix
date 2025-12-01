@@ -26,33 +26,44 @@ in {
   services.kanata = {
     enable = true;
 
-     keyboards = {
-      "logi".config = ''
-        (deflocalkeys-linux
-          ü    186
-          ö    192
-          ß    219
-          ä    222
-          mute 113
-        )
-        
-        (defsrc
-                                                                           mute
-          grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-          tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-          caps a    s    d    f    g    h    j    k    l    ;    '    ret
-          lsft z    x    c    v    b    n    m    ,    .    /    rsft
-          lctl lmet lalt           spc            ralt rmet rctl
-        )
+    package = pkgs.kanata-with-cmd;
+
+    keyboards."logi" = {
+      extraDefCfg = ''
+        process-unmapped-keys yes
+        danger-enable-cmd yes
+      '';
+
+      config = ''
+        (defsrc)
 
         (deflayermap (base-layer) 
-          u ü
-          o ö
-          a ä
-          s ß
+          lalt @umlauts
+          ralt @umlauts
+        )
+
+        (deflayermap (german)
+          u @ue
+          o @oe
+          a @ae
+          s @sz
+        )
+
+        (defalias
+          umlauts (layer-while-held german)
+          Ae (unicode Ä)
+          Ue (unicode Ü)
+          Oe (unicode Ö)
+          ae (unicode ä)
+          ue (unicode ü)
+          oe (unicode ö)
+          _ae (fork @ae @Ae (lsft rsft))
+          _ue (fork @ue @Ue (lsft rsft))
+          _oe (fork @oe @Oe (lsft rsft))
+          sz (unicode ß)
         )
       '';
-     }; 
+    };
   };
 
   services.fwupd.enable = true;
