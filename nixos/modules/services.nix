@@ -79,6 +79,8 @@ in {
     excludePackages = with pkgs; [xterm];
   };
 
+  services.ratbagd.enable = true;
+
   services.desktopManager.gnome.enable = true;
 
   services.displayManager = {

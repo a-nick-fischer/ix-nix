@@ -49,7 +49,7 @@
     pwvucontrol
     helvum
     keepassxc
-    solaar
+    piper
 
     # Gnome things
     gnome-boxes
