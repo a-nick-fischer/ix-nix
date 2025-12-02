@@ -34,6 +34,7 @@ in {
         danger-enable-cmd yes
       '';
 
+      # Note: This requires the compose key to be set to rctrl (right control) in Gnome settings
       config = ''
         (defsrc)
 
@@ -51,16 +52,16 @@ in {
 
         (defalias
           umlauts (layer-while-held german)
-          Ae (unicode Ä)
-          Ue (unicode Ü)
-          Oe (unicode Ö)
-          ae (unicode ä)
-          ue (unicode ü)
-          oe (unicode ö)
+          Ae (macro rctrl " A)
+          Ue (macro rctrl " U)
+          Oe (macro rctrl " O)
+          ae (macro rctrl " a)
+          ue (macro rctrl " u)
+          oe (macro rctrl " o)
           _ae (fork @ae @Ae (lsft rsft))
           _ue (fork @ue @Ue (lsft rsft))
           _oe (fork @oe @Oe (lsft rsft))
-          sz (unicode ß)
+          sz (macro rctrl s s)
         )
       '';
     };
