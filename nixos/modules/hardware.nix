@@ -11,7 +11,7 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
-  hardware.sensor.iio.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   hardware.logitech.wireless.enable = true;
   hardware.uinput.enable = true;
 }
