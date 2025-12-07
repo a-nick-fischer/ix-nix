@@ -52,12 +52,12 @@ in {
 
         (defalias
           umlauts (layer-while-held german)
-          Ae (macro rctrl " A)
-          Ue (macro rctrl " U)
-          Oe (macro rctrl " O)
-          ae (macro rctrl " a)
-          ue (macro rctrl " u)
-          oe (macro rctrl " o)
+          Ae (macro rctrl S-' S-a)
+          Ue (macro rctrl S-' S-u)
+          Oe (macro rctrl S-' S-o)
+          ae (macro rctrl S-' a)
+          ue (macro rctrl S-' u)
+          oe (macro rctrl S-' o)
           _ae (fork @ae @Ae (lsft rsft))
           _ue (fork @ue @Ue (lsft rsft))
           _oe (fork @oe @Oe (lsft rsft))
