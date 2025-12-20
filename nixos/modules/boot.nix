@@ -15,7 +15,10 @@ in {
     initrd = {
       systemd.enable = true;
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
-      kernelModules = [];
+      kernelModules = [ 
+        # For displaylink
+        "evdi" 
+      ];
     };
 
     plymouth.enable = true;

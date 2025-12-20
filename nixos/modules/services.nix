@@ -80,6 +80,9 @@ in {
     excludePackages = with pkgs; [xterm];
   };
 
+  # DisplayLink daemon
+  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+
   services.ratbagd.enable = true;
 
   services.desktopManager.gnome.enable = true;

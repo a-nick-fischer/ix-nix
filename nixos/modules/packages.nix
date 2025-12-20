@@ -72,6 +72,7 @@
     git
     nixd
     alejandra
+    displaylink
 
     # IDEs
     vscode-fhs
