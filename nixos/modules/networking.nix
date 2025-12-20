@@ -5,6 +5,21 @@
     hostName = "ix"; # Define your hostname.
     hostId = "fff69420";
     useDHCP = lib.mkDefault true;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      connectionConfig = {
+        internal-wifi-card = {
+          type = "wifi";
+          interface-name = "wlan0";
+          ipv4.route-metric = 600;
+        };
+
+        external-wifi-antenna = {
+          type = "wifi";
+          interface-name = "wlan1";
+          ipv4.route-metric = 100;
+        };
+      };
+    };
   };
 }
