@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, pkgs, ... }: {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking = {
@@ -11,7 +11,7 @@
       # Prefer wlan1 over wlan0 by assigning lower route metrics to wlan1.
       dispatcherScripts = [
         {
-          source = ''
+          source = pkgs.writeShellScript "nm-prefer-wlan1" ''
             #!/run/current-system/sw/bin/bash
             set -euo pipefail
 
