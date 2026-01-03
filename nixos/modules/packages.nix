@@ -73,6 +73,7 @@
     nixd
     alejandra
     displaylink
+    podman-compose
 
     # IDEs
     vscode-fhs
