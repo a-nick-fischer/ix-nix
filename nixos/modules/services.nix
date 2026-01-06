@@ -135,24 +135,4 @@ in {
       ExecStart = "${trashDownloadsScript}";
     };
   };
-
-  # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
-  boot.initrd.systemd.services.rollback = {
-    description = "roolback rootfs on boot";
-    wantedBy = ["initrd.target"];
-
-    # This service is called zfs-import-<poolname>.service
-    # Look up your poolname in disko.nix next time before debugging for 3 hours...
-    after = ["zfs-import-zroot.service"];
-
-    before = ["sysroot.mount"];
-
-    path = with pkgs; [zfs];
-
-    unitConfig.DefaultDependencies = "no";
-    serviceConfig.Type = "oneshot";
-    script = ''
-      zfs rollback -r zroot/root@blank
-    '';
-  };
 }

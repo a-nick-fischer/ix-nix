@@ -1,11 +1,38 @@
-{...}: {
+{pkgs, ...}: 
+let
+  zfsPackage = pkgs.zfs_2_4;
+in
+{
   # ZFS
   boot = {
     supportedFilesystems = ["zfs"];
-    zfs.requestEncryptionCredentials = true;
-    # TODO extraModprobeConfig = ''
-    #  options zfs metaslab_lba_weighting_enabled=0
-    #'';
+
+
+    zfs = {
+      enable = true;
+      package = zfsPackage;
+      requestEncryptionCredentials = true;
+    };
+
+    # https://discourse.nixos.org/t/zfs-rollback-not-working-using-boot-initrd-systemd/37195/2
+    initrd.systemd.services.rollback = {
+      description = "roolback rootfs on boot";
+      wantedBy = ["initrd.target"];
+
+      # This service is called zfs-import-<poolname>.service
+      # Look up your poolname in disko.nix next time before debugging for 3 hours...
+      after = ["zfs-import-zroot.service"];
+
+      before = ["sysroot.mount"];
+
+      path = zfsPackage;
+
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+        zfs rollback -r zroot/root@blank
+      '';
+    };
   };
 
   services = {
