@@ -9,7 +9,6 @@ in
 
 
     zfs = {
-      enable = true;
       package = zfsPackage;
       requestEncryptionCredentials = true;
     };
@@ -25,7 +24,7 @@ in
 
       before = ["sysroot.mount"];
 
-      path = zfsPackage;
+      path = [zfsPackage];
 
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
