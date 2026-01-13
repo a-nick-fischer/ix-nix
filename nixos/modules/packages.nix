@@ -60,7 +60,7 @@
     refine
 
     # Browsers
-    # Librewolf is in users.nix because of env vars
+    librewolf
     google-chrome
     tor-browser
 
