@@ -83,9 +83,11 @@ in {
   # DisplayLink daemon
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
+  # For piper
   services.ratbagd.enable = true;
 
   services.desktopManager.gnome.enable = true;
+  services.gnome.sushi.enable = true;
 
   services.displayManager = {
     gdm.enable = true;
