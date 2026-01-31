@@ -40,16 +40,20 @@
     # Day-to-Day Programs
     onlyoffice-desktopeditors
     obsidian
-    vesktop
-    krita
+    discord
+    pinta
     signal-desktop
     rnote
     thunderbird
     kitty
-    pwvucontrol
-    helvum
     keepassxc
     piper
+    protonvpn-gui
+
+    # Audio
+    easyeffects
+    pwvucontrol
+    helvum
 
     # Gnome things
     gnome-boxes
@@ -68,12 +72,13 @@
     fzf
     jq
     macchanger
-    tldr
+    tealdeer
     git
     nixd
     alejandra
     displaylink
     podman-compose
+    helix
 
     # IDEs
     vscode-fhs
