@@ -30,6 +30,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    system = "x86_64-linux";
   in {
     nixosConfigurations.ix = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs outputs;};
@@ -43,5 +44,17 @@
         ./modules/configuration.nix
       ];
     };
+
+    devShells."${system}" = {
+      print3d = let
+        pkgs = import nixpkgs {inherit system;};
+      in
+        pkgs.mkShell {
+          packages = with pkgs; [
+            super-slicer
+            blender
+          ];
+        };
+      };
   };
 }
