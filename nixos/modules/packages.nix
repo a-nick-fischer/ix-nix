@@ -84,13 +84,6 @@
     vscode-fhs
     jetbrains-toolbox
 
-    # UI
-    gnomeExtensions.pop-shell
-
-    # 3D Printing & CNC
-    super-slicer
-    blender
-
     # Games
     protonup-qt
   ];
