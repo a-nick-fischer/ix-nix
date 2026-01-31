@@ -94,35 +94,4 @@
     # Games
     protonup-qt
   ];
-
-  services.xserver.excludePackages = with pkgs; [
-    xterm
-  ];
-
-  environment.gnome.excludePackages = with pkgs; [
-    geary
-    gnome-tour
-    gnome-music
-    gnome-console
-    gnome-terminal
-    gnome-contacts
-    gnome-system-monitor
-    totem
-    gedit
-    epiphany
-  ];
-
-  xdg.mime.defaultApplications = {
-    "text/html" = "librewolf.desktop";
-    "x-scheme-handler/http" = "librewolf.desktop";
-    "x-scheme-handler/https" = "librewolf.desktop";
-    "x-scheme-handler/about" = "librewolf.desktop";
-    "x-scheme-handler/unknown" = "librewolf.desktop";
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    xdgOpenUsePortal = true;
-  };
 }

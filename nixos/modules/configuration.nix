@@ -5,6 +5,7 @@
   imports = [
     ./auxillary.nix
     ./boot.nix
+    ./desktop.nix
     ./hardening.nix
     ./hardware.nix
     ./impermanance.nix

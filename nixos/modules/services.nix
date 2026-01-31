@@ -69,34 +69,11 @@ in {
 
   services.fwupd.enable = true;
 
-  # Needed for Gnome
-  services.xserver = {
-    # Required for DE to launch.
-    enable = true;
-
-    xkb.layout = "de";
-
-    # Exclude default X11 packages I don't want.
-    excludePackages = with pkgs; [xterm];
-  };
-
   # DisplayLink daemon
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
   # For piper
   services.ratbagd.enable = true;
-
-  services.desktopManager.gnome.enable = true;
-  services.gnome.sushi.enable = true;
-
-  services.displayManager = {
-    gdm.enable = true;
-
-    autoLogin = {
-      enable = true;
-      user = "nick";
-    };
-  };
 
   # Better OOM-Daemon 'cause fuck systemd-oom
   systemd.oomd.enable = false;
