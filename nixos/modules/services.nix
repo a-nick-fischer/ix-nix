@@ -98,6 +98,9 @@ in {
   # Proxy systemd-bus notifications to libnotify
   services.systembus-notify.enable = true;
 
+  # Only needed for modems
+  networking.modemmanager.enable = false;
+
   # Nobody needs the default 4GB of logs...
   services.journald.extraConfig = ''
     SystemMaxUse=500M

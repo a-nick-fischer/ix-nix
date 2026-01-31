@@ -4,6 +4,8 @@
   ##################################################
   # We're borrowing things from nix-mineral, the whole config is a bit overkill
   # See https://github.com/cynicsketch/nix-mineral/blob/main/nix-mineral.nix
+  #
+  # Some things are also borrowed from https://saylesss88.github.io/nix/hardening_NixOS.html
   boot = {
     kernel.sysctl = {
       # enable ASLR
@@ -135,4 +137,8 @@
   };
 
   systemd.network.config.networkConfig.IPv6PrivacyExtensions = "kernel";
+
+  # Memory Allocator
+  ##################################################
+  environment.memoryAllocator.provider = "graphene-hardened-light";
 }
