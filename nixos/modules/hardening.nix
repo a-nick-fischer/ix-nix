@@ -137,8 +137,4 @@
   };
 
   systemd.network.config.networkConfig.IPv6PrivacyExtensions = "kernel";
-
-  # Memory Allocator
-  ##################################################
-  environment.memoryAllocator.provider = "graphene-hardened-light";
 }
