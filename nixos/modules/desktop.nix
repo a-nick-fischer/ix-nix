@@ -1,4 +1,4 @@
-{pkgs, }: {
+{pkgs, ...}: {
   # Needed for Gnome
   services.xserver = {
     # Required for DE to launch.
