@@ -49,6 +49,7 @@
     keepassxc
     piper
     protonvpn-gui
+    yubikey-personalization 
 
     # Audio
     easyeffects
@@ -76,7 +77,6 @@
     git
     nixd
     alejandra
-    displaylink
     podman-compose
     helix
 

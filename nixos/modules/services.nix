@@ -20,6 +20,11 @@
     done
   '';
 in {
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ epson-escpr ];
+  };
+
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
@@ -68,9 +73,6 @@ in {
   };
 
   services.fwupd.enable = true;
-
-  # DisplayLink daemon
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
   # For piper
   services.ratbagd.enable = true;

@@ -1,5 +1,5 @@
 {config, ...}: {
-  services.xserver.videoDrivers = ["nvidia" "displaylink"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
     graphics = {
