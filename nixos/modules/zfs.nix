@@ -7,7 +7,6 @@ in
   boot = {
     supportedFilesystems = ["zfs"];
 
-
     zfs = {
       package = zfsPackage;
       requestEncryptionCredentials = true;
