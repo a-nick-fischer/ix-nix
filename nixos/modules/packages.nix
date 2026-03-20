@@ -54,7 +54,7 @@
     # Audio
     easyeffects
     pwvucontrol
-    helvum
+    crosspipe
 
     # Gnome things
     gnome-boxes
