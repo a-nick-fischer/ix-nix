@@ -63,6 +63,11 @@
     eyedropper
     apostrophe
     refine
+    gradia
+    mousai
+    gnome-obfuscate
+    gnome-session
+    blanket
 
     # Browsers
     librewolf
@@ -79,6 +84,7 @@
     alejandra
     podman-compose
     helix
+    tirith
 
     # IDEs
     vscode-fhs
