@@ -4,8 +4,6 @@
   ...
 }: let
   opennow = pkgs.callPackage ./packages/opennow.nix {};
-  # TODO: Replace with official once merged into unstable
-  sessions = pkgs.callPackage ./packages/sessions.nix {}; 
 in {
   programs.firejail.enable = true;
 
