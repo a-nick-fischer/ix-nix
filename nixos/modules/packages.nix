@@ -55,7 +55,6 @@ in {
 
     # Audio
     easyeffects
-    pwvucontrol
     crosspipe
 
     # Gnome things
