@@ -1,6 +1,10 @@
-{pkgs, ...}: let
-  opennow = pkgs.callPackage ./opennow.nix {};
-  sessions = pkgs.callPackage ./sessions.nix {};
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  opennow = pkgs.callPackage ./packages/opennow.nix {};
+  sessions = pkgs.callPackage ./packages/sessions.nix {};
 in {
   programs.firejail.enable = true;
 
@@ -31,6 +35,10 @@ in {
   };
 
   programs.gamemode.enable = true;
+
+  programs.bash.interactiveShellInit = lib.mkAfter ''
+    eval "$(tirith init --shell bash)"
+  '';
 
   programs.steam = {
     enable = true; # install steam
