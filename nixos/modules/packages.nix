@@ -49,7 +49,6 @@ in {
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-desktopeditors
-    sessions
     obsidian
     discord
     pinta
