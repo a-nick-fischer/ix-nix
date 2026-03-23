@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   opennow = pkgs.callPackage ./opennow.nix {};
+  sessions = pkgs.callPackage ./sessions.nix {};
 in {
   programs.firejail.enable = true;
 
@@ -41,6 +42,7 @@ in {
   environment.systemPackages = with pkgs; [
     # Day-to-Day Programs
     onlyoffice-desktopeditors
+    sessions
     obsidian
     discord
     pinta
@@ -67,7 +69,6 @@ in {
     gradia
     mousai
     gnome-obfuscate
-    gnome-session
     blanket
 
     # Browsers
