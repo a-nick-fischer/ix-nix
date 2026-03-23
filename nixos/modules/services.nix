@@ -19,39 +19,7 @@
       ${pkgs.glib}/bin/gio trash "$entry" || echo "Warning: Failed to trash $entry" >&2
     done
   '';
-
-  micDefaultPolicyScript = pkgs.writeShellScript "mic-default-policy.sh" ''
-    #!${pkgs.bash}/bin/bash
-    set -euo pipefail
-
-    # Keep this regex aligned with the external mic source name from:
-    #   wpctl status -n / wpctl inspect <ID>
-    ALLOWED_SOURCE_REGEX='(Snowball|Blue)'
-    WPCTL='${pkgs.wireplumber}/bin/wpctl'
-
-    # Give PipeWire/WirePlumber a short moment to enumerate sources.
-    sleep 2
-
-    while IFS= read -r object_id; do
-      [[ -n "''${object_id:-}" ]] || continue
-
-      inspect_out=$("$WPCTL" inspect "$object_id" 2>/dev/null || true)
-      echo "$inspect_out" | ${pkgs.gnugrep}/bin/grep -q 'media.class = "Audio/Source"' || continue
-
-      source_name=$(echo "$inspect_out" | ${pkgs.gnused}/bin/sed -n 's/.*node.description = "\(.*\)".*/\1/p' | ${pkgs.coreutils}/bin/head -n1)
-
-      if echo "$source_name" | ${pkgs.gnugrep}/bin/grep -Eiq "$ALLOWED_SOURCE_REGEX"; then
-        "$WPCTL" set-mute "$object_id" 0 || true
-      else
-        "$WPCTL" set-volume "$object_id" 0 || true
-        "$WPCTL" set-mute "$object_id" 1 || true
-      fi
-    done < <(
-      "$WPCTL" status -n \
-        | ${pkgs.gnused}/bin/sed -n 's/^[[:space:]]*[*[:space:]]*\([0-9][0-9]*\)\..*/\1/p' \
-        | ${pkgs.gawk}/bin/awk '!seen[$1]++'
-    )
-  '';
+  micDefaultPolicy = pkgs.callPackage ./packages/mic-default-policy.nix {};
 in {
   services.printing = {
     enable = true;
@@ -161,7 +129,7 @@ in {
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${micDefaultPolicyScript}";
+      ExecStart = "${micDefaultPolicy}/bin/mic-default-policy";
     };
   };
 }
