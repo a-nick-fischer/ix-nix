@@ -125,7 +125,8 @@ in {
     enable = true;
     description = "Mute all microphones except external Snowball mic on login";
     wantedBy = ["default.target"];
-    after = ["pipewire.service" "wireplumber.service"];
+    wants = ["pipewire.service" "wireplumber.service" "pipewire-pulse.service"];
+    after = ["pipewire.service" "wireplumber.service" "pipewire-pulse.service"];
 
     serviceConfig = {
       Type = "oneshot";

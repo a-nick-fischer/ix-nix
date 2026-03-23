@@ -20,9 +20,21 @@ writeShellScriptBin "mic-default-policy" ''
   AWK='${gawk}/bin/awk'
 
   get_source_ids() {
-    # Limit parsing to the Sources section to avoid scanning unrelated object IDs.
+    # Parse only the Audio->Sources block; wpctl uses box-drawing characters that
+    # make strict line-start regexes brittle across versions/themes.
     "$WPCTL" status -n \
-      | "$SED" -n '/Sources:/,/Filters:/ s/^[[:space:]]*[*[:space:]]*\([0-9][0-9]*\)\..*/\1/p' \
+      | "$AWK" '
+          /^Audio$/ { in_audio=1; next }
+          /^Video$/ { in_audio=0; in_sources=0; next }
+          in_audio && /Sources:/ { in_sources=1; next }
+          in_audio && in_sources && (/Filters:/ || /Streams:/) { in_sources=0; next }
+          in_audio && in_sources {
+            if (match($0, /[0-9]+\./)) {
+              id = substr($0, RSTART, RLENGTH - 1)
+              print id
+            }
+          }
+        ' \
       | "$AWK" '!seen[$1]++'
   }
 
