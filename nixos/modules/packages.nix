@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  opennow = pkgs.callPackage ./opennow.nix {};
+in {
   programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
@@ -92,5 +94,6 @@
 
     # Games
     protonup-qt
+    opennow
   ];
 }
