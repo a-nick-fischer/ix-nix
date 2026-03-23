@@ -9,8 +9,6 @@
       "/var/db/sudo/lectured"
       "/etc/NetworkManager/system-connections"
     ];
-    files = [
-      "/var/lib/sddm/state.conf"
-    ];
+    files = [];
   };
 }
