@@ -15,6 +15,8 @@ in {
     initrd = {
       systemd.enable = true;
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
+      # Load display-related DRM drivers early so Plymouth can render on HDMI outputs.
+      kernelModules = ["i915" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     };
 
     plymouth = {
@@ -56,6 +58,8 @@ in {
       "net.ifnames=0"
       "biosdevname=0"
 
+      # Required for early NVIDIA DRM KMS during initrd/Plymouth.
+      "nvidia-drm.modeset=1"
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
 
