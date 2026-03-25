@@ -93,6 +93,7 @@ in {
     podman-compose
     helix
     tirith
+    sbctl
 
     # IDEs
     vscode-fhs

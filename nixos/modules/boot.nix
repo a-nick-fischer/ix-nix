@@ -17,11 +17,25 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "sdhci_pci"];
     };
 
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      themePackages = with pkgs; [ adi1090x-plymouth-themes ];
+      theme = "circle_hud";
+    };
 
     loader = {
-      systemd-boot = {
+      limine = {
+        # 1. Step - disable systemdboot and enable this
         enable = true;
+        # 2. Step - persist sbctl folder, enroll keys, enable this
+        secureBoot.enable = true;
+        # 3. Step - everything fine? - disable this
+        enableEditor = true;
+        maxGenerations = 7;
+      };
+
+      systemd-boot = {
+        enable = false;
         configurationLimit = 7;
       };
 
