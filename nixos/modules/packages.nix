@@ -35,12 +35,8 @@ in {
 
   programs.gamemode.enable = true;
 
-  programs.bash.interactiveShellInit = lib.mkAfter ''
-    eval "$(tirith init --shell bash)"
-  '';
-
   programs.steam = {
-    enable = true; # install steam
+    enable = true;
     remotePlay.openFirewall = true;
     protontricks.enable = true;
     gamescopeSession.enable = true;
@@ -74,7 +70,6 @@ in {
     refine
     gradia
     mousai
-    gnome-obfuscate
     blanket
 
     # Browsers
@@ -92,7 +87,6 @@ in {
     alejandra
     podman-compose
     helix
-    tirith
     sbctl
 
     # IDEs
