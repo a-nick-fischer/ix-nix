@@ -88,6 +88,7 @@ in {
     podman-compose
     helix
     sbctl
+    vt-cli
 
     # IDEs
     vscode-fhs
