@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   trashDownloadsScript = pkgs.writeShellScript "trash-downloads.sh" ''
     #!${pkgs.bash}/bin/bash
     set -euo pipefail
@@ -100,6 +104,36 @@ in {
 
   # Proxy systemd-bus notifications to libnotify
   services.systembus-notify.enable = true;
+
+  # Notify on failed system services using a systemd template unit.
+  systemd.services."notify-failure-of-systemd-service@" = {
+    description = "Notify that service %i failed";
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    script = ''
+      unit_name="$1"
+
+      ${pkgs.dbus}/bin/dbus-send --system / \
+        net.nuetzlich.SystemNotifications.Notify \
+        "string:Systemd service failed" \
+        "string:${config.networking.hostName}: ''${unit_name}.service failed"
+    '';
+    # %i is set by the template unit instance from the OnFailure drop-in below.
+    scriptArgs = "%i";
+  };
+
+  # Top-level drop-in that applies to all *.service units.
+  systemd.units."service.d/10-onfailure-notify.conf".text = ''
+    [Unit]
+    OnFailure=notify-failure-of-systemd-service@%N.service
+  '';
+
+  # Disable the top-level OnFailure drop-in for the notifier itself to avoid
+  # recursive notification loops if the notifier ever fails.
+  systemd.units."notify-failure-of-systemd-service@.service.d/10-onfailure-notify.conf".enable = false;
 
   # Only needed for modems
   networking.modemmanager.enable = false;

@@ -73,6 +73,11 @@
         desktop = "${prev.kitty}/share/applications/kitty.desktop";
       };
 
+      jan = nvidiaOffloadWrap {
+        executable = "${prev.jan}/bin/Jan";
+        desktop = "${prev.jan}/share/applications/Jan.desktop";
+      };
+
       tor-browser = firejailWrap {
         executable = "${prev.tor-browser}/bin/tor-browser";
         desktop = "${prev.tor-browser}/share/applications/torbrowser.desktop";
