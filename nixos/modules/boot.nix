@@ -30,7 +30,7 @@ in {
         # 2. Step - persist sbctl folder, enroll keys, enable this
         secureBoot.enable = true;
         # 3. Step - everything fine? - disable this
-        enableEditor = true;
+        enableEditor = false;
         maxGenerations = 7;
 
         style = {
