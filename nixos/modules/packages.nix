@@ -1,10 +1,7 @@
 {
-  lib,
   pkgs,
   ...
-}: let
-  opennow = pkgs.callPackage ./packages/opennow.nix {};
-in {
+}: {
   programs.firejail.enable = true;
 
   programs.wireshark.enable = true;
@@ -52,9 +49,10 @@ in {
     rnote
     thunderbird
     kitty
+    aseprite
     keepassxc
     piper
-    protonvpn-gui
+    proton-vpn
     yubikey-personalization 
 
     # Audio
@@ -66,11 +64,11 @@ in {
     impression
     resources
     eyedropper
-    apostrophe
     refine
     gradia
     mousai
     blanket
+    networkmanager-openconnect
 
     # Browsers
     librewolf
@@ -89,6 +87,7 @@ in {
     helix
     sbctl
     vt-cli
+    jan
 
     # IDEs
     vscode-fhs
@@ -96,6 +95,5 @@ in {
 
     # Games
     protonup-qt
-    opennow
   ];
 }
