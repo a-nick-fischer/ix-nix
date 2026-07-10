@@ -87,7 +87,9 @@
     helix
     sbctl
     vt-cli
-    jan
+    libqalculate
+    krita
+    upscayl
 
     # IDEs
     vscode-fhs
