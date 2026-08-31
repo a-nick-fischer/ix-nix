@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    disko = {
+    disko = {  
       url = "github:nix-community/disko";
     };
 
