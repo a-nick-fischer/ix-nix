@@ -33,6 +33,11 @@ in {
   security.polkit.enable = true;
   services.dbus.implementation = "broker";
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+  };
+
   services.kanata = {
     enable = true;
 
