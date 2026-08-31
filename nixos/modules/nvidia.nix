@@ -16,7 +16,6 @@
         finegrained = false;
       };
 
-      nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
       prime = {
