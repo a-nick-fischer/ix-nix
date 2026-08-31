@@ -8,6 +8,7 @@
       "/var/db/sudo/lectured"
       "/etc/NetworkManager/system-connections"
       "/var/lib/sbctl"
+      "/var/lib/syncthing"
     ];
     files = [];
   };
