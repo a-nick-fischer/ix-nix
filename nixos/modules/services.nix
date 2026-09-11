@@ -107,6 +107,18 @@ in {
     ];
   };
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
+  systemd.services.tailscaled.environment = {
+    SSL_CERT_FILE = toString ../assets/ca.crt;
+  };
+
+  security.pki.certificateFiles = [ ../assets/ca.crt ];
+
+
   # Proxy systemd-bus notifications to libnotify
   services.systembus-notify.enable = true;
 
@@ -142,11 +154,6 @@ in {
 
   # Only needed for modems
   networking.modemmanager.enable = false;
-
-  # Nobody needs the default 4GB of logs...
-  services.journald.extraConfig = ''
-    SystemMaxUse=500M
-  '';
 
   # User service - runs on login (recommended)
   systemd.user.services.trash-downloads-on-login = {
