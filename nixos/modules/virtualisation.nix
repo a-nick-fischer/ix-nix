@@ -16,6 +16,7 @@
 
     libvirtd = {
       enable = true;
+      qemu.runAsRoot = true;
       qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
     };
   };
