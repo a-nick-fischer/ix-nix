@@ -94,6 +94,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-staging-next": {
+      "locked": {
+        "lastModified": 1791707053,
+        "narHash": "sha256-bdacXgsXBwmwJ3wzWkQT7QPw2Jg5d7GbQSGzTTNv3BE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "798e2e52f4c4945f1d52ea5f6ad34767c832b09c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "staging-next",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1768564909,
@@ -147,6 +163,7 @@
         "impermanence": "impermanence",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-staging-next": "nixpkgs-staging-next",
         "persist-retro": "persist-retro"
       }
     }

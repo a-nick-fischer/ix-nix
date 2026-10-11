@@ -6,6 +6,9 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    # TODO: Remove
+    nixpkgs-staging-next.url = "github:NixOS/nixpkgs/staging-next";
+
     disko = {  
       url = "github:nix-community/disko";
     };

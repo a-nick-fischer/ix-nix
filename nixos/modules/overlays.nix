@@ -1,4 +1,5 @@
-{...}: {
+# TODO: Remove
+{inputs, ...}: {
   nixpkgs.overlays = [
     (final: prev: let
       nvidiaOffloadWrap = {
@@ -82,6 +83,9 @@
         executable = "${prev.tor-browser}/bin/tor-browser";
         desktop = "${prev.tor-browser}/share/applications/tor-browser.desktop";
       };
+
+      # TODO: Remove
+      jetbrains-toolbox = final.callPackage "${inputs.nixpkgs-staging-next}/pkgs/by-name/je/jetbrains-toolbox/package.nix" {};
     })
   ];
 }
