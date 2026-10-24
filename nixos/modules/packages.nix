@@ -17,6 +17,8 @@
 
   programs.dconf.enable = true;
 
+  programs.gnupg.agent.enable = true;
+
   programs.kdeconnect = {
     enable = true;
     package = pkgs.valent;
@@ -69,6 +71,7 @@
     mousai
     blanket
     networkmanager-openconnect
+    openconnect
 
     # Browsers
     librewolf
@@ -90,10 +93,12 @@
     libqalculate
     krita
     upscayl
+    opencloud-desktop
 
     # IDEs
     vscode-fhs
     jetbrains-toolbox
+    opencode
 
     # Games
     protonup-qt
