@@ -69,6 +69,21 @@
             ''
         );
     in {
+      # TODO: Remove once the v4l2loopback fix lands in nixos-unstable
+      # https://github.com/NixOS/nixpkgs/issues/576406
+      linuxPackages_6_18 = prev.linuxPackages_6_18.extend (
+        _: lp: {
+          v4l2loopback = lp.v4l2loopback.overrideAttrs (old: {
+            makeFlags = (old.makeFlags or []) ++ ["DEPMOD=true"];
+            postInstall =
+              (old.postInstall or "")
+              + ''
+                rm -f $out/lib/modules/*/modules.*
+              '';
+          });
+        }
+      );
+
       kitty = nvidiaOffloadWrap {
         executable = "${prev.kitty}/bin/kitty";
         desktop = "${prev.kitty}/share/applications/kitty.desktop";
