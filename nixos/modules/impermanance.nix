@@ -9,6 +9,7 @@
       "/etc/NetworkManager/system-connections"
       "/var/lib/sbctl"
       "/var/lib/syncthing"
+      "/var/lib/tailscale"
     ];
     files = [];
   };
